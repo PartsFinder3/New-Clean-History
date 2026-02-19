@@ -53,28 +53,31 @@
             <dl class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 <div class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
                     <dt class="text-xs font-semibold uppercase tracking-wider text-zinc-500">Vehicle</dt>
-                    <dd className="mt-1 text-base font-medium text-white">{{ $car->car_name }}</dd>
+                    <dd class="mt-1 text-base font-medium text-white">{{ $car->car_name }}</dd>
                 </div>
                 <div class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
                     <dt class="text-xs font-semibold uppercase tracking-wider text-zinc-500">VIN Number</dt>
-                    <dd className="mt-1 font-mono text-base font-medium text-cyan-400 select-all">{{ $car->vin }}</dd>
+                    <dd class="mt-1 font-mono text-base font-medium text-cyan-400 select-all">{{ $car->vin }}</dd>
                 </div>
                 <div class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
                     <dt class="text-xs font-semibold uppercase tracking-wider text-zinc-500">Status</dt>
-                    <dd className="mt-1 text-base font-medium text-emerald-400">✓ Verified</dd>
+                    <dd class="mt-1 text-base font-medium text-emerald-400">✓ Verified</dd>
                 </div>
-                @if($car->mileage)
+                <!-- Always show Mileage -->
                 <div class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
                     <dt class="text-xs font-semibold uppercase tracking-wider text-zinc-500">Mileage</dt>
-                    <dd className="mt-1 text-base font-medium text-zinc-300">{{ $car->mileage }}</dd>
+                    <dd class="mt-1 text-base font-medium text-zinc-300">{{ $car->mileage ?? 'N/A' }}</dd>
                 </div>
-                @endif
-                @if($car->location)
+                <!-- Always show Location -->
                 <div class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
                     <dt class="text-xs font-semibold uppercase tracking-wider text-zinc-500">Location</dt>
-                    <dd className="mt-1 text-base font-medium text-zinc-300">{{ $car->location }}</dd>
+                    <dd class="mt-1 text-base font-medium text-zinc-300">{{ $car->location ?? 'N/A' }}</dd>
                 </div>
-                @endif
+                <!-- Always show Damage/Status -->
+                <div class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
+                    <dt class="text-xs font-semibold uppercase tracking-wider text-zinc-500">Damage</dt>
+                    <dd class="mt-1 text-base font-medium text-red-400">{{ $car->damage ?? 'None' }}</dd>
+                </div>
             </dl>
 
             <!-- Description -->
