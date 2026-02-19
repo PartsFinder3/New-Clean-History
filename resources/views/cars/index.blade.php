@@ -2,6 +2,56 @@
 
 @section('title', 'Browse Vehicles | VIN History Check USA, Germany & Australia')
 @section('description', 'Explore our inventory of verified vehicles. Check full VIN history, auction records, and mileage reports for cars in USA, Australia, and Europe.')
+@section('canonical', route('cars.index'))
+
+@section('schema')
+{{-- CollectionPage Schema --}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Browse Vehicles - Car History Clean",
+    "url": "{{ route('cars.index') }}",
+    "description": "Explore our inventory of verified vehicles with full VIN history reports.",
+    "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": {{ $cars->total() }},
+        "itemListElement": [
+            @foreach($cars as $index => $car)
+            {
+                "@type": "ListItem",
+                "position": {{ $index + 1 }},
+                "url": "{{ route('cars.show', $car->slug) }}",
+                "name": "{{ $car->car_name }}"
+            }@if(!$loop->last),@endif
+            @endforeach
+        ]
+    }
+}
+</script>
+
+{{-- BreadcrumbList --}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "{{ url('/') }}"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Cars",
+            "item": "{{ route('cars.index') }}"
+        }
+    ]
+}
+</script>
+@endsection
 
 @section('content')
 <div class="mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-16">

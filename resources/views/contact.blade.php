@@ -2,6 +2,53 @@
 
 @section('title', 'Contact Us | Get Your Car History Clean - Customer Support')
 @section('description', 'Get in touch for professional car history clean services. Contact us today for VIN check reports, mileage fraud detection, and vehicle title inquiries.')
+@section('canonical', route('contact'))
+
+@section('schema')
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Car History Clean",
+    "url": "{{ route('contact') }}",
+    "description": "Get in touch for professional car history clean services.",
+    "mainEntity": {
+        "@type": "Organization",
+        "name": "Car History Clean",
+        "telephone": "+1-314-488-8004",
+        "email": "mateenali1122@gmail.com",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-314-488-8004",
+            "contactType": "customer service",
+            "availableLanguage": ["English"],
+            "areaServed": ["US", "DE", "PL", "AU"]
+        }
+    }
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "{{ url('/') }}"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Contact Us",
+            "item": "{{ route('contact') }}"
+        }
+    ]
+}
+</script>
+@endsection
 
 @section('content')
 <div class="mx-auto max-w-6xl px-4 py-12 md:px-8 md:py-16">

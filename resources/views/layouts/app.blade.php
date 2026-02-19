@@ -2,16 +2,70 @@
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Car History Remover | Professional VIN & Title Services')</title>
-    <meta name="description" content="@yield('description', 'Professional car history removal services. Clean title, verified VIN, transparent process.')">
     
-    <!-- Google Fonts -->
+    {{-- ===== SEO: Title & Description ===== --}}
+    <title>@yield('title', 'Car History Clean – Professional VIN History Check & Removal Services')</title>
+    <meta name="description" content="@yield('description', 'Professional car history removal services. Clean title, verified VIN, transparent process. Trusted by dealers & car owners worldwide.')">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    {{-- ===== SEO: Canonical URL ===== --}}
+    <link rel="canonical" href="@yield('canonical', url()->current())">
+    
+    {{-- ===== SEO: Open Graph Meta Tags ===== --}}
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:title" content="@yield('title', 'Car History Clean – Professional VIN History Check & Removal Services')">
+    <meta property="og:description" content="@yield('description', 'Professional car history removal services. Clean title, verified VIN, transparent process.')">
+    <meta property="og:url" content="@yield('canonical', url()->current())">
+    <meta property="og:site_name" content="Car History Clean">
+    <meta property="og:locale" content="en_US">
+    @hasSection('og_image')
+        <meta property="og:image" content="@yield('og_image')">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+    @endif
+    
+    {{-- ===== SEO: Twitter Card Meta Tags ===== --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('title', 'Car History Clean – Professional VIN History Check & Removal Services')">
+    <meta name="twitter:description" content="@yield('description', 'Professional car history removal services. Clean title, verified VIN, transparent process.')">
+    @hasSection('og_image')
+        <meta name="twitter:image" content="@yield('og_image')">
+    @endif
+    
+    {{-- ===== SEO: Favicon ===== --}}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.ico') }}">
+    
+    {{-- ===== SEO: JSON-LD Structured Data ===== --}}
+    @yield('schema')
+    
+    {{-- ===== SEO: Organization Schema (Global – every page) ===== --}}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Car History Clean",
+        "url": "{{ url('/') }}",
+        "logo": "{{ asset('favicon.ico') }}",
+        "description": "Professional car history removal services. Clean title, verified VIN, transparent process.",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-314-488-8004",
+            "contactType": "customer service",
+            "availableLanguage": ["English"]
+        },
+        "sameAs": []
+    }
+    </script>
+    
+    {{-- ===== Google Fonts ===== --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS CDN -->
+    {{-- ===== Tailwind CSS CDN ===== --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {

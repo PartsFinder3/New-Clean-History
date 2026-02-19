@@ -2,6 +2,69 @@
 
 @section('title', 'Our Services | Professional Car History Removal - VIN Cleaner')
 @section('description', 'Professional car history removal from major auction sites. We delete VIN information from autoAstat, BidCars, BidFax, and more permanently.')
+@section('canonical', route('products'))
+
+@section('schema')
+{{-- ItemList Schema for Services Listing --}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Car History Removal Services",
+    "description": "Professional car history removal from major auction platforms",
+    "numberOfItems": {{ count($products) }},
+    "itemListElement": [
+        @foreach($products as $index => $product)
+        {
+            "@type": "ListItem",
+            "position": {{ $index + 1 }},
+            "name": "{{ $product['name'] }}",
+            "url": "{{ route('services.show', $product['slug']) }}",
+            "item": {
+                "@type": "Service",
+                "name": "{{ $product['name'] }} History Removal",
+                "description": "{{ $product['description'] }}",
+                "url": "{{ route('services.show', $product['slug']) }}",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "Car History Clean"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "{{ $product['price'] }}",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock"
+                },
+                "image": "{{ $product['image'] }}"
+            }
+        }@if(!$loop->last),@endif
+        @endforeach
+    ]
+}
+</script>
+
+{{-- BreadcrumbList --}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "{{ url('/') }}"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "{{ route('products') }}"
+        }
+    ]
+}
+</script>
+@endsection
 
 @section('content')
 <div class="mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-20">

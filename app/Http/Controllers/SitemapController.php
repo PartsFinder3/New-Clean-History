@@ -14,23 +14,53 @@ class SitemapController extends Controller
         $xml = '<?xml version="1.0" encoding="UTF-8"?>';
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
         
-        // Static Pages
-        $staticPages = [
-            route('home'),
-            route('about'),
-            route('contact'),
-            route('cars.index'),
-        ];
+        // ===== Static Pages =====
+        // Homepage (highest priority)
+        $xml .= '<url>';
+        $xml .= '<loc>' . route('home') . '</loc>';
+        $xml .= '<changefreq>daily</changefreq>';
+        $xml .= '<priority>1.0</priority>';
+        $xml .= '</url>';
         
-        foreach ($staticPages as $url) {
+        // About page
+        $xml .= '<url>';
+        $xml .= '<loc>' . route('about') . '</loc>';
+        $xml .= '<changefreq>monthly</changefreq>';
+        $xml .= '<priority>0.7</priority>';
+        $xml .= '</url>';
+        
+        // Contact page
+        $xml .= '<url>';
+        $xml .= '<loc>' . route('contact') . '</loc>';
+        $xml .= '<changefreq>monthly</changefreq>';
+        $xml .= '<priority>0.7</priority>';
+        $xml .= '</url>';
+        
+        // Cars listing page
+        $xml .= '<url>';
+        $xml .= '<loc>' . route('cars.index') . '</loc>';
+        $xml .= '<changefreq>daily</changefreq>';
+        $xml .= '<priority>0.9</priority>';
+        $xml .= '</url>';
+        
+        // Products/Services listing page
+        $xml .= '<url>';
+        $xml .= '<loc>' . route('products') . '</loc>';
+        $xml .= '<changefreq>weekly</changefreq>';
+        $xml .= '<priority>0.9</priority>';
+        $xml .= '</url>';
+        
+        // ===== Dynamic Service Pages =====
+        $services = $this->getServiceSlugs();
+        foreach ($services as $service) {
             $xml .= '<url>';
-            $xml .= '<loc>' . $url . '</loc>';
-            $xml .= '<changefreq>daily</changefreq>';
+            $xml .= '<loc>' . route('services.show', $service['slug']) . '</loc>';
+            $xml .= '<changefreq>weekly</changefreq>';
             $xml .= '<priority>0.8</priority>';
             $xml .= '</url>';
         }
         
-        // Dynamic Car Pages
+        // ===== Dynamic Car Pages =====
         foreach ($cars as $car) {
             $xml .= '<url>';
             $xml .= '<loc>' . route('cars.show', $car->slug) . '</loc>';
@@ -43,5 +73,27 @@ class SitemapController extends Controller
         $xml .= '</urlset>';
         
         return response($xml, 200)->header('Content-Type', 'text/xml');
+    }
+    
+    /**
+     * Get all service slugs for sitemap generation.
+     */
+    private function getServiceSlugs()
+    {
+        return [
+            ['slug' => 'autoastat'],
+            ['slug' => 'bidcars'],
+            ['slug' => 'auctionhistory-io'],
+            ['slug' => 'bidfax'],
+            ['slug' => 'autoauctions-io'],
+            ['slug' => 'carfast-express'],
+            ['slug' => 'atlantic-express'],
+            ['slug' => 'auto-bid-master'],
+            ['slug' => 'stat-vin'],
+            ['slug' => 'plc-group'],
+            ['slug' => 'autoauctionhistory'],
+            ['slug' => 'america-motors'],
+            ['slug' => 'auctionauto-ua'],
+        ];
     }
 }

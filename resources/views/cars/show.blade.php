@@ -2,6 +2,103 @@
 
 @section('title', $car->car_name . ' | VIN: ' . $car->vin . ' - Car History Clean Report')
 @section('description', 'View the full vehicle history report for ' . $car->car_name . ' (VIN: ' . $car->vin . '). Check accidents, auction history, and clean title status online.')
+@section('canonical', route('cars.show', $car->slug))
+@section('og_type', 'product')
+@if($car->car_image_url)
+@section('og_image', $car->car_image_url)
+@endif
+
+@section('schema')
+{{-- Vehicle Schema --}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Car",
+    "name": "{{ $car->car_name }}",
+    "url": "{{ route('cars.show', $car->slug) }}",
+    "vehicleIdentificationNumber": "{{ $car->vin }}",
+    @if($car->car_image_url)
+    "image": "{{ $car->car_image_url }}",
+    @endif
+    @if($car->mileage)
+    "mileageFromOdometer": {
+        "@type": "QuantitativeValue",
+        "value": "{{ $car->mileage }}",
+        "unitCode": "SMI"
+    },
+    @endif
+    @if($car->description)
+    "description": "{{ addslashes($car->description) }}",
+    @endif
+    "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+            "@type": "Organization",
+            "name": "Car History Clean"
+        }
+    },
+    "brand": {
+        "@type": "Brand",
+        "name": "{{ explode(' ', $car->car_name)[0] ?? 'Unknown' }}"
+    }
+}
+</script>
+
+{{-- BreadcrumbList --}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "{{ url('/') }}"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Cars",
+            "item": "{{ route('cars.index') }}"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "{{ $car->car_name }}",
+            "item": "{{ route('cars.show', $car->slug) }}"
+        }
+    ]
+}
+</script>
+
+{{-- FAQPage Schema --}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "What is the VIN of this vehicle?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The VIN (Vehicle Identification Number) for this {{ $car->car_name }} is {{ $car->vin }}."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Can I clean the history of this car?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, Car History Clean offers professional VIN history removal services. Contact us via WhatsApp to get started with your clean history report."
+            }
+        }
+    ]
+}
+</script>
+@endsection
 
 @section('content')
 <article class="mx-auto max-w-6xl px-4 py-12 md:px-8 md:py-16">
