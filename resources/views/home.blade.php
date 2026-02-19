@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', 'Car History Clean – Check VIN History in USA, Germany, Poland & Australia')
+@section('description', 'Check your car history clean report online. Get accurate VIN check reports for vehicles in USA, Germany, Poland, and Australia. Detect accidents, mileage fraud, theft records instantly.')
+
 @section('content')
 <section class="relative overflow-hidden border-b border-zinc-800/80 px-4 py-20 md:px-8 md:py-28">
     <div class="absolute inset-0 bg-gradient-to-br from-cyan-950/20 via-transparent to-violet-950/10"></div>

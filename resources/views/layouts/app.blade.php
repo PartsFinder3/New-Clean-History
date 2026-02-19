@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Car History Remover') | Professional VIN & Title Services</title>
+    <title>@yield('title', 'Car History Remover | Professional VIN & Title Services')</title>
     <meta name="description" content="@yield('description', 'Professional car history removal services. Clean title, verified VIN, transparent process.')">
     
     <!-- Google Fonts -->

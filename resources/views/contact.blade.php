@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us')
+@section('title', 'Contact Us | Get Your Car History Clean - Customer Support')
+@section('description', 'Get in touch for professional car history clean services. Contact us today for VIN check reports, mileage fraud detection, and vehicle title inquiries.')
 
 @section('content')
 <div class="mx-auto max-w-6xl px-4 py-12 md:px-8 md:py-16">

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'About Us')
+@section('title', 'About Us | Car History Clean - Trusted VIN & Vehicle History Reports')
+@section('description', 'Learn about Car History Clean, your trusted partner for accurate vehicle history reports and VIN checks in USA, Germany, Poland, and Australia.')
 
 @section('content')
 <div class="mx-auto max-w-6xl px-4 py-12 md:px-8 md:py-16">

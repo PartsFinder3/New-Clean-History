@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', $car->car_name . ' — VIN: ' . $car->vin)
+@section('title', $car->car_name . ' | VIN: ' . $car->vin . ' - Car History Clean Report')
+@section('description', 'View the full vehicle history report for ' . $car->car_name . ' (VIN: ' . $car->vin . '). Check accidents, auction history, and clean title status online.')
 
 @section('content')
 <article class="mx-auto max-w-6xl px-4 py-12 md:px-8 md:py-16">

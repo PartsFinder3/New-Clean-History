@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Our Cars')
+@section('title', 'Browse Vehicles | VIN History Check USA, Germany & Australia')
+@section('description', 'Explore our inventory of verified vehicles. Check full VIN history, auction records, and mileage reports for cars in USA, Australia, and Europe.')
 
 @section('content')
 <div class="mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-16">

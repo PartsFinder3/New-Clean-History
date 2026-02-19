@@ -230,6 +230,8 @@
                         <th class="px-6 py-4">#</th>
                         <th class="px-6 py-4">Vehicle</th>
                         <th class="px-6 py-4">VIN</th>
+                        <th class="px-6 py-4">Mileage</th>
+                        <th class="px-6 py-4">Location</th>
                         <th class="px-6 py-4">Added</th>
                         <th class="px-6 py-4 text-center">Actions</th>
                     </tr>
@@ -249,11 +251,12 @@
                                     </div>
                                     <div>
                                         <p class="font-bold text-white line-clamp-1">{{ $car->car_name }}</p>
-                                        <p class="text-[10px] text-zinc-500 uppercase tracking-tight">{{ $car->location ?? 'No location' }}</p>
                                     </div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 font-mono text-cyan-400 text-xs">{{ $car->vin }}</td>
+                            <td class="px-6 py-4 text-zinc-300 text-xs italic">{{ $car->mileage ?? 'N/A' }}</td>
+                            <td class="px-6 py-4 text-zinc-400 text-xs">{{ $car->location ?? 'N/A' }}</td>
                             <td class="px-6 py-4 text-zinc-500 text-xs">{{ $car->created_at->format('M d, H:i') }}</td>
                             <td class="px-6 py-4 text-center">
                                 <form action="{{ route('admin.cars.destroy', $car->id) }}" method="POST" class="inline">
