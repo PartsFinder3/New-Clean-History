@@ -154,10 +154,10 @@
                 
                 <div class="space-y-1">
                     <label class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider ml-1">Full Image URL</label>
-                    <input type="url" name="car_image_url" placeholder="https://images.com/car.jpg" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all" />
+                    <input type="text" name="car_image_url" placeholder="https://images.com/car.jpg" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all" />
                 </div>
                 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="space-y-1">
                         <label class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider ml-1">Mileage</label>
                         <input type="text" name="mileage" placeholder="e.g. 50k" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all" />
@@ -166,6 +166,15 @@
                         <label class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider ml-1">Location</label>
                         <input type="text" name="location" placeholder="e.g. London" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all" />
                     </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider ml-1">Damage / Status</label>
+                        <input type="text" name="damage" placeholder="e.g. Front End" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all" />
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider ml-1">Description</label>
+                    <textarea name="description" rows="3" placeholder="Additional vehicle details..." class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"></textarea>
                 </div>
                 
                 <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold text-sm transition-all active:scale-[0.98] shadow-lg shadow-blue-600/20">
