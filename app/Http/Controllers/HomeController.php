@@ -40,53 +40,81 @@ class HomeController extends Controller
         $products = [
             [
                 'name' => 'autoAstat',
-                'description' => 'Deleting car history from autoAstat. No one wants to buy a car without a clear understanding of its technical condition and history.',
+                'description' => 'Comprehensive deletion of car history from autoAstat. Ensure a clear technical record for your US insurance vehicle.',
+                'price' => '45',
                 'image' => 'https://cleanautohistory.com/storage/products/September2023/C9C8q2Uis5o9YjB1lA5U.png'
             ],
             [
                 'name' => 'BidCars',
-                'description' => 'Deleting car history from BidCars. Buying and bringing an insurance car from the USA is much easier than many people think.',
+                'description' => 'Full removal of photos and auction history from BidCars. Essential for maintaining vehicle value privacy.',
+                'price' => '40',
                 'image' => 'https://cleanautohistory.com/storage/products/September2023/G6m8c3N3j0x7V2B9lA5U.png'
             ],
             [
                 'name' => 'AuctionHistory IO',
-                'description' => 'Deleting car history from AuctionHistory IO. Finding out the car\'s history begins the search for a suitable vehicle at any American auction.',
+                'description' => 'Permanent erasure of sales data and high-res photos from AuctionHistory.io database.',
+                'price' => '50',
                 'image' => 'https://cleanautohistory.com/storage/products/September2023/H8m2c6N5j0x1V4B3lA5U.png'
             ],
             [
                 'name' => 'BidFax',
-                'description' => 'Deleting car history from BidFax. There are a lot of options for finding information about insurance vehicles that are sold at Copart and IAAI auctions.',
+                'description' => 'Specialized service to hide Copart and IAAI auction history from the popular BidFax platform.',
+                'price' => '35',
                 'image' => 'https://cleanautohistory.com/storage/products/September2023/J2m4c1N9j8x5V0B7lA5U.png'
             ],
             [
                 'name' => 'autoauctions.io',
-                'description' => 'Deleting car history from autoauctions.io. Users from anywhere in the world can participate in car auctions.',
+                'description' => 'Clean your global auction record. We remove VIN data from autoauctions.io permanently.',
+                'price' => '55',
                 'image' => 'https://cleanautohistory.com/storage/products/September2023/K0m6c2N1j4x9V2B5lA5U.png'
             ],
             [
                 'name' => 'Carfast Express',
-                'description' => 'Deleting car history from Carfast Express. Both financially and from a practical point of view, a more attractive option for buying a car.',
+                'description' => 'Delete auction photos and pricing history from Carfast Express for any US or Canadian vehicle.',
+                'price' => '45',
                 'image' => 'https://cleanautohistory.com/storage/products/September2023/L4m8c4N3j2x7V6B9lA5U.png'
             ],
             [
                 'name' => 'Atlantic Express',
-                'description' => 'Deleting car history from Atlantic Express. More and more motorists prefer to buy used cars in the USA.',
+                'description' => 'Reliable information removal from Atlantic Express database. Protect your VIN from public search.',
+                'price' => '40',
                 'image' => 'https://cleanautohistory.com/storage/products/September2023/M2m0c6N5j8x1V4B3lA5U.png'
             ],
             [
                 'name' => 'Auto Bid Master',
-                'description' => 'Deleting car history from Auto Bid Master. Not all motorists are ready to spend an exorbitant amount of money on a new car.',
+                'description' => 'Erasing your car history from Auto Bid Master. No more public record of your insurance purchase.',
+                'price' => '45',
                 'image' => 'https://cleanautohistory.com/storage/products/September2023/N6m4c8N1j4x9V2B5lA5U.png'
             ],
             [
                 'name' => 'Stat Vin',
-                'description' => 'Global statistical information about auto auctions gathered in one place and updated daily.',
+                'description' => 'Remove detailed auction statistics and salvage history from the StatVin global database.',
+                'price' => '50',
                 'image' => 'https://cleanautohistory.com/storage/products/September2023/O0m2c0N9j8x5V0B7lA5U.png'
             ],
             [
                 'name' => 'PLC GROUP',
-                'description' => 'Deleting car history from PLC GROUP. Professional removal of vehicle data from public databases.',
+                'description' => 'Complete vehicle data removal from PLC Group registry. High-speed processing for all US cars.',
+                'price' => '40',
                 'image' => 'https://cleanautohistory.com/storage/products/September2023/P4m8c4N3j2x7V6B9lA5U.png'
+            ],
+            [
+                'name' => 'AutoAuctionHistory',
+                'description' => 'Wipe clean your auction history from AutoAuctionHistory.com. Full privacy for your vehicle VIN.',
+                'price' => '45',
+                'image' => 'https://cleanautohistory.com/storage/products/September2023/Q8m2c6N5j0x1V4B3lA5U.png'
+            ],
+            [
+                'name' => 'America Motors',
+                'description' => 'Remove your car details from America Motors. We ensure no photos or data remain public.',
+                'price' => '40',
+                'image' => 'https://cleanautohistory.com/storage/products/September2023/R2m4c1N9j8x5V0B7lA5U.png'
+            ],
+            [
+                'name' => 'AuctionAuto UA',
+                'description' => 'Professional cleaning of vehicle history from AuctionAuto UA results. Verified and permanent.',
+                'price' => '50',
+                'image' => 'https://cleanautohistory.com/storage/products/September2023/S0m6c2N1j4x9V2B5lA5U.png'
             ],
         ];
         return view('products', compact('products'));
