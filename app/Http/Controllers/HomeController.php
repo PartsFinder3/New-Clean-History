@@ -35,6 +35,16 @@ class HomeController extends Controller
         return view('contact');
     }
 
+    public function disclaimer()
+    {
+        return view('disclaimer');
+    }
+
+    public function privacyPolicy()
+    {
+        return view('privacy-policy');
+    }
+
     public function products()
     {
         $products = $this->getProductsData();

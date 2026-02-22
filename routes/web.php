@@ -15,6 +15,8 @@ Route::get('/cars', [HomeController::class, 'cars'])->name('cars.index');
 Route::get('/cars/{slug}', [HomeController::class, 'carDetail'])->name('cars.show');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/disclaimer', [HomeController::class, 'disclaimer'])->name('disclaimer');
+Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('/products', [HomeController::class, 'products'])->name('products');
 Route::get('/services/{slug}', [HomeController::class, 'serviceDetail'])->name('services.show');
 

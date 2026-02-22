@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Blog;
 use Illuminate\Http\Response;
 
 class SitemapController extends Controller
@@ -10,6 +11,7 @@ class SitemapController extends Controller
     public function index()
     {
         $cars = Car::all(['slug', 'updated_at', 'id']);
+        $blogs = Blog::where('is_published', true)->get(['slug', 'updated_at', 'id']);
         
         // Use the current request's root URL instead of relying solely on APP_URL
         // This ensures the sitemap URLs match the domain it's being served from.
@@ -40,6 +42,20 @@ class SitemapController extends Controller
         $xml .= '<priority>0.7</priority>';
         $xml .= '</url>';
         
+        // Disclaimer page
+        $xml .= '<url>';
+        $xml .= '<loc>' . $baseUrl . '/disclaimer</loc>';
+        $xml .= '<changefreq>monthly</changefreq>';
+        $xml .= '<priority>0.3</priority>';
+        $xml .= '</url>';
+        
+        // Privacy Policy page
+        $xml .= '<url>';
+        $xml .= '<loc>' . $baseUrl . '/privacy-policy</loc>';
+        $xml .= '<changefreq>monthly</changefreq>';
+        $xml .= '<priority>0.5</priority>';
+        $xml .= '</url>';
+        
         // Cars listing page
         $xml .= '<url>';
         $xml .= '<loc>' . $baseUrl . '/cars</loc>';
@@ -54,6 +70,13 @@ class SitemapController extends Controller
         $xml .= '<priority>0.9</priority>';
         $xml .= '</url>';
         
+        // Blog listing page
+        $xml .= '<url>';
+        $xml .= '<loc>' . $baseUrl . '/blog</loc>';
+        $xml .= '<changefreq>weekly</changefreq>';
+        $xml .= '<priority>0.8</priority>';
+        $xml .= '</url>';
+        
         // ===== Dynamic Service Pages =====
         $services = $this->getServiceSlugs();
         foreach ($services as $service) {
@@ -61,6 +84,16 @@ class SitemapController extends Controller
             $xml .= '<loc>' . $baseUrl . '/services/' . $service['slug'] . '</loc>';
             $xml .= '<changefreq>weekly</changefreq>';
             $xml .= '<priority>0.8</priority>';
+            $xml .= '</url>';
+        }
+        
+        // ===== Dynamic Blog Pages =====
+        foreach ($blogs as $blog) {
+            $xml .= '<url>';
+            $xml .= '<loc>' . $baseUrl . '/blog/' . $blog->slug . '</loc>';
+            $xml .= '<lastmod>' . (isset($blog->updated_at) ? $blog->updated_at->toAtomString() : date('Y-m-d\TH:i:sP')) . '</lastmod>';
+            $xml .= '<changefreq>weekly</changefreq>';
+            $xml .= '<priority>0.7</priority>';
             $xml .= '</url>';
         }
         
