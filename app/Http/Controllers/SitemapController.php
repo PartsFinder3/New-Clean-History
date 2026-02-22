@@ -11,41 +11,45 @@ class SitemapController extends Controller
     {
         $cars = Car::all(['slug', 'updated_at', 'id']);
         
+        // Use the current request's root URL instead of relying solely on APP_URL
+        // This ensures the sitemap URLs match the domain it's being served from.
+        $baseUrl = request()->root();
+        
         $xml = '<?xml version="1.0" encoding="UTF-8"?>';
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
         
         // ===== Static Pages =====
-        // Homepage (highest priority)
+        // Homepage
         $xml .= '<url>';
-        $xml .= '<loc>' . route('home') . '</loc>';
+        $xml .= '<loc>' . $baseUrl . '</loc>';
         $xml .= '<changefreq>daily</changefreq>';
         $xml .= '<priority>1.0</priority>';
         $xml .= '</url>';
         
         // About page
         $xml .= '<url>';
-        $xml .= '<loc>' . route('about') . '</loc>';
+        $xml .= '<loc>' . $baseUrl . '/about</loc>';
         $xml .= '<changefreq>monthly</changefreq>';
         $xml .= '<priority>0.7</priority>';
         $xml .= '</url>';
         
         // Contact page
         $xml .= '<url>';
-        $xml .= '<loc>' . route('contact') . '</loc>';
+        $xml .= '<loc>' . $baseUrl . '/contact</loc>';
         $xml .= '<changefreq>monthly</changefreq>';
         $xml .= '<priority>0.7</priority>';
         $xml .= '</url>';
         
         // Cars listing page
         $xml .= '<url>';
-        $xml .= '<loc>' . route('cars.index') . '</loc>';
+        $xml .= '<loc>' . $baseUrl . '/cars</loc>';
         $xml .= '<changefreq>daily</changefreq>';
         $xml .= '<priority>0.9</priority>';
         $xml .= '</url>';
         
         // Products/Services listing page
         $xml .= '<url>';
-        $xml .= '<loc>' . route('products') . '</loc>';
+        $xml .= '<loc>' . $baseUrl . '/products</loc>';
         $xml .= '<changefreq>weekly</changefreq>';
         $xml .= '<priority>0.9</priority>';
         $xml .= '</url>';
@@ -54,7 +58,7 @@ class SitemapController extends Controller
         $services = $this->getServiceSlugs();
         foreach ($services as $service) {
             $xml .= '<url>';
-            $xml .= '<loc>' . route('services.show', $service['slug']) . '</loc>';
+            $xml .= '<loc>' . $baseUrl . '/services/' . $service['slug'] . '</loc>';
             $xml .= '<changefreq>weekly</changefreq>';
             $xml .= '<priority>0.8</priority>';
             $xml .= '</url>';
@@ -63,7 +67,7 @@ class SitemapController extends Controller
         // ===== Dynamic Car Pages =====
         foreach ($cars as $car) {
             $xml .= '<url>';
-            $xml .= '<loc>' . route('cars.show', $car->slug) . '</loc>';
+            $xml .= '<loc>' . $baseUrl . '/cars/' . $car->slug . '</loc>';
             $xml .= '<lastmod>' . (isset($car->updated_at) ? $car->updated_at->toAtomString() : date('Y-m-d\TH:i:sP')) . '</lastmod>';
             $xml .= '<changefreq>weekly</changefreq>';
             $xml .= '<priority>0.6</priority>';

@@ -80,8 +80,48 @@
         </div>
     </div>
 
-    <!-- Upload Section: Top Priority -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+    <!-- Blog Management & Upload Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+        <!-- Blog Management Card -->
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full -mr-16 -mt-16 blur-3xl transition-all group-hover:bg-purple-500/10"></div>
+            <h2 class="text-xl font-bold text-white mb-6 font-outfit flex items-center gap-3">
+                <span class="p-2 bg-purple-500/10 rounded-lg text-purple-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
+                </span>
+                Blog Management
+            </h2>
+            
+            <div class="space-y-4">
+                <div class="bg-zinc-950/50 rounded-xl p-4 border border-zinc-800">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Total Posts</span>
+                        <span class="text-lg font-bold text-white">{{\App\Models\Blog::count()}}</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Published</span>
+                        <span class="text-sm font-bold text-emerald-400">{{\App\Models\Blog::where('is_published', true)->count()}}</span>
+                    </div>
+                </div>
+                
+                <a href="{{ route('admin.blogs.index') }}" class="block w-full py-3 bg-purple-600/10 hover:bg-purple-600/20 text-purple-400 border border-purple-500/30 rounded-xl text-xs font-bold transition-all text-center">
+                    Manage Blogs
+                </a>
+                <a href="{{ route('blogs.index') }}" target="_blank" class="block w-full py-3 bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 border border-blue-500/30 rounded-xl text-xs font-bold transition-all text-center">
+                    View Blog Page
+                </a>
+            </div>
+        </div>
+
+        <!-- Bulk Upload -->
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full -mr-16 -mt-16 blur-3xl transition-all group-hover:bg-purple-500/10"></div>
+            <h2 class="text-xl font-bold text-white mb-6 font-outfit flex items-center gap-3">
+                <span class="p-2 bg-purple-500/10 rounded-lg text-purple-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                </span>
+                Bulk Upload
+            </h2>
         <!-- Bulk Upload -->
         <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl relative overflow-hidden group">
             <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full -mr-16 -mt-16 blur-3xl transition-all group-hover:bg-purple-500/10"></div>

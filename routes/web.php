@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,10 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/products', [HomeController::class, 'products'])->name('products');
 Route::get('/services/{slug}', [HomeController::class, 'serviceDetail'])->name('services.show');
 
+// Blog Routes (Public)
+Route::get('/blog', [BlogController::class, 'index'])->name('blogs.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blogs.show');
+
 // Admin Auth Routes
 Route::get('/login', [AdminController::class, 'login'])->name('admin.login');
 Route::post('/login', [AdminController::class, 'authenticate'])->name('admin.authenticate');
@@ -30,4 +35,12 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/cars/bulk', [AdminController::class, 'bulkStore'])->name('admin.cars.bulk');
     Route::delete('/cars/{id}', [AdminController::class, 'destroy'])->name('admin.cars.destroy');
     Route::post('/cars/delete-all', [AdminController::class, 'destroyAll'])->name('admin.cars.destroy-all');
+    
+    // Blog Management Routes
+    Route::get('/blogs', [BlogController::class, 'adminIndex'])->name('admin.blogs.index');
+    Route::get('/blogs/create', [BlogController::class, 'create'])->name('admin.blogs.create');
+    Route::post('/blogs', [BlogController::class, 'store'])->name('admin.blogs.store');
+    Route::get('/blogs/{id}/edit', [BlogController::class, 'edit'])->name('admin.blogs.edit');
+    Route::put('/blogs/{id}', [BlogController::class, 'update'])->name('admin.blogs.update');
+    Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
 });

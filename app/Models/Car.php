@@ -21,4 +21,10 @@ class Car extends Model
         'damage',
         'slug',
     ];
+
+    protected $casts = [
+        'slug' => 'string',
+        'updated_at' => 'datetime',
+        'created_at' => 'datetime',
+    ];
 }

@@ -1,5 +1,5 @@
-# robots.txt for Car History Clean
-# https://carhistoryclean.com
+# robots.txt for Car History Remover
+# https://carhistoryremove.online
 
 User-agent: *
 Allow: /
@@ -9,7 +9,7 @@ Disallow: /login
 Disallow: /logout
 
 # Sitemap
-Sitemap: https://carhistoryclean.com/sitemap.xml
+Sitemap: https://carhistoryremove.online/sitemap.xml
 
 # Crawl-delay (optional, be polite)
 Crawl-delay: 5
