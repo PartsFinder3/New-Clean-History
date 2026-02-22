@@ -115,7 +115,7 @@
                         >
                             Details
                         </a>
-                        <a href="https://wa.me/3144888004?text={{ urlencode('Hi, I want to delete car history from ' . $product['name'] . '. Please provide details for the $' . $product['price'] . ' service.') }}" 
+                        <a href="https://wa.me/923004531248?text={{ urlencode('Hi, I want to delete car history from ' . $product['name'] . '. Please provide details for the $' . $product['price'] . ' service.') }}" 
                            target="_blank"
                            class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-500 px-4 py-3 text-xs font-bold text-zinc-950 transition-all hover:bg-emerald-400 active:scale-[0.98] shadow-lg hover:shadow-emerald-500/20"
                         >
@@ -137,7 +137,7 @@
                 <a href="{{ route('contact') }}" class="rounded-xl bg-cyan-500 px-8 py-3 text-sm font-bold text-zinc-950 transition hover:bg-cyan-400">
                     Contact Support
                 </a>
-                <a href="https://wa.me/3144888004" target="_blank" class="rounded-xl border border-zinc-700 bg-zinc-900 px-8 py-3 text-sm font-bold text-white transition hover:border-zinc-600">
+                <a href="https://wa.me/923004531248" target="_blank" class="rounded-xl border border-zinc-700 bg-zinc-900 px-8 py-3 text-sm font-bold text-white transition hover:border-zinc-600">
                     Free Consultation
                 </a>
             </div>
