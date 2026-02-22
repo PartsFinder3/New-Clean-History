@@ -45,7 +45,7 @@
             </div>
             <div>
                 <p class="text-[9px] md:text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Live Cars</p>
-                <p class="text-xl md:text-2xl font-bold text-white font-outfit">{{ $cars->count() }}</p>
+                <p class="text-xl md:text-2xl font-bold text-white font-outfit">{{ \App\Models\Car::count() }}</p>
             </div>
         </div>
         
@@ -114,16 +114,7 @@
         </div>
 
         <!-- Bulk Upload -->
-        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl relative overflow-hidden group">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full -mr-16 -mt-16 blur-3xl transition-all group-hover:bg-purple-500/10"></div>
-            <h2 class="text-xl font-bold text-white mb-6 font-outfit flex items-center gap-3">
-                <span class="p-2 bg-purple-500/10 rounded-lg text-purple-500">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                </span>
-                Bulk Upload
-            </h2>
-        <!-- Bulk Upload -->
-        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl relative overflow-hidden group">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl relative overflow-hidden group lg:col-span-2">
             <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full -mr-16 -mt-16 blur-3xl transition-all group-hover:bg-purple-500/10"></div>
             <h2 class="text-xl font-bold text-white mb-6 font-outfit flex items-center gap-3">
                 <span class="p-2 bg-purple-500/10 rounded-lg text-purple-500">
@@ -168,8 +159,6 @@
                 </div>
             </div>
         </div>
-
-        </div>
     </div>
 
     <!-- Preview Section (Full Width when active) -->
@@ -210,7 +199,7 @@
                 <span class="p-2 bg-blue-500/10 rounded-lg text-blue-500">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </span>
-                Manage All Cars ({{ $cars->count() }})
+                Manage All Cars ({{ \App\Models\Car::count() }})
             </h2>
             <form action="{{ route('admin.cars.destroy-all') }}" method="POST" onsubmit="return confirm('⚠️ DANGER: This will delete ALL records from the live site. Proceed?')">
                 @csrf
@@ -236,7 +225,7 @@
                 <tbody class="divide-y divide-zinc-800/50">
                     @forelse($cars as $index => $car)
                         <tr class="hover:bg-zinc-800/30 transition-colors">
-                            <td class="px-6 py-4 text-zinc-600 font-mono text-xs">{{ $index + 1 }}</td>
+                            <td class="px-6 py-4 text-zinc-600 font-mono text-xs">{{ $cars->firstItem() + $index }}</td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-4">
                                     <div class="w-12 h-12 rounded-xl bg-zinc-950 border border-zinc-800 flex-shrink-0 flex items-center justify-center overflow-hidden">
@@ -267,7 +256,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="px-6 py-20 text-center">
+                            <td colspan="7" class="px-6 py-20 text-center">
                                 <div class="flex flex-col items-center gap-3">
                                     <svg class="w-12 h-12 text-zinc-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
                                     <p class="text-zinc-600 font-medium tracking-tight">Your live database is empty.</p>
@@ -277,6 +266,41 @@
                     @endforelse
                 </tbody>
             </table>
+        </div>
+
+        <!-- Pagination -->
+        @if($cars->hasPages())
+            <div class="p-6 border-t border-zinc-800">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="text-sm text-zinc-500">
+                        Showing {{ $cars->firstItem() }} to {{ $cars->lastItem() }} of {{ $cars->total() }} cars
+                    </div>
+                    <div class="flex items-center gap-2">
+                        @if($cars->previousPageUrl())
+                            <a href="{{ $cars->previousPageUrl() }}" class="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded-lg text-sm font-medium transition-all border border-zinc-700">
+                                ← Previous
+                            </a>
+                        @endif
+                        
+                        @foreach(range(1, $cars->lastPage()) as $page)
+                            @if($page >= $cars->currentPage() - 2 && $page <= $cars->currentPage() + 2)
+                                @if($page == $cars->currentPage())
+                                    <span class="px-4 py-2 bg-purple-600 text-white rounded-lg text-sm font-bold">{{ $page }}</span>
+                                @else
+                                    <a href="{{ $cars->url($page) }}" class="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded-lg text-sm font-medium transition-all border border-zinc-700">{{ $page }}</a>
+                                @endif
+                            @endif
+                        @endforeach
+
+                        @if($cars->nextPageUrl())
+                            <a href="{{ $cars->nextPageUrl() }}" class="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded-lg text-sm font-medium transition-all border border-zinc-700">
+                                Next →
+                            </a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 </div>
 @endsection
@@ -533,4 +557,3 @@
     }
 </script>
 @endsection
-

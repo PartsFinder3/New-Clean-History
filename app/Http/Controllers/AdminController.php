@@ -11,7 +11,7 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        $cars = Car::orderBy('id', 'desc')->get();
+        $cars = Car::orderBy('id', 'desc')->paginate(20);
         return view('admin.dashboard', compact('cars'));
     }
 
