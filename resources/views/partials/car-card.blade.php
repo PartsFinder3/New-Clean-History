@@ -63,7 +63,7 @@
                     <div class="flex items-center gap-2">
                         <span class="text-xs font-bold text-cyan-400">Clean History</span>
                         <div class="h-1 w-1 rounded-full bg-zinc-700"></div>
-                        <a href="https://wa.me/3144888004?text={{ urlencode('Hi, I am interested in checking the history for VIN: ' . $car->vin) }}" 
+                        <a href="https://wa.me/923004531248?text={{ urlencode('Hi, I am interested in checking the history for VIN: ' . $car->vin) }}" 
                            target="_blank"
                            class="flex items-center gap-1 text-[10px] font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
                         >
@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 
-                <a href="https://wa.me/3144888004?text={{ urlencode('Hi, I am interested in checking the history for VIN: ' . $car->vin) }}" 
+                <a href="https://wa.me/923004531248?text={{ urlencode('Hi, I am interested in checking the history for VIN: ' . $car->vin) }}" 
                    target="_blank"
                    class="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 text-[10px] font-black rounded-lg transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
                 >
