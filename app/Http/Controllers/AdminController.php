@@ -7,13 +7,17 @@ use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
 
 class AdminController extends Controller
 {
     public function dashboard()
     {
         $cars = Car::orderBy('id', 'desc')->paginate(20);
-        $settings = Setting::pluck('value', 'key')->toArray();
+        $settings = [];
+        if (Schema::hasTable('settings')) {
+            $settings = Setting::pluck('value', 'key')->toArray();
+        }
         return view('admin.dashboard', compact('cars', 'settings'));
     }
 
