@@ -18,7 +18,9 @@
     "provider": {
         "@@type": "Organization",
         "name": "Car History Clean",
-        "url": "{{ url('/') }}"
+        "url": "{{ url('/') }}",
+        "telephone": "+923004531248",
+        "email": "mateenali1122@gmail.com"
     },
     "serviceType": "VIN History Removal",
     "areaServed": {
@@ -33,7 +35,9 @@
         "priceValidUntil": "{{ date('Y-12-31') }}",
         "seller": {
             "@@type": "Organization",
-            "name": "Car History Clean"
+            "name": "Car History Clean",
+            "telephone": "+923004531248",
+            "email": "mateenali1122@gmail.com"
         }
     },
     "aggregateRating": {

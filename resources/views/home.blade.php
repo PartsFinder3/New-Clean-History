@@ -3,6 +3,56 @@
 @section('title', 'Car History Clean – Check VIN History in USA, Germany, Poland & Australia')
 @section('description', 'Check your car history clean report online. Get accurate VIN check reports for vehicles in USA, Germany, Poland, and Australia. Detect accidents, mileage fraud, theft records instantly.')
 
+@section('schema')
+<script type="application/ld+json">
+{
+    "@@context": "https://schema.org",
+    "@@type": "WebSite",
+    "name": "Car History Clean",
+    "url": "{{ url('/') }}",
+    "potentialAction": {
+        "@@type": "SearchAction",
+        "target": "{{ url('/cars') }}?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@@context": "https://schema.org",
+    "@@type": "LocalBusiness",
+    "name": "Car History Clean",
+    "image": "{{ asset('favicon.ico') }}",
+    "@@id": "{{ url('/') }}",
+    "url": "{{ url('/') }}",
+    "telephone": "+923004531248",
+    "email": "mateenali1122@gmail.com",
+    "address": {
+        "@@type": "PostalAddress",
+        "streetAddress": "Main Road",
+        "addressLocality": "Lahore",
+        "addressRegion": "Punjab",
+        "postalCode": "54000",
+        "addressCountry": "PK"
+    },
+    "openingHoursSpecification": {
+        "@@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+    }
+}
+</script>
+@endsection
+
 @section('content')
 <section class="relative overflow-hidden border-b border-zinc-800/80 px-4 py-20 md:px-8 md:py-28">
     <div class="absolute inset-0 bg-gradient-to-br from-cyan-950/20 via-transparent to-violet-950/10"></div>
@@ -126,6 +176,112 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<section id="pricing" class="relative bg-zinc-950 py-20 px-4 md:px-8">
+    <div class="mx-auto max-w-6xl text-center mb-16">
+        <h2 class="font-display text-3xl font-bold text-white md:text-4xl">
+            Flexible <span class="gradient-text">Pricing</span> Plans
+        </h2>
+        <p class="mt-4 text-zinc-400 max-w-2xl mx-auto">
+            Choose the package that fits your needs. We offer guaranteed removal with bulk discounts for multiple sites.
+        </p>
+    </div>
+
+    <div class="mx-auto max-w-6xl grid gap-8 md:grid-cols-3">
+        <!-- Basic Plan -->
+        <div class="glass-card flex flex-col rounded-3xl p-8 border border-zinc-800 transition-all hover:border-cyan-500/30">
+            <h3 class="text-white font-display text-xl font-bold mb-2">Bronze Plan</h3>
+            <div class="flex items-baseline gap-1 mb-6">
+                <span class="text-4xl font-black text-white">$40</span>
+                <span class="text-zinc-500 text-sm">/per site</span>
+            </div>
+            <ul class="space-y-4 mb-8 text-sm text-zinc-400 text-left">
+                <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Single Site Removal
+                </li>
+                <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Permanent Data Deletion
+                </li>
+                <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Google Cache Flush
+                </li>
+                <li class="flex items-center gap-2 opacity-30">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    Multiple Site Discount
+                </li>
+            </ul>
+            <a href="https://wa.me/923004531248?text=I want to order the Bronze Plan ($40) for 1 site removal." class="mt-auto w-full py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-white font-bold hover:bg-zinc-800 transition-colors text-center">
+                CHOOSE BRONZE
+            </a>
+        </div>
+
+        <!-- Popular Plan -->
+        <div class="relative glass-card flex flex-col rounded-3xl p-8 border-2 border-cyan-500/50 shadow-[0_0_40px_rgba(34,211,238,0.1)]">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cyan-500 text-zinc-950 text-[10px] font-black uppercase px-4 py-1.5 rounded-full tracking-widest">
+                Most Popular
+            </div>
+            <h3 class="text-white font-display text-xl font-bold mb-2">Silver Plan</h3>
+            <div class="flex items-baseline gap-1 mb-6">
+                <span class="text-4xl font-black text-white">$100</span>
+                <span class="text-zinc-500 text-sm">/for 3 sites</span>
+            </div>
+            <ul class="space-y-4 mb-8 text-sm text-zinc-400 text-left">
+                <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    3 Site Removal
+                </li>
+                <li class="flex items-center gap-2 font-bold text-zinc-300">
+                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Save $20 instantly
+                </li>
+                <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Permanent Data Deletion
+                </li>
+                <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Google Cache Flush
+                </li>
+            </ul>
+            <a href="https://wa.me/923004531248?text=I want to order the Silver Plan ($100) for 3 sites removal." class="mt-auto w-full py-3 rounded-xl bg-cyan-500 text-zinc-950 font-bold hover:bg-cyan-400 active:scale-95 transition-all text-center">
+                CHOOSE SILVER
+            </a>
+        </div>
+
+        <!-- Premium Plan -->
+        <div class="glass-card flex flex-col rounded-3xl p-8 border border-zinc-800 transition-all hover:border-violet-500/30">
+            <h3 class="text-white font-display text-xl font-bold mb-2">Gold Plan</h3>
+            <div class="flex items-baseline gap-1 mb-6">
+                <span class="text-4xl font-black text-white">$150</span>
+                <span class="text-zinc-500 text-sm">/for 5 sites</span>
+            </div>
+            <ul class="space-y-4 mb-8 text-sm text-zinc-400 text-left">
+                <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    5 Site Removal
+                </li>
+                <li class="flex items-center gap-2 font-bold text-zinc-300">
+                    <svg class="w-4 h-4 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Save $50 instantly
+                </li>
+                <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Permanent Data Deletion
+                </li>
+                <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Google Cache Flush
+                </li>
+            </ul>
+            <a href="https://wa.me/923004531248?text=I want to order the Gold Plan ($150) for 5 sites removal." class="mt-auto w-full py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-white font-bold hover:bg-zinc-800 transition-colors text-center">
+                CHOOSE GOLD
+            </a>
         </div>
     </div>
 </section>

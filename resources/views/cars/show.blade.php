@@ -33,7 +33,9 @@
         "availability": "https://schema.org/InStock",
         "seller": {
             "@@type": "Organization",
-            "name": "Car History Clean"
+            "name": "Car History Clean",
+            "telephone": "+923004531248",
+            "email": "mateenali1122@gmail.com"
         }
     },
     "brand": {

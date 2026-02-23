@@ -49,8 +49,9 @@
         "description": "Professional car history removal services. Clean title, verified VIN, transparent process.",
         "contactPoint": {
             "@@type": "ContactPoint",
-            "telephone": "+1-314-488-8004",
+            "telephone": "+923004531248",
             "contactType": "customer service",
+            "email": "mateenali1122@gmail.com",
             "availableLanguage": ["English"]
         },
         "sameAs": []
