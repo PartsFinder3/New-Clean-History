@@ -2,8 +2,8 @@
     <div class="mx-auto max-w-6xl px-4 py-12 md:px-8">
         <div class="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div>
-                <a href="{{ route('home') }}" class="font-display text-lg font-semibold text-white">
-                    Car History Remover
+                <a href="{{ route('home') }}" class="font-display text-lg font-bold text-white">
+                    Car History <span class="text-cyan-400">Clean</span>
                 </a>
                 <p class="mt-2 max-w-sm text-sm text-zinc-500">
                     Professional car history removal services. Clean title, verified
@@ -31,7 +31,7 @@
         <div class="mt-8 border-t border-zinc-800/80 pt-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
                 <div>
-                    &copy; {{ date('Y') }} Car History Remover. All rights reserved.
+                    &copy; {{ date('Y') }} Car History Clean. All rights reserved.
                 </div>
                 <div class="flex gap-6">
                     <a href="{{ route('disclaimer') }}" class="hover:text-cyan-400 transition">Disclaimer</a>
