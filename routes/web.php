@@ -37,6 +37,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/cars/bulk', [AdminController::class, 'bulkStore'])->name('admin.cars.bulk');
     Route::delete('/cars/{id}', [AdminController::class, 'destroy'])->name('admin.cars.destroy');
     Route::post('/cars/delete-all', [AdminController::class, 'destroyAll'])->name('admin.cars.destroy-all');
+    Route::post('/cars/bulk-delete', [AdminController::class, 'bulkDelete'])->name('admin.cars.bulk-delete');
     
     // Blog Management Routes
     Route::get('/blogs', [BlogController::class, 'adminIndex'])->name('admin.blogs.index');

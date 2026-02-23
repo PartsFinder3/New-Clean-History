@@ -126,4 +126,18 @@ class AdminController extends Controller
         Car::truncate();
         return back()->with('success', 'All cars deleted!');
     }
+
+    public function bulkDelete(Request $request)
+    {
+        $idsRaw = $request->input('ids');
+        $ids = is_string($idsRaw) ? json_decode($idsRaw, true) : $idsRaw;
+        
+        if (empty($ids)) {
+            return back()->with('error', 'No objects selected for deletion.');
+        }
+
+        Car::whereIn('id', $ids)->delete();
+
+        return back()->with('success', count($ids) . ' records deleted successfully!');
+    }
 }

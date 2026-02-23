@@ -203,31 +203,42 @@
                 </span>
                 Manage All Cars ({{ \App\Models\Car::count() }})
             </h2>
-            <form action="{{ route('admin.cars.destroy-all') }}" method="POST" onsubmit="return confirm('⚠️ DANGER: This will delete ALL records from the live site. Proceed?')">
-                @csrf
-                <button type="submit" class="w-full md:w-auto px-6 py-2.5 bg-red-600/10 hover:bg-red-600/20 text-red-400 rounded-xl text-sm font-bold transition-all border border-red-500/30 active:scale-95">
-                    Purge Database
-                </button>
-            </form>
+            <div class="flex items-center gap-3">
+                <form id="bulk-delete-form" action="{{ route('admin.cars.bulk-delete') }}" method="POST" class="hidden">
+                    @csrf
+                    <input type="hidden" name="ids" id="selected-ids">
+                    <button type="submit" onclick="return confirm('Delete selected cars?')" class="px-6 py-2.5 bg-red-600/10 hover:bg-red-600/20 text-red-400 rounded-xl text-sm font-bold transition-all border border-red-500/30 active:scale-95">
+                        Delete Selected (<span id="selected-count">0</span>)
+                    </button>
+                </form>
+
+                <form action="{{ route('admin.cars.destroy-all') }}" method="POST" onsubmit="return confirm('⚠️ DANGER: This will delete ALL records from the live site. Proceed?')">
+                    @csrf
+                    <button type="submit" class="w-full md:w-auto px-6 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-400 rounded-xl text-sm font-bold transition-all border border-zinc-700 active:scale-95">
+                        Purge Database
+                    </button>
+                </form>
+            </div>
         </div>
 
         <div class="overflow-x-auto custom-scrollbar">
             <table class="w-full text-left text-sm text-zinc-300">
                 <thead class="bg-zinc-950/50 text-zinc-500 uppercase text-[10px] font-bold tracking-widest">
                     <tr>
-                        <th class="px-6 py-4">#</th>
+                        <th class="px-6 py-4">
+                            <input type="checkbox" id="select-all" class="rounded border-zinc-700 bg-zinc-900 text-purple-600 focus:ring-purple-500">
+                        </th>
                         <th class="px-6 py-4">Vehicle</th>
                         <th class="px-6 py-4">VIN</th>
-                        <th class="px-6 py-4">Mileage</th>
-                        <th class="px-6 py-4">Location</th>
-                        <th class="px-6 py-4">Damage</th>
                         <th class="px-6 py-4 text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-zinc-800/50">
                     @forelse($cars as $index => $car)
                         <tr class="hover:bg-zinc-800/30 transition-colors">
-                            <td class="px-6 py-4 text-zinc-600 font-mono text-xs">{{ $cars->firstItem() + $index }}</td>
+                            <td class="px-6 py-4">
+                                <input type="checkbox" name="ids[]" value="{{ $car->id }}" class="car-checkbox rounded border-zinc-700 bg-zinc-900 text-purple-600 focus:ring-purple-500">
+                            </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-4">
                                     <div class="w-12 h-12 rounded-xl bg-zinc-950 border border-zinc-800 flex-shrink-0 flex items-center justify-center overflow-hidden">
@@ -238,20 +249,24 @@
                                         @endif
                                     </div>
                                     <div>
-                                        <p class="font-bold text-white line-clamp-1">{{ $car->car_name }}</p>
+                                        <p class="font-bold text-white line-clamp-1 text-sm">{{ $car->car_name }}</p>
+                                        <div class="flex items-center gap-3 mt-1 text-[10px]">
+                                            <span class="text-zinc-500 italic">{{ $car->mileage ?? 'N/A' }}</span>
+                                            <span class="text-zinc-600">•</span>
+                                            <span class="text-zinc-500">{{ $car->location ?? 'N/A' }}</span>
+                                            <span class="text-zinc-600">•</span>
+                                            <span class="text-red-500/80 font-bold uppercase">{{ $car->damage ?? 'None' }}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 font-mono text-cyan-400 text-xs">{{ $car->vin }}</td>
-                            <td class="px-6 py-4 text-zinc-300 text-xs italic">{{ $car->mileage ?? 'N/A' }}</td>
-                            <td class="px-6 py-4 text-zinc-400 text-xs">{{ $car->location ?? 'N/A' }}</td>
-                            <td class="px-6 py-4 text-red-500/80 text-[10px] uppercase font-bold">{{ $car->damage ?? 'None' }}</td>
                             <td class="px-6 py-4 text-center">
                                 <form action="{{ route('admin.cars.destroy', $car->id) }}" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="p-2.5 bg-red-600/10 hover:bg-red-600/20 text-red-500 rounded-lg border border-red-500/20 transition-all hover:scale-110 active:scale-95">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                    <button type="submit" class="p-2 bg-red-600/10 hover:bg-red-600/20 text-red-500 rounded-lg border border-red-500/20 transition-all">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                                     </button>
                                 </form>
                             </td>
@@ -566,5 +581,41 @@
         document.getElementById('bulk-file-input').value = '';
         showAlert("Bulk preview cleared.", "success");
     }
+
+    // Bulk Delete Selection logic
+    const selectAll = document.getElementById('select-all');
+    const checkboxes = document.querySelectorAll('.car-checkbox');
+    const bulkDeleteForm = document.getElementById('bulk-delete-form');
+    const selectedIdsInput = document.getElementById('selected-ids');
+    const selectedCountSpan = document.getElementById('selected-count');
+
+    function updateBulkDeleteUI() {
+        const checked = Array.from(checkboxes).filter(cb => cb.checked);
+        const ids = checked.map(cb => cb.value);
+        
+        selectedCountSpan.innerText = ids.length;
+        selectedIdsInput.value = JSON.stringify(ids);
+        
+        if (ids.length > 0) {
+            bulkDeleteForm.classList.remove('hidden');
+        } else {
+            bulkDeleteForm.classList.add('hidden');
+        }
+    }
+
+    if (selectAll) {
+        selectAll.addEventListener('change', () => {
+            checkboxes.forEach(cb => cb.checked = selectAll.checked);
+            updateBulkDeleteUI();
+        });
+    }
+
+    checkboxes.forEach(cb => {
+        cb.addEventListener('change', () => {
+            const allChecked = Array.from(checkboxes).every(c => c.checked);
+            selectAll.checked = allChecked;
+            updateBulkDeleteUI();
+        });
+    });
 </script>
 @endsection
