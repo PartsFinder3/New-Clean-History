@@ -8,7 +8,33 @@
     {{-- ===== SEO: Title & Description ===== --}}
     <title>@yield('title', 'Car History Clean – Professional VIN History Check & Removal Services')</title>
     <meta name="description" content="@yield('description', 'Professional car history removal services. Clean title, verified VIN, transparent process. Trusted by dealers & car owners worldwide.')">
-    <meta name="google-site-verification" content="j2Dhat1GiXvzh-sU-dREKsek23bMGon3GS_A5cyC0gQ" />
+    
+    @if(isset($siteSettings['google_search_console']))
+        {!! $siteSettings['google_search_console'] !!}
+    @else
+        <meta name="google-site-verification" content="j2Dhat1GiXvzh-sU-dREKsek23bMGon3GS_A5cyC0gQ" />
+    @endif
+
+    @if(isset($siteSettings['bing_webmaster']))
+        {!! $siteSettings['bing_webmaster'] !!}
+    @endif
+
+    @if(isset($siteSettings['yandex_webmaster']))
+        {!! $siteSettings['yandex_webmaster'] !!}
+    @endif
+
+    @if(isset($siteSettings['microsoft_clarity']))
+        {!! $siteSettings['microsoft_clarity'] !!}
+    @endif
+
+    @if(isset($siteSettings['google_analytics']))
+        {!! $siteSettings['google_analytics'] !!}
+    @endif
+
+    @if(isset($siteSettings['header_scripts']))
+        {!! $siteSettings['header_scripts'] !!}
+    @endif
+
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     
     {{-- ===== SEO: Canonical URL ===== --}}

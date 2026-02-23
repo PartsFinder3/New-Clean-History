@@ -46,4 +46,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/blogs/{id}/edit', [BlogController::class, 'edit'])->name('admin.blogs.edit');
     Route::put('/blogs/{id}', [BlogController::class, 'update'])->name('admin.blogs.update');
     Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
+    
+    // Settings Route
+    Route::post('/settings', [AdminController::class, 'updateSettings'])->name('admin.settings.update');
 });

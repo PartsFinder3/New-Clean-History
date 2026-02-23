@@ -161,6 +161,86 @@
         </div>
     </div>
 
+    <!-- Indexing & Header Codes -->
+    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 shadow-2xl mb-10 overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full -mr-32 -mt-32 blur-[100px]"></div>
+        <div class="relative">
+            <h2 class="text-2xl font-bold text-white mb-2 font-outfit flex items-center gap-3">
+                <span class="p-2.5 bg-cyan-500/10 rounded-xl text-cyan-500">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                </span>
+                SEO & Indexing Codes
+            </h2>
+            <p class="text-zinc-500 text-sm mb-8">Add verification codes and tracking scripts to the &lt;head&gt; of your website. Paste the full script or meta tags below.</p>
+
+            <form action="{{ route('admin.settings.update') }}" method="POST" class="space-y-8">
+                @csrf
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Google Search Console -->
+                    <div class="space-y-3">
+                        <label class="block text-sm font-bold text-zinc-300 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+                            Google Search Console
+                        </label>
+                        <textarea name="google_search_console" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 focus:outline-none transition-all" placeholder='<meta name="google-site-verification" content="..." />'>{{ $settings['google_search_console'] ?? '' }}</textarea>
+                    </div>
+
+                    <!-- Google Analytics -->
+                    <div class="space-y-3">
+                        <label class="block text-sm font-bold text-zinc-300 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                            Google Analytics (GA4)
+                        </label>
+                        <textarea name="google_analytics" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 focus:outline-none transition-all" placeholder="Paste your gtag.js script here">{{ $settings['google_analytics'] ?? '' }}</textarea>
+                    </div>
+
+                    <!-- Bing Webmaster Tools -->
+                    <div class="space-y-3">
+                        <label class="block text-sm font-bold text-zinc-300 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                            Bing Webmaster Tool
+                        </label>
+                        <textarea name="bing_webmaster" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 focus:outline-none transition-all" placeholder='<meta name="msvalidate.01" content="..." />'>{{ $settings['bing_webmaster'] ?? '' }}</textarea>
+                    </div>
+
+                    <!-- Yandex Webmaster -->
+                    <div class="space-y-3">
+                        <label class="block text-sm font-bold text-zinc-300 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                            Yandex Webmaster
+                        </label>
+                        <textarea name="yandex_webmaster" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 focus:outline-none transition-all" placeholder='<meta name="yandex-verification" content="..." />'>{{ $settings['yandex_webmaster'] ?? '' }}</textarea>
+                    </div>
+
+                    <!-- Microsoft Clarity -->
+                    <div class="space-y-3">
+                        <label class="block text-sm font-bold text-zinc-300 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-violet-500"></span>
+                            Microsoft Clarity
+                        </label>
+                        <textarea name="microsoft_clarity" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/50 focus:outline-none transition-all" placeholder="Paste your Clarity tracking code here">{{ $settings['microsoft_clarity'] ?? '' }}</textarea>
+                    </div>
+
+                    <!-- Other Header Codes -->
+                    <div class="space-y-3">
+                        <label class="block text-sm font-bold text-zinc-300 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span>
+                            Other Head Scripts (Facebook Pixel, Custom CSS, etc.)
+                        </label>
+                        <textarea name="header_scripts" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-zinc-500/50 focus:ring-1 focus:ring-zinc-500/50 focus:outline-none transition-all">{{ $settings['header_scripts'] ?? '' }}</textarea>
+                    </div>
+                </div>
+
+                <div class="pt-6 flex justify-end">
+                    <button type="submit" class="flex items-center gap-2 px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-zinc-950 rounded-2xl text-sm font-black transition-all active:scale-95 shadow-xl shadow-cyan-500/20">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Update Indexing Settings
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Preview Section (Full Width when active) -->
     <div id="bulk-preview-section" class="hidden mb-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl border-purple-500/30">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,22 @@ class AdminController extends Controller
     public function dashboard()
     {
         $cars = Car::orderBy('id', 'desc')->paginate(20);
-        return view('admin.dashboard', compact('cars'));
+        $settings = Setting::pluck('value', 'key')->toArray();
+        return view('admin.dashboard', compact('cars', 'settings'));
+    }
+
+    public function updateSettings(Request $request)
+    {
+        $settings = $request->except('_token');
+        
+        foreach ($settings as $key => $value) {
+            Setting::updateOrCreate(
+                ['key' => $key],
+                ['value' => $value]
+            );
+        }
+
+        return back()->with('success', 'Settings updated successfully!');
     }
 
     public function login()
