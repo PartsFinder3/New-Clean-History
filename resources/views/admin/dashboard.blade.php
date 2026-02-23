@@ -515,11 +515,11 @@
             document.getElementById('stat-dupes').innerText = duplicates.length;
             document.getElementById('stat-dupes').className = duplicates.length > 0 ? "text-red-500" : "text-emerald-500";
             
+            document.getElementById('btn-publish').classList.remove('hidden');
             if (bulkData.length > duplicates.length) {
-                document.getElementById('btn-publish').classList.remove('hidden');
-                showAlert(`Scan finished. ${bulkData.length - duplicates.length} new records found.`, "success");
+                showAlert(`Scan finished. ${bulkData.length - duplicates.length} new records found. ${duplicates.length} will be updated.`, "success");
             } else {
-                showAlert(`Scan finished. All ${duplicates.length} records already exist in database.`, "warning");
+                showAlert(`Scan finished. All ${duplicates.length} records already exist and will be updated with new details.`, "warning");
             }
             
             renderPreview();
@@ -533,42 +533,50 @@
     }
 
     async function publishData() {
-        const dataToPush = bulkData.filter(c => !duplicates.includes(c.vin));
-        
-        if (dataToPush.length === 0) return;
+        if (bulkData.length === 0) return;
 
         const btn = document.getElementById('btn-publish');
-        btn.innerText = "Publishing...";
+        const originalText = btn.innerText;
         btn.disabled = true;
 
+        const chunkSize = 500;
+        let processed = 0;
+        let totalCreated = 0;
+
         try {
-            const res = await fetch("{{ route('admin.cars.bulk') }}", {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                },
-                body: JSON.stringify({ cars: dataToPush })
-            });
+            for (let i = 0; i < bulkData.length; i += chunkSize) {
+                const chunk = bulkData.slice(i, i + chunkSize);
+                btn.innerText = `Publishing ${i + chunk.length}/${bulkData.length}...`;
 
-            if (!res.ok) {
-                const text = await res.text();
-                throw new Error(`Server error ${res.status}: ${text.substring(0, 100)}...`);
+                const res = await fetch("{{ route('admin.cars.bulk') }}", {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    },
+                    body: JSON.stringify({ cars: chunk })
+                });
+
+                if (!res.ok) {
+                    const text = await res.text();
+                    throw new Error(`Server error ${res.status} at chunk ${i}: ${text.substring(0, 100)}...`);
+                }
+
+                const result = await res.json();
+                if (result.success) {
+                    totalCreated += result.count;
+                } else {
+                    throw new Error("Publish failed: " + result.error);
+                }
             }
 
-            const result = await res.json();
-            if (result.success) {
-                showAlert(`Successfully published ${result.count} new vehicles to the site!`, "success");
-                setTimeout(() => location.reload(), 2000);
-            } else {
-                showAlert("Publish failed: " + result.error, "error");
-            }
+            showAlert(`Successfully processed all ${bulkData.length} vehicles!`, "success");
+            setTimeout(() => location.reload(), 2000);
         } catch (err) {
             console.error(err);
-            showAlert("Error: " + err.message, "error");
-        } finally {
-            btn.innerText = "Publish to Live";
+            showAlert("Error during publishing: " + err.message, "error");
+            btn.innerText = "Resume Publish";
             btn.disabled = false;
         }
     }
