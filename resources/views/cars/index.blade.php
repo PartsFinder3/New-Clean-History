@@ -9,17 +9,17 @@
 <script type="application/ld+json">
 {
     "@@context": "https://schema.org",
-    "@type": "CollectionPage",
+    "@@type": "CollectionPage",
     "name": "Browse Vehicles - Car History Clean",
     "url": "{{ route('cars.index') }}",
     "description": "Explore our inventory of verified vehicles with full VIN history reports.",
     "mainEntity": {
-        "@type": "ItemList",
+        "@@type": "ItemList",
         "numberOfItems": {{ $cars->total() }},
         "itemListElement": [
             @foreach($cars as $index => $car)
             {
-                "@type": "ListItem",
+                "@@type": "ListItem",
                 "position": {{ $index + 1 }},
                 "url": "{{ route('cars.show', $car->slug) }}",
                 "name": "{{ $car->car_name }}"
@@ -34,16 +34,16 @@
 <script type="application/ld+json">
 {
     "@@context": "https://schema.org",
-    "@type": "BreadcrumbList",
+    "@@type": "BreadcrumbList",
     "itemListElement": [
         {
-            "@type": "ListItem",
+            "@@type": "ListItem",
             "position": 1,
             "name": "Home",
             "item": "{{ url('/') }}"
         },
         {
-            "@type": "ListItem",
+            "@@type": "ListItem",
             "position": 2,
             "name": "Cars",
             "item": "{{ route('cars.index') }}"

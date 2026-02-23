@@ -10,34 +10,34 @@
 <script type="application/ld+json">
 {
     "@@context": "https://schema.org",
-    "@type": "Service",
+    "@@type": "Service",
     "name": "{{ $product['name'] }} History Removal",
     "url": "{{ route('services.show', $product['slug']) }}",
     "description": "{{ $product['full_description'] }}",
     "image": "{{ $product['image'] }}",
     "provider": {
-        "@type": "Organization",
+        "@@type": "Organization",
         "name": "Car History Clean",
         "url": "{{ url('/') }}"
     },
     "serviceType": "VIN History Removal",
     "areaServed": {
-        "@type": "Country",
+        "@@type": "Country",
         "name": "Worldwide"
     },
     "offers": {
-        "@type": "Offer",
+        "@@type": "Offer",
         "price": "{{ $product['price'] }}",
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
         "priceValidUntil": "{{ date('Y-12-31') }}",
         "seller": {
-            "@type": "Organization",
+            "@@type": "Organization",
             "name": "Car History Clean"
         }
     },
     "aggregateRating": {
-        "@type": "AggregateRating",
+        "@@type": "AggregateRating",
         "ratingValue": "4.8",
         "reviewCount": "500",
         "bestRating": "5",
@@ -50,22 +50,22 @@
 <script type="application/ld+json">
 {
     "@@context": "https://schema.org",
-    "@type": "BreadcrumbList",
+    "@@type": "BreadcrumbList",
     "itemListElement": [
         {
-            "@type": "ListItem",
+            "@@type": "ListItem",
             "position": 1,
             "name": "Home",
             "item": "{{ url('/') }}"
         },
         {
-            "@type": "ListItem",
+            "@@type": "ListItem",
             "position": 2,
             "name": "Services",
             "item": "{{ route('products') }}"
         },
         {
-            "@type": "ListItem",
+            "@@type": "ListItem",
             "position": 3,
             "name": "{{ $product['name'] }}",
             "item": "{{ route('services.show', $product['slug']) }}"
@@ -78,37 +78,37 @@
 <script type="application/ld+json">
 {
     "@@context": "https://schema.org",
-    "@type": "FAQPage",
+    "@@type": "FAQPage",
     "mainEntity": [
         {
-            "@type": "Question",
+            "@@type": "Question",
             "name": "Is this removal permanent?",
             "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "Yes. Once we remove the data from {{ $product['name'] }}, it is purged from their database and cannot be recovered by public users."
             }
         },
         {
-            "@type": "Question",
+            "@@type": "Question",
             "name": "Will it also disappear from Google?",
             "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "After the site source is cleared, Google usually updates its index within a few days, removing the links and images from search results."
             }
         },
         {
-            "@type": "Question",
+            "@@type": "Question",
             "name": "How long does the {{ $product['name'] }} removal take?",
             "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "Our team typically completes {{ $product['name'] }} history removal within 24-72 hours after receiving your VIN."
             }
         },
         {
-            "@type": "Question",
+            "@@type": "Question",
             "name": "How much does {{ $product['name'] }} removal cost?",
             "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "Our {{ $product['name'] }} removal service starts at ${{ $product['price'] }}. Contact us via WhatsApp for a detailed quote."
             }
         }

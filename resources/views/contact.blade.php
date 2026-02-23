@@ -8,17 +8,17 @@
 <script type="application/ld+json">
 {
     "@@context": "https://schema.org",
-    "@type": "ContactPage",
+    "@@type": "ContactPage",
     "name": "Contact Car History Clean",
     "url": "{{ route('contact') }}",
     "description": "Get in touch for professional car history clean services.",
     "mainEntity": {
-        "@type": "Organization",
+        "@@type": "Organization",
         "name": "Car History Clean",
         "telephone": "+92-300-4531248",
         "email": "mateenali1122@gmail.com",
         "contactPoint": {
-            "@type": "ContactPoint",
+            "@@type": "ContactPoint",
             "telephone": "+92-300-4531248",
             "contactType": "customer service",
             "availableLanguage": ["English", "Urdu"],
@@ -31,16 +31,16 @@
 <script type="application/ld+json">
 {
     "@@context": "https://schema.org",
-    "@type": "BreadcrumbList",
+    "@@type": "BreadcrumbList",
     "itemListElement": [
         {
-            "@type": "ListItem",
+            "@@type": "ListItem",
             "position": 1,
             "name": "Home",
             "item": "{{ url('/') }}"
         },
         {
-            "@type": "ListItem",
+            "@@type": "ListItem",
             "position": 2,
             "name": "Contact Us",
             "item": "{{ route('contact') }}"

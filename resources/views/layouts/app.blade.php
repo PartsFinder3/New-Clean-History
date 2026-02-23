@@ -42,13 +42,13 @@
     <script type="application/ld+json">
     {
         "@@context": "https://schema.org",
-        "@type": "Organization",
+        "@@type": "Organization",
         "name": "Car History Clean",
         "url": "{{ url('/') }}",
         "logo": "{{ asset('favicon.ico') }}",
         "description": "Professional car history removal services. Clean title, verified VIN, transparent process.",
         "contactPoint": {
-            "@type": "ContactPoint",
+            "@@type": "ContactPoint",
             "telephone": "+1-314-488-8004",
             "contactType": "customer service",
             "availableLanguage": ["English"]

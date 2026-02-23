@@ -11,7 +11,7 @@
 <script type="application/ld+json">
 {
     "@@context": "https://schema.org",
-    "@type": "Car",
+    "@@type": "Car",
     "name": "{{ $car->car_name }}",
     "url": "{{ route('cars.show', $car->slug) }}",
     "vehicleIdentificationNumber": "{{ $car->vin }}",
@@ -20,7 +20,7 @@
     @endif
     @if($car->mileage)
     "mileageFromOdometer": {
-        "@type": "QuantitativeValue",
+        "@@type": "QuantitativeValue",
         "value": "{{ $car->mileage }}",
         "unitCode": "SMI"
     },
@@ -29,15 +29,15 @@
     "description": "{{ addslashes($car->description) }}",
     @endif
     "offers": {
-        "@type": "Offer",
+        "@@type": "Offer",
         "availability": "https://schema.org/InStock",
         "seller": {
-            "@type": "Organization",
+            "@@type": "Organization",
             "name": "Car History Clean"
         }
     },
     "brand": {
-        "@type": "Brand",
+        "@@type": "Brand",
         "name": "{{ explode(' ', $car->car_name)[0] ?? 'Unknown' }}"
     }
 }
@@ -47,22 +47,22 @@
 <script type="application/ld+json">
 {
     "@@context": "https://schema.org",
-    "@type": "BreadcrumbList",
+    "@@type": "BreadcrumbList",
     "itemListElement": [
         {
-            "@type": "ListItem",
+            "@@type": "ListItem",
             "position": 1,
             "name": "Home",
             "item": "{{ url('/') }}"
         },
         {
-            "@type": "ListItem",
+            "@@type": "ListItem",
             "position": 2,
             "name": "Cars",
             "item": "{{ route('cars.index') }}"
         },
         {
-            "@type": "ListItem",
+            "@@type": "ListItem",
             "position": 3,
             "name": "{{ $car->car_name }}",
             "item": "{{ route('cars.show', $car->slug) }}"

@@ -7,8 +7,8 @@
 @section('schema')
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@@context": "https://schema.org",
+    "@@type": "WebPage",
     "name": "Privacy Policy",
     "url": "{{ route('privacy-policy') }}",
     "description": "Privacy Policy for Car History Clean"

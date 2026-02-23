@@ -180,8 +180,10 @@
                         <tr>
                             <th class="px-6 py-4 border-b border-zinc-800">Car Name</th>
                             <th class="px-6 py-4 border-b border-zinc-800">VIN Number</th>
+                            <th class="px-6 py-4 border-b border-zinc-800">Mileage</th>
+                            <th class="px-6 py-4 border-b border-zinc-800">Damage</th>
+                            <th class="px-6 py-4 border-b border-zinc-800">Location</th>
                             <th class="px-6 py-4 border-b border-zinc-800">Status</th>
-                            <th class="px-6 py-4 border-b border-zinc-800 text-right">Details</th>
                         </tr>
                     </thead>
                     <tbody id="bulk-preview-body" class="divide-y divide-zinc-800">
@@ -366,9 +368,9 @@
                         else if (lowCol === 'vin' || lowCol === 'vinnumber' || lowCol === 'vin#') car.vin = values[i];
                         else if (lowCol === 'description' || lowCol === 'desc' || lowCol === 'notes') car.description = values[i];
                         else if (['carimageurl', 'image', 'url', 'photo', 'images', 'pic', 'picture', 'featureimage'].includes(lowCol)) car.car_image_url = values[i];
-                        else if (['mileage', 'milage', 'miles', 'milesage', 'km', 'odometer', 'odo'].includes(lowCol)) car.mileage = values[i].replace(/^milage:\s*/i, '').replace(/^mileage:\s*/i, '');
-                        else if (['location', 'city', 'loc', 'address', 'state'].includes(lowCol)) car.location = values[i].replace(/^location:\s*/i, '');
-                        else if (['damage', 'demage', 'status', 'condition', 'damaged', 'primarydamage', 'loss', 'losstype'].includes(lowCol)) car.damage = values[i].replace(/^damage:\s*/i, '').replace(/^demage:\s*/i, '');
+                        else if (['mileage', 'milage', 'miles', 'milesage', 'km', 'odometer', 'odo'].some(alias => lowCol.includes(alias))) car.mileage = values[i].replace(/^(?:mileage|milage|miles|km|odo):\s*/i, '');
+                        else if (['location', 'city', 'loc', 'address', 'state'].some(alias => lowCol.includes(alias))) car.location = values[i].replace(/^(?:location|loc|addr):\s*/i, '');
+                        else if (['damage', 'demage', 'status', 'condition', 'damaged', 'primarydamage', 'loss', 'losstype'].some(alias => lowCol.includes(alias))) car.damage = values[i].replace(/^(?:damage|demage|cond):\s*/i, '');
                     });
                     if (car.vin && car.car_name) cars.push(car);
                 });
@@ -393,7 +395,10 @@
                 const keys = Object.keys(row);
                 for (let alias of aliases) {
                     const normalizedAlias = alias.toLowerCase().replace(/[\s_-]/g, '');
-                    const foundKey = keys.find(k => k.toLowerCase().replace(/[\s_-]/g, '') === normalizedAlias);
+                    const foundKey = keys.find(k => {
+                        const nk = k.toLowerCase().replace(/[\s_-]/g, '');
+                        return nk === normalizedAlias || (nk.length > 3 && nk.includes(normalizedAlias)) || (normalizedAlias.length > 3 && normalizedAlias.includes(nk));
+                    });
                     if (foundKey) return row[foundKey];
                 }
                 return null;
@@ -403,14 +408,18 @@
             const rawLocation = findValue(['location', 'city', 'loc', 'address', 'state', 'branch']);
             const rawDamage = findValue(['damage', 'demage', 'status', 'condition', 'damaged', 'primary_damage', 'loss', 'loss_type']);
 
+            const car_name = findValue(['car_name', 'carname', 'name', 'vehicle', 'title', 'vehicle_name']);
+            const vin_raw = findValue(['vin', 'vinnumber', 'vin#', 'serial_number']);
+            const vin = vin_raw ? vin_raw.toString().trim().toUpperCase() : null;
+            
             return {
-                car_name: findValue(['car_name', 'carname', 'name', 'vehicle', 'title', 'vehicle_name']),
-                vin: findValue(['vin', 'vinnumber', 'vin#', 'serial_number']) ? findValue(['vin', 'vinnumber', 'vin#', 'serial_number']).toString().trim().toUpperCase() : null,
+                car_name: car_name,
+                vin: vin,
                 description: findValue(['description', 'desc', 'notes', 'comments']),
                 car_image_url: findValue(['car_image_url', 'image', 'url', 'photo', 'images', 'pic', 'picture', 'feature_image', 'img']),
-                mileage: rawMileage ? rawMileage.toString().replace(/^milage:\s*/i, '').replace(/^mileage:\s*/i, '') : null,
-                location: rawLocation ? rawLocation.toString().replace(/^location:\s*/i, '') : null,
-                damage: rawDamage ? rawDamage.toString().replace(/^damage:\s*/i, '').replace(/^demage:\s*/i, '') : null
+                mileage: rawMileage ? rawMileage.toString().replace(/^(?:mileage|milage|miles|km|odo):\s*/i, '') : null,
+                location: rawLocation ? rawLocation.toString().replace(/^(?:location|loc|addr):\s*/i, '') : null,
+                damage: rawDamage ? rawDamage.toString().replace(/^(?:damage|demage|cond):\s*/i, '') : null
             };
         }).filter(c => c.vin && c.car_name);
         
@@ -445,10 +454,12 @@
             row.innerHTML = `
                 <td class="px-6 py-4 font-bold text-white">${car.car_name}</td>
                 <td class="px-6 py-4 font-mono ${isDupe ? 'text-orange-400' : 'text-cyan-400'}">${car.vin}</td>
+                <td class="px-6 py-4 text-zinc-400">${car.mileage || '-'}</td>
+                <td class="px-6 py-4 text-red-400">${car.damage || '-'}</td>
+                <td class="px-6 py-4 text-zinc-500">${car.location || '-'}</td>
                 <td class="px-6 py-4">
-                    ${isDupe ? '<span class="inline-flex px-2 py-0.5 bg-orange-500/10 text-orange-500 rounded text-[9px] font-bold">EXISTS</span>' : '<span class="text-zinc-600">Unique</span>'}
+                    ${isDupe ? '<span class="inline-flex px-2 py-0.5 bg-orange-500/10 text-orange-500 rounded text-[9px] font-bold">EXISTS</span>' : '<span class="text-emerald-500 font-bold">New</span>'}
                 </td>
-                <td class="px-6 py-4 text-right text-zinc-500 lowercase text-[10px] italic">${car.location || '-'}</td>
             `;
             body.appendChild(row);
         });

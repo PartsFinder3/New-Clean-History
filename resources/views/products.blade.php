@@ -9,28 +9,28 @@
 <script type="application/ld+json">
 {
     "@@context": "https://schema.org",
-    "@type": "ItemList",
+    "@@type": "ItemList",
     "name": "Car History Removal Services",
     "description": "Professional car history removal from major auction platforms",
     "numberOfItems": {{ count($products) }},
     "itemListElement": [
         @foreach($products as $index => $product)
         {
-            "@type": "ListItem",
+            "@@type": "ListItem",
             "position": {{ $index + 1 }},
             "name": "{{ $product['name'] }}",
             "url": "{{ route('services.show', $product['slug']) }}",
             "item": {
-                "@type": "Service",
+                "@@type": "Service",
                 "name": "{{ $product['name'] }} History Removal",
                 "description": "{{ $product['description'] }}",
                 "url": "{{ route('services.show', $product['slug']) }}",
                 "provider": {
-                    "@type": "Organization",
+                    "@@type": "Organization",
                     "name": "Car History Clean"
                 },
                 "offers": {
-                    "@type": "Offer",
+                    "@@type": "Offer",
                     "price": "{{ $product['price'] }}",
                     "priceCurrency": "USD",
                     "availability": "https://schema.org/InStock"
@@ -47,16 +47,16 @@
 <script type="application/ld+json">
 {
     "@@context": "https://schema.org",
-    "@type": "BreadcrumbList",
+    "@@type": "BreadcrumbList",
     "itemListElement": [
         {
-            "@type": "ListItem",
+            "@@type": "ListItem",
             "position": 1,
             "name": "Home",
             "item": "{{ url('/') }}"
         },
         {
-            "@type": "ListItem",
+            "@@type": "ListItem",
             "position": 2,
             "name": "Services",
             "item": "{{ route('products') }}"

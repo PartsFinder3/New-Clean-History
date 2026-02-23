@@ -7,8 +7,8 @@
 @section('schema')
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@@context": "https://schema.org",
+    "@@type": "WebPage",
     "name": "Disclaimer",
     "url": "{{ route('disclaimer') }}",
     "description": "Disclaimer for Car History Clean services"
