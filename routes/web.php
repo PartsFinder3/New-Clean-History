@@ -9,6 +9,24 @@ use Illuminate\Support\Facades\Route;
 // SEO Routes
 Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
+// Utility: Clear caches (use ?key=carhistory786 to authorize)
+Route::get('/clear-cache', function () {
+    if (request('key') !== 'carhistory786') {
+        abort(403);
+    }
+    
+    \Illuminate\Support\Facades\Artisan::call('view:clear');
+    \Illuminate\Support\Facades\Artisan::call('cache:clear');
+    \Illuminate\Support\Facades\Artisan::call('route:clear');
+    \Illuminate\Support\Facades\Artisan::call('config:clear');
+    
+    return response()->json([
+        'status' => 'success',
+        'message' => 'All caches cleared!',
+        'output' => \Illuminate\Support\Facades\Artisan::output()
+    ]);
+});
+
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/cars', [HomeController::class, 'cars'])->name('cars.index');
