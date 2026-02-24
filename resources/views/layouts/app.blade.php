@@ -90,8 +90,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
     
-    {{-- ===== Vite Assets (Replaces Tailwind CDN) ===== --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- ===== Tailwind CSS CDN (Restored for Shared Hosting) ===== --}}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0a0a0b',
+                        foreground: '#fafafa',
+                        muted: '#71717a',
+                        accent: '#22d3ee',
+                        'accent-hover': '#06b6d4',
+                        card: '#18181b',
+                        'card-border': '#27272a',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
     
     <style>
         :root {
