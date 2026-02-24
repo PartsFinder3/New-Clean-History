@@ -121,6 +121,8 @@
                     src="{{ $car->car_image_url }}" 
                     alt="VIN: {{ $car->vin }}" 
                     class="absolute inset-0 h-full w-full object-cover"
+                    width="1200"
+                    height="400"
                     referrerpolicy="no-referrer"
                     loading="eager"
                 >

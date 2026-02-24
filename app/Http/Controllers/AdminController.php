@@ -33,6 +33,9 @@ class AdminController extends Controller
             );
         }
 
+        // Clear the settings cache
+        \Illuminate\Support\Facades\Cache::forget('site_settings');
+
         return back()->with('success', 'Settings updated successfully!');
     }
 

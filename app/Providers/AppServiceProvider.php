@@ -23,7 +23,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if (Schema::hasTable('settings')) {
-            $siteSettings = Setting::pluck('value', 'key')->toArray();
+            $siteSettings = \Illuminate\Support\Facades\Cache::rememberForever('site_settings', function () {
+                return Setting::pluck('value', 'key')->toArray();
+            });
             // Always share settings, even if empty array
             View::share('siteSettings', $siteSettings);
         }

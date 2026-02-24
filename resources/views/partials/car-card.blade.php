@@ -6,6 +6,9 @@
                     src="{{ $car->car_image_url }}" 
                     alt="VIN: {{ $car->vin }}" 
                     class="h-full w-full object-cover"
+                    width="640"
+                    height="400"
+                    loading="lazy"
                     referrerpolicy="no-referrer"
                     onerror="this.src='https://via.placeholder.com/640x400?text=No+Image'"
                 >
