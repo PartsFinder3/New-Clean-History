@@ -9,19 +9,38 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $featuredCars = Car::orderBy('id', 'desc')->take(6)->get();
+        $featuredCars = \Illuminate\Support\Facades\Cache::remember('featured_cars', 3600, function () {
+            return Car::orderBy('id', 'desc')->take(6)->get();
+        });
         return view('home', compact('featuredCars'));
     }
 
     public function cars(Request $request)
     {
-        $cars = Car::orderBy('id', 'desc')->paginate(24);
+        $page = $request->get('page', 1);
+        $search = $request->get('q', '');
+        
+        $cacheKey = 'cars_list_p' . $page . '_s' . md5($search);
+        
+        $cars = \Illuminate\Support\Facades\Cache::remember($cacheKey, 3600, function () use ($search) {
+            $query = Car::orderBy('id', 'desc');
+            if (!empty($search)) {
+                $query->where(function($q) use ($search) {
+                    $q->where('car_name', 'LIKE', "%{$search}%")
+                      ->orWhere('vin', 'LIKE', "%{$search}%");
+                });
+            }
+            return $query->paginate(24);
+        });
+        
         return view('cars.index', compact('cars'));
     }
 
     public function carDetail($slug)
     {
-        $car = Car::where('slug', $slug)->firstOrFail();
+        $car = \Illuminate\Support\Facades\Cache::remember('car_detail_' . $slug, 3600, function () use ($slug) {
+            return Car::where('slug', $slug)->firstOrFail();
+        });
         return view('cars.show', compact('car'));
     }
 
@@ -57,10 +76,12 @@ class HomeController extends Controller
 
     public function rss()
     {
-        $cars = Car::orderBy('id', 'desc')->take(20)->get();
-        $blogs = \App\Models\Blog::orderBy('id', 'desc')->take(10)->get();
-
-        $content = view('rss', compact('cars', 'blogs'))->render();
+        $content = \Illuminate\Support\Facades\Cache::remember('rss_feed_content', 3600, function () {
+            $cars = Car::orderBy('id', 'desc')->take(20)->get();
+            $blogs = \App\Models\Blog::orderBy('id', 'desc')->take(10)->get();
+            return view('rss', compact('cars', 'blogs'))->render();
+        });
+        
         return response($content)->header('Content-Type', 'text/xml');
     }
 

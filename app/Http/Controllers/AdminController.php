@@ -88,6 +88,7 @@ class AdminController extends Controller
         $validated['slug'] = strtoupper(preg_replace('/[^A-Z0-9]/', '', $validated['vin']));
         
         Car::create($validated);
+        $this->clearFrontendCaches();
 
         return back()->with('success', 'Car added successfully!');
     }
@@ -134,6 +135,7 @@ class AdminController extends Controller
             $count++;
         }
 
+        $this->clearFrontendCaches();
         return response()->json(['success' => true, 'count' => $count]);
     }
 
@@ -141,6 +143,7 @@ class AdminController extends Controller
     {
         $car = Car::findOrFail($id);
         $car->delete();
+        $this->clearFrontendCaches();
 
         return back()->with('success', 'Car deleted successfully!');
     }
@@ -148,6 +151,7 @@ class AdminController extends Controller
     public function destroyAll()
     {
         Car::truncate();
+        $this->clearFrontendCaches();
         return back()->with('success', 'All cars deleted!');
     }
 
@@ -161,7 +165,16 @@ class AdminController extends Controller
         }
 
         Car::whereIn('id', $ids)->delete();
+        $this->clearFrontendCaches();
 
         return back()->with('success', count($ids) . ' records deleted successfully!');
+    }
+
+    private function clearFrontendCaches()
+    {
+        \Illuminate\Support\Facades\Cache::forget('featured_cars');
+        \Illuminate\Support\Facades\Cache::forget('rss_feed_content');
+        // Note: For simplicity, we don't clear individual car_detail_* or paginated cars_list_*
+        // as they will expire naturally or can be cleared via artisan cache:clear if needed.
     }
 }
