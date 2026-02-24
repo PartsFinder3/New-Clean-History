@@ -41,8 +41,12 @@ class AdminController extends Controller
 
     public function login()
     {
-        if (Auth::check()) {
-            return redirect()->route('admin.dashboard');
+        try {
+            if (Auth::check()) {
+                return redirect()->route('admin.dashboard');
+            }
+        } catch (\Exception $e) {
+            // DB unreachable — just show the login page
         }
         return view('admin.login');
     }
@@ -54,9 +58,15 @@ class AdminController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('admin');
+        try {
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
+                return redirect()->intended('admin');
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors([
+                'email' => 'Service temporarily unavailable. The server is under heavy load — please try again in a few minutes.',
+            ]);
         }
 
         return back()->withErrors([

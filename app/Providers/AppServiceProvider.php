@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Schema;
 use App\Models\Setting;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,22 +22,18 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         try {
-            // Check cache first to avoid ANY database connection if possible
+            // Check file cache first — zero DB connections if cache exists
             $siteSettings = \Illuminate\Support\Facades\Cache::get('site_settings');
 
             if ($siteSettings === null) {
-                // Only connect to DB if cache is missing
-                if (Schema::hasTable('settings')) {
-                    $siteSettings = Setting::pluck('value', 'key')->toArray();
-                    \Illuminate\Support\Facades\Cache::forever('site_settings', $siteSettings);
-                } else {
-                    $siteSettings = [];
-                }
+                // Only hit DB if cache is truly empty — no Schema::hasTable check
+                $siteSettings = Setting::pluck('value', 'key')->toArray();
+                \Illuminate\Support\Facades\Cache::forever('site_settings', $siteSettings);
             }
 
             View::share('siteSettings', $siteSettings);
         } catch (\Exception $e) {
-            // Fallback to empty context if DB is unreachable (e.g. max connections reached)
+            // Fallback to empty settings if DB is unreachable
             View::share('siteSettings', []);
         }
     }
