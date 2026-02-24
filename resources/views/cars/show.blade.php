@@ -77,21 +77,21 @@
 <script type="application/ld+json">
 {
     "@@context": "https://schema.org",
-    "@type": "FAQPage",
+    "@@type": "FAQPage",
     "mainEntity": [
         {
-            "@type": "Question",
+            "@@type": "Question",
             "name": "What is the VIN of this vehicle?",
             "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "The VIN (Vehicle Identification Number) for this {{ $car->car_name }} is {{ $car->vin }}."
             }
         },
         {
-            "@type": "Question",
+            "@@type": "Question",
             "name": "Can I clean the history of this car?",
             "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "Yes, Car History Clean offers professional VIN history removal services. Contact us via WhatsApp to get started with your clean history report."
             }
         }

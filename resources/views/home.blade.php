@@ -53,38 +53,38 @@
 </script>
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
+    "@@context": "https://schema.org",
+    "@@type": "FAQPage",
     "mainEntity": [
         {
-            "@type": "Question",
+            "@@type": "Question",
             "name": "How long does the VIN removal take?",
             "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "The entire process typically takes 3 to 7 business days, depending on the number of sites the data is present on."
             }
         },
         {
-            "@type": "Question",
+            "@@type": "Question",
             "name": "Is the history removal permanent?",
             "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "Yes, we work with the source databases to ensure the records are permanently deleted, not just hidden from search results."
             }
         },
         {
-            "@type": "Question",
+            "@@type": "Question",
             "name": "Which auction sites do you cover?",
             "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "We cover all major global auctions including Copart, IAAI, Impact Auto Auction, and hundreds of local salvage platforms."
             }
         },
         {
-            "@type": "Question",
+            "@@type": "Question",
             "name": "Can I remove photos from Google Search?",
             "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "Absolutely. Our service includes requesting the removal of cached images and snippets from Google, Bing, and other search engines."
             }
         }

@@ -67,20 +67,20 @@
     {{-- ===== SEO: Organization Schema (Global – every page) ===== --}}
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "@id": "{{ url('/') }}#organization",
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
+        "@@id": "{{ url('/') }}#organization",
         "name": "Car History Clean",
         "url": "{{ url('/') }}",
         "logo": {
-            "@type": "ImageObject",
+            "@@type": "ImageObject",
             "url": "{{ asset('favicon.ico') }}",
             "width": 112,
             "height": 112
         },
         "description": "Professional car history removal services. Clean title, verified VIN, transparent process.",
         "contactPoint": {
-            "@type": "ContactPoint",
+            "@@type": "ContactPoint",
             "telephone": "+923004531248",
             "contactType": "customer service",
             "email": "mateenali1122@gmail.com",
@@ -90,10 +90,10 @@
             "https://twitter.com/carhistoryclean",
             "https://facebook.com/carhistoryclean",
             "https://linkedin.com/company/carhistoryclean",
-            "https://youtube.com/@carhistoryclean",
+            "https://youtube.com/@@carhistoryclean",
             "https://instagram.com/carhistoryclean",
             "https://pinterest.com/carhistoryclean",
-            "https://tiktok.com/@carhistoryclean"
+            "https://tiktok.com/@@carhistoryclean"
         ]
     }
     </script>
@@ -101,41 +101,41 @@
     {{-- ===== SiteNavigationElement Schema ===== --}}
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
+        "@@context": "https://schema.org",
+        "@@type": "ItemList",
         "itemListElement": [
             {
-                "@type": "SiteNavigationElement",
+                "@@type": "SiteNavigationElement",
                 "position": 1,
                 "name": "Home",
                 "url": "{{ route('home') }}"
             },
             {
-                "@type": "SiteNavigationElement",
+                "@@type": "SiteNavigationElement",
                 "position": 2,
                 "name": "Cars",
                 "url": "{{ route('cars.index') }}"
             },
             {
-                "@type": "SiteNavigationElement",
+                "@@type": "SiteNavigationElement",
                 "position": 3,
                 "name": "Services",
                 "url": "{{ route('products') }}"
             },
             {
-                "@type": "SiteNavigationElement",
+                "@@type": "SiteNavigationElement",
                 "position": 4,
                 "name": "Blog",
                 "url": "{{ route('blogs.index') }}"
             },
             {
-                "@type": "SiteNavigationElement",
+                "@@type": "SiteNavigationElement",
                 "position": 5,
                 "name": "About",
                 "url": "{{ route('about') }}"
             },
             {
-                "@type": "SiteNavigationElement",
+                "@@type": "SiteNavigationElement",
                 "position": 6,
                 "name": "Contact",
                 "url": "{{ route('contact') }}"
