@@ -7,11 +7,25 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    /**
+     * Safely fetch data from cache or DB.
+     * If both fail (e.g. DB connection limit), return the fallback value.
+     */
+    private function safeCacheRemember(string $key, int $ttl, callable $callback, $fallback = null)
+    {
+        try {
+            return \Illuminate\Support\Facades\Cache::remember($key, $ttl, $callback);
+        } catch (\Exception $e) {
+            return $fallback;
+        }
+    }
+
     public function index()
     {
-        $featuredCars = \Illuminate\Support\Facades\Cache::remember('featured_cars', 3600, function () {
+        $featuredCars = $this->safeCacheRemember('featured_cars', 3600, function () {
             return Car::orderBy('id', 'desc')->take(6)->get();
-        });
+        }, collect([]));
+
         return view('home', compact('featuredCars'));
     }
 
@@ -19,10 +33,9 @@ class HomeController extends Controller
     {
         $page = $request->get('page', 1);
         $search = $request->get('q', '');
-        
         $cacheKey = 'cars_list_p' . $page . '_s' . md5($search);
-        
-        $cars = \Illuminate\Support\Facades\Cache::remember($cacheKey, 3600, function () use ($search) {
+
+        $cars = $this->safeCacheRemember($cacheKey, 3600, function () use ($search) {
             $query = Car::orderBy('id', 'desc');
             if (!empty($search)) {
                 $query->where(function($q) use ($search) {
@@ -31,16 +44,21 @@ class HomeController extends Controller
                 });
             }
             return $query->paginate(24);
-        });
-        
+        }, new \Illuminate\Pagination\LengthAwarePaginator([], 0, 24));
+
         return view('cars.index', compact('cars'));
     }
 
     public function carDetail($slug)
     {
-        $car = \Illuminate\Support\Facades\Cache::remember('car_detail_' . $slug, 3600, function () use ($slug) {
+        $car = $this->safeCacheRemember('car_detail_' . $slug, 3600, function () use ($slug) {
             return Car::where('slug', $slug)->firstOrFail();
         });
+
+        if (!$car) {
+            abort(503, 'Service temporarily unavailable. Please try again in a few minutes.');
+        }
+
         return view('cars.show', compact('car'));
     }
 
@@ -76,12 +94,12 @@ class HomeController extends Controller
 
     public function rss()
     {
-        $content = \Illuminate\Support\Facades\Cache::remember('rss_feed_content', 3600, function () {
+        $content = $this->safeCacheRemember('rss_feed_content', 3600, function () {
             $cars = Car::orderBy('id', 'desc')->take(20)->get();
             $blogs = \App\Models\Blog::orderBy('id', 'desc')->take(10)->get();
             return view('rss', compact('cars', 'blogs'))->render();
-        });
-        
+        }, '<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Car History Clean</title></channel></rss>');
+
         return response($content)->header('Content-Type', 'text/xml');
     }
 

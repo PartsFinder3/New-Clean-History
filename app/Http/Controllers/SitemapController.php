@@ -10,6 +10,19 @@ class SitemapController extends Controller
 {
     public function index()
     {
+        try {
+            $xml = \Illuminate\Support\Facades\Cache::remember('sitemap_xml', 3600, function () {
+                return $this->generateSitemap();
+            });
+        } catch (\Exception $e) {
+            $xml = $this->generateStaticSitemap();
+        }
+
+        return response($xml, 200)->header('Content-Type', 'text/xml');
+    }
+
+    private function generateSitemap()
+    {
         $cars = Car::all(['slug', 'updated_at', 'id']);
         $blogs = Blog::where('is_published', true)->get(['slug', 'updated_at', 'id']);
         
@@ -109,7 +122,46 @@ class SitemapController extends Controller
         
         $xml .= '</urlset>';
         
-        return response($xml, 200)->header('Content-Type', 'text/xml');
+        return $xml;
+    }
+
+    /**
+     * Generate a static-only sitemap (no DB queries) as fallback.
+     */
+    private function generateStaticSitemap()
+    {
+        $baseUrl = request()->root();
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+        
+        $staticPages = [
+            ['loc' => '', 'freq' => 'daily', 'priority' => '1.0'],
+            ['loc' => '/about', 'freq' => 'monthly', 'priority' => '0.7'],
+            ['loc' => '/contact', 'freq' => 'monthly', 'priority' => '0.7'],
+            ['loc' => '/cars', 'freq' => 'daily', 'priority' => '0.9'],
+            ['loc' => '/products', 'freq' => 'weekly', 'priority' => '0.9'],
+            ['loc' => '/blog', 'freq' => 'weekly', 'priority' => '0.8'],
+        ];
+
+        foreach ($staticPages as $page) {
+            $xml .= '<url>';
+            $xml .= '<loc>' . $baseUrl . $page['loc'] . '</loc>';
+            $xml .= '<changefreq>' . $page['freq'] . '</changefreq>';
+            $xml .= '<priority>' . $page['priority'] . '</priority>';
+            $xml .= '</url>';
+        }
+
+        $services = $this->getServiceSlugs();
+        foreach ($services as $service) {
+            $xml .= '<url>';
+            $xml .= '<loc>' . $baseUrl . '/services/' . $service['slug'] . '</loc>';
+            $xml .= '<changefreq>weekly</changefreq>';
+            $xml .= '<priority>0.8</priority>';
+            $xml .= '</url>';
+        }
+
+        $xml .= '</urlset>';
+        return $xml;
     }
     
     /**

@@ -14,7 +14,13 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::published()->ordered()->get();
+        try {
+            $blogs = \Illuminate\Support\Facades\Cache::remember('blogs_published', 3600, function () {
+                return Blog::published()->ordered()->get();
+            });
+        } catch (\Exception $e) {
+            $blogs = collect([]);
+        }
         return view('blogs.index', compact('blogs'));
     }
 
@@ -23,14 +29,21 @@ class BlogController extends Controller
      */
     public function show($slug)
     {
-        $blog = Blog::where('slug', $slug)->firstOrFail();
-        
-        // Get related blogs (same order, excluding current)
-        $relatedBlogs = Blog::published()
-            ->where('id', '!=', $blog->id)
-            ->ordered()
-            ->take(3)
-            ->get();
+        try {
+            $blog = \Illuminate\Support\Facades\Cache::remember('blog_' . $slug, 3600, function () use ($slug) {
+                return Blog::where('slug', $slug)->firstOrFail();
+            });
+
+            $relatedBlogs = \Illuminate\Support\Facades\Cache::remember('blog_related_' . $slug, 3600, function () use ($blog) {
+                return Blog::published()
+                    ->where('id', '!=', $blog->id)
+                    ->ordered()
+                    ->take(3)
+                    ->get();
+            });
+        } catch (\Exception $e) {
+            abort(503, 'Service temporarily unavailable. Please try again in a few minutes.');
+        }
 
         return view('blogs.show', compact('blog', 'relatedBlogs'));
     }
