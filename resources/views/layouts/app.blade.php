@@ -67,20 +67,80 @@
     {{-- ===== SEO: Organization Schema (Global – every page) ===== --}}
     <script type="application/ld+json">
     {
-        "@@context": "https://schema.org",
-        "@@type": "Organization",
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "{{ url('/') }}#organization",
         "name": "Car History Clean",
         "url": "{{ url('/') }}",
-        "logo": "{{ asset('favicon.ico') }}",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ asset('favicon.ico') }}",
+            "width": 112,
+            "height": 112
+        },
         "description": "Professional car history removal services. Clean title, verified VIN, transparent process.",
         "contactPoint": {
-            "@@type": "ContactPoint",
+            "@type": "ContactPoint",
             "telephone": "+923004531248",
             "contactType": "customer service",
             "email": "mateenali1122@gmail.com",
             "availableLanguage": ["English"]
         },
-        "sameAs": []
+        "sameAs": [
+            "https://twitter.com/carhistoryclean",
+            "https://facebook.com/carhistoryclean",
+            "https://linkedin.com/company/carhistoryclean",
+            "https://youtube.com/@carhistoryclean",
+            "https://instagram.com/carhistoryclean",
+            "https://pinterest.com/carhistoryclean",
+            "https://tiktok.com/@carhistoryclean"
+        ]
+    }
+    </script>
+
+    {{-- ===== SiteNavigationElement Schema ===== --}}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "SiteNavigationElement",
+                "position": 1,
+                "name": "Home",
+                "url": "{{ route('home') }}"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 2,
+                "name": "Cars",
+                "url": "{{ route('cars.index') }}"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 3,
+                "name": "Services",
+                "url": "{{ route('products') }}"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 4,
+                "name": "Blog",
+                "url": "{{ route('blogs.index') }}"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 5,
+                "name": "About",
+                "url": "{{ route('about') }}"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 6,
+                "name": "Contact",
+                "url": "{{ route('contact') }}"
+            }
+        ]
     }
     </script>
     
@@ -170,6 +230,27 @@
     
     @include('partials.footer')
     
+    {{-- ===== Back to Top Button ===== --}}
+    <button id="back-to-top" class="fixed bottom-8 right-8 z-50 flex h-12 w-12 translate-y-20 items-center justify-center rounded-xl bg-cyan-500 text-zinc-950 opacity-0 shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:bg-cyan-400 active:scale-95">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+    <script>
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.remove('translate-y-20', 'opacity-0');
+            } else {
+                backToTop.classList.add('translate-y-20', 'opacity-0');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
     @yield('scripts')
 </body>
 </html>

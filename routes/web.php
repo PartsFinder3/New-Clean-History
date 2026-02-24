@@ -17,6 +17,9 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/disclaimer', [HomeController::class, 'disclaimer'])->name('disclaimer');
 Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
+Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
+Route::get('/sitemap', [HomeController::class, 'sitemapHtml'])->name('sitemap-html');
+Route::get('/rss', [HomeController::class, 'rss'])->name('rss');
 Route::get('/products', [HomeController::class, 'products'])->name('products');
 Route::get('/services/{slug}', [HomeController::class, 'serviceDetail'])->name('services.show');
 

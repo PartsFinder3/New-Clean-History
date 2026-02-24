@@ -96,9 +96,47 @@
         </div>
     </div>
 
-    <section class="max-w-none">
+    <section class="max-w-none mt-24">
         <h2 class="font-display text-3xl font-bold text-white text-center mb-12">
-            Why We Are different
+            Meet the <span class="gradient-text">Experts</span>
+        </h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {{-- Member 1 --}}
+            <div class="group p-1 rounded-3xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700/50 hover:border-cyan-500/50 transition-all duration-500">
+                <div class="bg-zinc-950 rounded-[22px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=500" alt="Mateen Ali" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">Mateen Ali</h3>
+                        <p class="text-sm text-cyan-400 font-medium">Founder & Head of Operations</p>
+                    </div>
+                </div>
+            </div>
+            {{-- Member 2 --}}
+            <div class="group p-1 rounded-3xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700/50 hover:border-violet-500/50 transition-all duration-500">
+                <div class="bg-zinc-950 rounded-[22px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=500" alt="Sarah Johnson" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">Sarah Johnson</h3>
+                        <p class="text-sm text-violet-400 font-medium">Data Privacy Specialist</p>
+                    </div>
+                </div>
+            </div>
+            {{-- Member 3 --}}
+            <div class="group p-1 rounded-3xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700/50 hover:border-emerald-500/50 transition-all duration-500">
+                <div class="bg-zinc-950 rounded-[22px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=500" alt="David Chen" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">David Chen</h3>
+                        <p class="text-sm text-emerald-400 font-medium">Lead Technical Auditor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-none mt-24">
+        <h2 class="font-display text-3xl font-bold text-white text-center mb-12">
+            Why We Are Different
         </h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50">

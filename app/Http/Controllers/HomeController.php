@@ -45,6 +45,25 @@ class HomeController extends Controller
         return view('privacy-policy');
     }
 
+    public function terms()
+    {
+        return view('terms');
+    }
+
+    public function sitemapHtml()
+    {
+        return view('sitemap-html');
+    }
+
+    public function rss()
+    {
+        $cars = Car::orderBy('id', 'desc')->take(20)->get();
+        $blogs = \App\Models\Blog::orderBy('id', 'desc')->take(10)->get();
+
+        $content = view('rss', compact('cars', 'blogs'))->render();
+        return response($content)->header('Content-Type', 'text/xml');
+    }
+
     public function products()
     {
         $products = $this->getProductsData();
