@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         if (Schema::hasTable('settings')) {
             $siteSettings = Setting::pluck('value', 'key')->toArray();
+            // Always share settings, even if empty array
             View::share('siteSettings', $siteSettings);
         }
     }

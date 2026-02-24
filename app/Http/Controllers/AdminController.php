@@ -14,11 +14,8 @@ class AdminController extends Controller
     public function dashboard()
     {
         $cars = Car::orderBy('id', 'desc')->paginate(20);
-        $settings = [];
-        if (Schema::hasTable('settings')) {
-            $settings = Setting::pluck('value', 'key')->toArray();
-        }
-        return view('admin.dashboard', compact('cars', 'settings'));
+        // Don't pass settings here since AppServiceProvider already shares siteSettings globally
+        return view('admin.dashboard', compact('cars'));
     }
 
     public function updateSettings(Request $request)

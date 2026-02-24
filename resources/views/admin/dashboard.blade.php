@@ -182,7 +182,7 @@
                             <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
                             Google Search Console
                         </label>
-                        <textarea name="google_search_console" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 focus:outline-none transition-all" placeholder='<meta name="google-site-verification" content="..." />'>{{ $settings['google_search_console'] ?? '' }}</textarea>
+                        <textarea name="google_search_console" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 focus:outline-none transition-all" placeholder='<meta name="google-site-verification" content="..." />'>{{ $siteSettings['google_search_console'] ?? '' }}</textarea>
                     </div>
 
                     <!-- Google Analytics -->
@@ -191,7 +191,7 @@
                             <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                             Google Analytics (GA4)
                         </label>
-                        <textarea name="google_analytics" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 focus:outline-none transition-all" placeholder="Paste your gtag.js script here">{{ $settings['google_analytics'] ?? '' }}</textarea>
+                        <textarea name="google_analytics" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 focus:outline-none transition-all" placeholder="Paste your gtag.js script here">{{ $siteSettings['google_analytics'] ?? '' }}</textarea>
                     </div>
 
                     <!-- Bing Webmaster Tools -->
@@ -200,7 +200,7 @@
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                             Bing Webmaster Tool
                         </label>
-                        <textarea name="bing_webmaster" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 focus:outline-none transition-all" placeholder='<meta name="msvalidate.01" content="..." />'>{{ $settings['bing_webmaster'] ?? '' }}</textarea>
+                        <textarea name="bing_webmaster" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 focus:outline-none transition-all" placeholder='<meta name="msvalidate.01" content="..." />'>{{ $siteSettings['bing_webmaster'] ?? '' }}</textarea>
                     </div>
 
                     <!-- Yandex Webmaster -->
@@ -209,7 +209,7 @@
                             <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
                             Yandex Webmaster
                         </label>
-                        <textarea name="yandex_webmaster" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 focus:outline-none transition-all" placeholder='<meta name="yandex-verification" content="..." />'>{{ $settings['yandex_webmaster'] ?? '' }}</textarea>
+                        <textarea name="yandex_webmaster" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 focus:outline-none transition-all" placeholder='<meta name="yandex-verification" content="..." />'>{{ $siteSettings['yandex_webmaster'] ?? '' }}</textarea>
                     </div>
 
                     <!-- Microsoft Clarity -->
@@ -218,7 +218,7 @@
                             <span class="w-1.5 h-1.5 rounded-full bg-violet-500"></span>
                             Microsoft Clarity
                         </label>
-                        <textarea name="microsoft_clarity" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/50 focus:outline-none transition-all" placeholder="Paste your Clarity tracking code here">{{ $settings['microsoft_clarity'] ?? '' }}</textarea>
+                        <textarea name="microsoft_clarity" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/50 focus:outline-none transition-all" placeholder="Paste your Clarity tracking code here">{{ $siteSettings['microsoft_clarity'] ?? '' }}</textarea>
                     </div>
 
                     <!-- Other Header Codes -->
@@ -227,7 +227,7 @@
                             <span class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span>
                             Other Head Scripts (Facebook Pixel, Custom CSS, etc.)
                         </label>
-                        <textarea name="header_scripts" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-zinc-500/50 focus:ring-1 focus:ring-zinc-500/50 focus:outline-none transition-all">{{ $settings['header_scripts'] ?? '' }}</textarea>
+                        <textarea name="header_scripts" rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 focus:border-zinc-500/50 focus:ring-1 focus:ring-zinc-500/50 focus:outline-none transition-all">{{ $siteSettings['header_scripts'] ?? '' }}</textarea>
                     </div>
                 </div>
 
