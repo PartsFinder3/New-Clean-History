@@ -23,6 +23,10 @@ class AdminController extends Controller
 
     public function updateSettings(Request $request)
     {
+        if (!Schema::hasTable('settings')) {
+            return back()->with('error', 'Settings table does not exist. Please run migrations.');
+        }
+        
         $settings = $request->except('_token');
         
         foreach ($settings as $key => $value) {
