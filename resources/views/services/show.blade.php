@@ -169,9 +169,11 @@
                             </svg>
                             Delete Car History
                         </a>
-                        <button class="w-full rounded-2xl border border-zinc-700 bg-zinc-800/50 px-8 py-4 text-sm font-bold text-white transition hover:bg-zinc-800 hover:border-zinc-600">
-                            Download Sample Report
-                        </button>
+                        <a href="https://wa.me/923004531248?text={{ urlencode('Hi, I\'d like to see a sample history removal report for ' . $product['name'] . '.') }}" 
+                           target="_blank"
+                           class="w-full rounded-2xl border border-zinc-700 bg-zinc-800/50 px-8 py-4 text-sm font-bold text-white transition hover:bg-zinc-800 hover:border-zinc-600 flex items-center justify-center">
+                            View Sample Report
+                        </a>
                     </div>
 
                     <div class="mt-8 border-t border-zinc-800 pt-8">

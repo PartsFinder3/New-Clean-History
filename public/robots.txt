@@ -89,7 +89,7 @@ Disallow: /login
 Disallow: /logout
 
 # Sitemap - Important for SEO
-Sitemap: https://carhistoryremove.online/sitemap.xml
+Sitemap: https://cleanautohistory.com/sitemap.xml
 
 # Crawl-delay (optional, be polite)
 Crawl-delay: 2

@@ -28,7 +28,7 @@ class SitemapController extends Controller
         
         // Use the current request's root URL instead of relying solely on APP_URL
         // This ensures the sitemap URLs match the domain it's being served from.
-        $baseUrl = request()->root();
+        $baseUrl = url('/');
         
         $xml = '<?xml version="1.0" encoding="UTF-8"?>';
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
@@ -55,11 +55,17 @@ class SitemapController extends Controller
         $xml .= '<priority>0.7</priority>';
         $xml .= '</url>';
         
-        // Disclaimer page
         $xml .= '<url>';
         $xml .= '<loc>' . $baseUrl . '/disclaimer</loc>';
         $xml .= '<changefreq>monthly</changefreq>';
         $xml .= '<priority>0.3</priority>';
+        $xml .= '</url>';
+        
+        // Terms of Service page
+        $xml .= '<url>';
+        $xml .= '<loc>' . $baseUrl . '/terms</loc>';
+        $xml .= '<changefreq>monthly</changefreq>';
+        $xml .= '<priority>0.5</priority>';
         $xml .= '</url>';
         
         // Privacy Policy page
@@ -141,6 +147,9 @@ class SitemapController extends Controller
             ['loc' => '/cars', 'freq' => 'daily', 'priority' => '0.9'],
             ['loc' => '/products', 'freq' => 'weekly', 'priority' => '0.9'],
             ['loc' => '/blog', 'freq' => 'weekly', 'priority' => '0.8'],
+            ['loc' => '/privacy-policy', 'freq' => 'monthly', 'priority' => '0.5'],
+            ['loc' => '/disclaimer', 'freq' => 'monthly', 'priority' => '0.3'],
+            ['loc' => '/terms', 'freq' => 'monthly', 'priority' => '0.5'],
         ];
 
         foreach ($staticPages as $page) {
