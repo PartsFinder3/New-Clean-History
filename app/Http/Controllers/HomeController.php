@@ -35,7 +35,7 @@ class HomeController extends Controller
         $search = $request->get('q', '');
         $cacheKey = 'cars_list_p' . $page . '_s' . md5($search);
 
-        $cars = $this->safeCacheRemember($cacheKey, 3600, function () use ($search) {
+        $cars = $this->safeCacheRemember($cacheKey, 600, function () use ($search) {
             $query = Car::orderBy('id', 'desc');
             if (!empty($search)) {
                 $query->where(function($q) use ($search) {

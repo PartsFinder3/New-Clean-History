@@ -182,9 +182,11 @@ class AdminController extends Controller
 
     private function clearFrontendCaches()
     {
-        \Illuminate\Support\Facades\Cache::forget('featured_cars');
-        \Illuminate\Support\Facades\Cache::forget('rss_feed_content');
-        // Note: For simplicity, we don't clear individual car_detail_* or paginated cars_list_*
-        // as they will expire naturally or can be cleared via artisan cache:clear if needed.
+        try {
+            \Illuminate\Support\Facades\Cache::flush();
+        } catch (\Exception $e) {
+            // Fallback: clear the most critical one if flush fails
+            \Illuminate\Support\Facades\Cache::forget('featured_cars');
+        }
     }
 }
