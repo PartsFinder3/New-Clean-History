@@ -98,6 +98,7 @@ class BlogController extends Controller
         $validated['is_published'] = $request->has('is_published');
 
         Blog::create($validated);
+        \Illuminate\Support\Facades\Cache::flush();
 
         return redirect()->route('admin.blogs.index')->with('success', 'Blog created successfully!');
     }
@@ -149,6 +150,7 @@ class BlogController extends Controller
         $validated['is_published'] = $request->has('is_published');
 
         $blog->update($validated);
+        \Illuminate\Support\Facades\Cache::flush();
 
         return redirect()->route('admin.blogs.index')->with('success', 'Blog updated successfully!');
     }
@@ -160,6 +162,7 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
         $blog->delete();
+        \Illuminate\Support\Facades\Cache::flush();
 
         return redirect()->route('admin.blogs.index')->with('success', 'Blog deleted successfully!');
     }

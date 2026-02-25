@@ -49,11 +49,13 @@
                 Specialized Services
             </h2>
             <ul class="space-y-4 text-zinc-400">
-                <li><a href="{{ url('/services/bidfax') }}" class="hover:text-cyan-400 transition">BidFax Removal</a></li>
-                <li><a href="{{ url('/services/autoastat') }}" class="hover:text-cyan-400 transition">AutoAstat Cleaning</a></li>
-                <li><a href="{{ url('/services/stat-vin') }}" class="hover:text-cyan-400 transition">StatVin Data Purge</a></li>
-                <li><a href="{{ url('/services/bidcars') }}" class="hover:text-cyan-400 transition">BidCars Privacy</a></li>
-                <li><a href="{{ url('/services/auctionhistory-io') }}" class="hover:text-cyan-400 transition">AuctionHistory.io Removal</a></li>
+                <li><a href="{{ route('services.show', 'bidfax') }}" class="hover:text-cyan-400 transition">BidFax Removal</a></li>
+                <li><a href="{{ route('services.show', 'autoastat') }}" class="hover:text-cyan-400 transition">AutoAstat Cleaning</a></li>
+                <li><a href="{{ route('services.show', 'stat-vin') }}" class="hover:text-cyan-400 transition">StatVin Data Purge</a></li>
+                <li><a href="{{ route('services.show', 'bidcars') }}" class="hover:text-cyan-400 transition">BidCars Privacy</a></li>
+                <li><a href="{{ route('services.show', 'auctionhistory-io') }}" class="hover:text-cyan-400 transition">AuctionHistory.io Removal</a></li>
+                <li><a href="{{ route('services.show', 'autoauctions-io') }}" class="hover:text-cyan-400 transition">AutoAuctions.io Clean</a></li>
+                <li><a href="{{ route('services.show', 'carfast-express') }}" class="hover:text-cyan-400 transition">Carfast Express Removal</a></li>
             </ul>
         </section>
     </div>
