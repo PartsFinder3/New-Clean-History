@@ -33,7 +33,14 @@
             <a href="{{ route('about') }}" class="text-sm font-medium {{ request()->routeIs('about') ? 'text-cyan-400' : 'text-zinc-400' }} transition hover:text-cyan-400">About</a>
             <a href="{{ route('contact') }}" class="text-sm font-medium {{ request()->routeIs('contact') ? 'text-cyan-400' : 'text-zinc-400' }} transition hover:text-cyan-400">Contact</a>
             
-            @auth
+            @php
+                try {
+                    $isAdminLoggedIn = auth()->check();
+                } catch (\Exception $e) {
+                    $isAdminLoggedIn = false;
+                }
+            @endphp
+            @if($isAdminLoggedIn)
                 <a href="{{ route('admin.dashboard') }}" class="text-sm font-medium text-purple-400 transition hover:text-purple-300">Dashboard</a>
                 <form action="{{ route('admin.logout') }}" method="POST" class="inline">
                     @csrf
@@ -41,7 +48,7 @@
                 </form>
             @else
                 <a href="{{ route('admin.login') }}" class="text-sm font-medium text-zinc-400 transition hover:text-cyan-400">Admin Login</a>
-            @endauth
+            @endif
         </nav>
 
         <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="flex h-11 w-11 items-center justify-center rounded-lg border border-zinc-700 text-zinc-400 md:hidden">
@@ -61,11 +68,11 @@
             <a href="{{ route('blogs.index') }}" class="rounded-lg px-4 py-3 text-base font-medium text-zinc-300 hover:bg-zinc-800/50 hover:text-cyan-400">Blog</a>
             <a href="{{ route('about') }}" class="rounded-lg px-4 py-3 text-base font-medium text-zinc-300 hover:bg-zinc-800/50 hover:text-cyan-400">About</a>
             <a href="{{ route('contact') }}" class="rounded-lg px-4 py-3 text-base font-medium text-zinc-300 hover:bg-zinc-800/50 hover:text-cyan-400">Contact</a>
-            @auth
+            @if($isAdminLoggedIn)
                 <a href="{{ route('admin.dashboard') }}" class="rounded-lg px-4 py-3 text-base font-medium text-purple-400 hover:bg-zinc-800/50">Dashboard</a>
             @else
                 <a href="{{ route('admin.login') }}" class="rounded-lg px-4 py-3 text-base font-medium text-zinc-300 hover:bg-zinc-800/50 hover:text-cyan-400">Admin Login</a>
-            @endauth
+            @endif
         </nav>
     </div>
 </header>
