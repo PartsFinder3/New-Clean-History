@@ -65,7 +65,7 @@ class AdminController extends Controller
             }
         } catch (\Exception $e) {
             return back()->withErrors([
-                'email' => 'Service temporarily unavailable. The server is under heavy load — please try again in a few minutes.',
+                'email' => 'DB Error: ' . $e->getMessage(),
             ]);
         }
 
