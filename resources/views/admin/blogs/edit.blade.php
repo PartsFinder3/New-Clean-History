@@ -29,7 +29,7 @@
         </div>
     @endif
 
-    <form action="{{ route('admin.blogs.update', $blog->id) }}" method="POST" class="space-y-8">
+    <form action="{{ route('admin.blogs.update', $blog->id) }}" method="POST" enctype="multipart/form-data" class="space-y-8">
         @csrf
         @method('PUT')
 
@@ -68,13 +68,22 @@
                         placeholder="Write your blog content here...">{{ old('content', $blog->content) }}</textarea>
                 </div>
 
-                <!-- Image URL -->
+                <!-- Image Upload -->
                 <div>
-                    <label for="image" class="block text-sm font-medium text-zinc-300 mb-2">Featured Image URL</label>
-                    <input type="text" name="image" id="image" value="{{ old('image', $blog->image) }}"
-                        class="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                        placeholder="https://example.com/image.jpg">
-                    <p class="text-zinc-500 text-xs mt-1">Enter URL of the featured image.</p>
+                    <label for="image" class="block text-sm font-medium text-zinc-300 mb-2">Featured Image</label>
+                    
+                    @if($blog->image)
+                        <div class="mb-4">
+                            <p class="text-xs text-zinc-500 mb-2">Current Image:</p>
+                            <img src="{{ Str::startsWith($blog->image, 'http') ? $blog->image : asset('storage/' . $blog->image) }}" 
+                                 alt="Current blog image" 
+                                 class="w-40 h-24 object-cover rounded-lg border border-zinc-700">
+                        </div>
+                    @endif
+
+                    <input type="file" name="image" id="image" accept="image/*"
+                        class="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-500/10 file:text-blue-500 hover:file:bg-blue-500/20">
+                    <p class="text-zinc-500 text-xs mt-1">Upload a new featured image to replace the current one (JPG, PNG, WEBP).</p>
                 </div>
             </div>
         </div>

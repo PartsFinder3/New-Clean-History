@@ -23,7 +23,7 @@
 @endif
 
 @if($blog->image)
-<meta property="og:image" content="{{ $blog->image }}">
+<meta property="og:image" content="{{ Str::startsWith($blog->image, 'http') ? $blog->image : asset('storage/' . $blog->image) }}">
 <meta property="og:type" content="article">
 @endif
 
@@ -66,7 +66,7 @@
     <!-- Featured Image -->
     @if($blog->image)
     <div class="mb-10 rounded-2xl overflow-hidden">
-        <img src="{{ $blog->image }}" alt="{{ $blog->title }}" class="w-full h-auto object-cover" onerror="this.style.display='none'">
+        <img src="{{ Str::startsWith($blog->image, 'http') ? $blog->image : asset('storage/' . $blog->image) }}" alt="{{ $blog->title }}" class="w-full h-auto object-cover" onerror="this.style.display='none'">
     </div>
     @endif
 
@@ -100,7 +100,7 @@
                 <article class="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden hover:border-zinc-700 transition-all group">
                     @if($related->image)
                         <div class="aspect-video overflow-hidden">
-                            <img src="{{ $related->image }}" alt="{{ $related->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'">
+                            <img src="{{ Str::startsWith($related->image, 'http') ? $related->image : asset('storage/' . $related->image) }}" alt="{{ $related->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'">
                         </div>
                     @else
                         <div class="aspect-video bg-zinc-950 flex items-center justify-center">

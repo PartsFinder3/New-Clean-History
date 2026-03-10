@@ -74,7 +74,7 @@ class BlogController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'excerpt' => 'nullable|string|max:500',
-            'image' => 'nullable|string|max:500',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'meta_title' => 'nullable|string|max:70',
             'meta_description' => 'nullable|string|max:160',
             'meta_keywords' => 'nullable|string|max:255',
@@ -82,6 +82,12 @@ class BlogController extends Controller
             'is_published' => 'boolean',
             'order' => 'integer|min:0',
         ]);
+
+        // Handle Image Upload
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('blogs', 'public');
+            $validated['image'] = $imagePath;
+        }
 
         // Generate slug from title
         $slug = Str::slug($validated['title']);
@@ -123,7 +129,7 @@ class BlogController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'excerpt' => 'nullable|string|max:500',
-            'image' => 'nullable|string|max:500',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'meta_title' => 'nullable|string|max:70',
             'meta_description' => 'nullable|string|max:160',
             'meta_keywords' => 'nullable|string|max:255',
@@ -131,6 +137,16 @@ class BlogController extends Controller
             'is_published' => 'boolean',
             'order' => 'integer|min:0',
         ]);
+
+        // Handle Image Upload
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($blog->image && !Str::startsWith($blog->image, 'http')) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($blog->image);
+            }
+            $imagePath = $request->file('image')->store('blogs', 'public');
+            $validated['image'] = $imagePath;
+        }
 
         // Generate slug from title (only if title changed)
         if ($blog->title !== $validated['title']) {
@@ -161,6 +177,12 @@ class BlogController extends Controller
     public function destroy($id)
     {
         $blog = Blog::findOrFail($id);
+        
+        // Delete image if exists
+        if ($blog->image && !Str::startsWith($blog->image, 'http')) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($blog->image);
+        }
+
         $blog->delete();
         \Illuminate\Support\Facades\Cache::flush();
 
