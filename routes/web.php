@@ -9,6 +9,109 @@ use Illuminate\Support\Facades\Route;
 // SEO Routes
 Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
+Route::get('/robots.txt', function () {
+    $content = <<<'ROBOTS'
+# robots.txt for Car History Remover
+# https://carhistoryremove.online
+
+# Allow all bots (including AI bots) to crawl the site
+User-agent: *
+Allow: /
+
+# Admin area - disallow all bots
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /login
+Disallow: /logout
+
+# Specific AI and Search Engine Bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+User-agent: Yahoo! Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Baidu
+Allow: /
+
+User-agent: Sogou
+Allow: /
+
+User-agent: Exabot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: TikTokBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: BingBot
+Allow: /
+
+User-agent: MicrosoftBot
+Allow: /
+
+# AI Bots - OpenAI
+User-agent: OAI-SearchBot
+Allow: /
+
+# Sitemap - Important for SEO
+Sitemap: https://carhistoryremove.online/sitemap.xml
+
+# Crawl-delay (optional, be polite)
+Crawl-delay: 2
+ROBOTS;
+
+    return response($content, 200)
+        ->header('Content-Type', 'text/plain');
+});
+
 // Utility: Clear caches (use ?key=carhistory786 to authorize)
 Route::get('/clear-cache', function () {
     if (request('key') !== 'carhistory786') {
