@@ -27,4 +27,9 @@ class Car extends Model
         'updated_at' => 'datetime',
         'created_at' => 'datetime',
     ];
+
+    public function resolveRouteBinding($value, $field = null)
+    {
+        return $this->where('slug', $value)->firstOrFail();
+    }
 }

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class Blog extends Model
 {
@@ -30,15 +29,6 @@ class Blog extends Model
     ];
 
     /**
-     * Auto-generate slug from title
-     */
-    public function setTitleAttribute($value)
-    {
-        $this->attributes['title'] = $value;
-        $this->attributes['slug'] = Str::slug($value);
-    }
-
-    /**
      * Scope for published blogs
      */
     public function scopePublished($query)
@@ -52,5 +42,10 @@ class Blog extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('order', 'asc')->orderBy('created_at', 'desc');
+    }
+
+    public function resolveRouteBinding($value, $field = null)
+    {
+        return $this->where('slug', $value)->firstOrFail();
     }
 }

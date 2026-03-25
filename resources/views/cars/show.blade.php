@@ -11,8 +11,8 @@
 {{-- Vehicle Schema --}}
 <script type="application/ld+json">
 {
-    "@@context": "https://schema.org",
-    "@@type": "Car",
+    "@context": "https://schema.org",
+    "@type": "Car",
     "name": "{{ $car->car_name }}",
     "url": "{{ route('cars.show', $car->slug) }}",
     "vehicleIdentificationNumber": "{{ $car->vin }}",
@@ -21,7 +21,7 @@
     @endif
     @if($car->mileage)
     "mileageFromOdometer": {
-        "@@type": "QuantitativeValue",
+        "@type": "QuantitativeValue",
         "value": "{{ $car->mileage }}",
         "unitCode": "SMI"
     },
@@ -30,17 +30,17 @@
     "description": "{{ addslashes($car->description) }}",
     @endif
     "offers": {
-        "@@type": "Offer",
+        "@type": "Offer",
         "availability": "https://schema.org/InStock",
         "seller": {
-            "@@type": "Organization",
+            "@type": "Organization",
             "name": "Car History Clean",
             "telephone": "+923004531248",
             "email": "mateenali1122@gmail.com"
         }
     },
     "brand": {
-        "@@type": "Brand",
+        "@type": "Brand",
         "name": "{{ explode(' ', $car->car_name)[0] ?? 'Unknown' }}"
     }
 }
@@ -49,23 +49,23 @@
 {{-- BreadcrumbList --}}
 <script type="application/ld+json">
 {
-    "@@context": "https://schema.org",
-    "@@type": "BreadcrumbList",
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
     "itemListElement": [
         {
-            "@@type": "ListItem",
+            "@type": "ListItem",
             "position": 1,
             "name": "Home",
             "item": "{{ url('/') }}"
         },
         {
-            "@@type": "ListItem",
+            "@type": "ListItem",
             "position": 2,
             "name": "Cars",
             "item": "{{ route('cars.index') }}"
         },
         {
-            "@@type": "ListItem",
+            "@type": "ListItem",
             "position": 3,
             "name": "{{ $car->car_name }}",
             "item": "{{ route('cars.show', $car->slug) }}"
@@ -77,22 +77,22 @@
 {{-- FAQPage Schema --}}
 <script type="application/ld+json">
 {
-    "@@context": "https://schema.org",
-    "@@type": "FAQPage",
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
     "mainEntity": [
         {
-            "@@type": "Question",
+            "@type": "Question",
             "name": "What is the VIN of this vehicle?",
             "acceptedAnswer": {
-                "@@type": "Answer",
+                "@type": "Answer",
                 "text": "The VIN (Vehicle Identification Number) for this {{ $car->car_name }} is {{ $car->vin }}."
             }
         },
         {
-            "@@type": "Question",
+            "@type": "Question",
             "name": "Can I clean the history of this car?",
             "acceptedAnswer": {
-                "@@type": "Answer",
+                "@type": "Answer",
                 "text": "Yes, Car History Clean offers professional VIN history removal services. Contact us via WhatsApp to get started with your clean history report."
             }
         }

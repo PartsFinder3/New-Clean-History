@@ -52,11 +52,11 @@ class HomeController extends Controller
     public function carDetail($slug)
     {
         $car = $this->safeCacheRemember('car_detail_' . $slug, 3600, function () use ($slug) {
-            return Car::where('slug', $slug)->firstOrFail();
-        });
+            return Car::where('slug', $slug)->first();
+        }, null);
 
         if (!$car) {
-            abort(503, 'Service temporarily unavailable. Please try again in a few minutes.');
+            abort(404);
         }
 
         return view('cars.show', compact('car'));
