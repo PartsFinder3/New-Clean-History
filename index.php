@@ -15,9 +15,9 @@ define('LARAVEL_START', microtime(true));
  * Check Paths
  */
 $paths = [
-    'autoload' => __DIR__.'/vendor/autoload.php',
-    'bootstrap' => __DIR__.'/bootstrap/app.php',
-    'maintenance' => __DIR__.'/storage/framework/maintenance.php'
+    'autoload' => __DIR__.'/car-auction-laravel/vendor/autoload.php',
+    'bootstrap' => __DIR__.'/car-auction-laravel/bootstrap/app.php',
+    'maintenance' => __DIR__.'/car-auction-laravel/storage/framework/maintenance.php'
 ];
 
 foreach ($paths as $name => $path) {
