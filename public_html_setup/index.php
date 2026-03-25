@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 define('LARAVEL_START', microtime(true));
 
 // Maintenance mode check
-if (file_exists($maintenance = __DIR__.'/../car_core/storage/framework/maintenance.php')) {
+if (file_exists($maintenance = __DIR__.'/../car-auction-laravel/storage/framework/maintenance.php')) {
     require $maintenance;
 }
 
 // Autoload vendor dependencies
-require __DIR__.'/../car_core/vendor/autoload.php';
+require __DIR__.'/../car-auction-laravel/vendor/autoload.php';
 
 // Bootstrap the Laravel application
-$app = require_once __DIR__.'/../car_core/bootstrap/app.php';
+$app = require_once __DIR__.'/../car-auction-laravel/bootstrap/app.php';
 
 // Handle the incoming request
 $app->handleRequest(Request::capture());
