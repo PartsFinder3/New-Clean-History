@@ -2,6 +2,7 @@
 
 @section('title', 'Car History Clean – Check VIN History in USA, Germany, Poland & Australia')
 @section('description', 'Check your car history clean report online. Get accurate VIN check reports for vehicles in USA, Germany, Poland, and Australia. Detect accidents, mileage fraud, theft records instantly.')
+@section('keywords', 'car history clean, VIN history removal, auction photo removal, clean car title, car history audit, vehicle record deletion, Copart record removal, IAAI photo deletion')
 
 @section('schema')
 <script type="application/ld+json">

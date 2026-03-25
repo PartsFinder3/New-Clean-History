@@ -8,6 +8,7 @@
     {{-- ===== SEO: Title & Description ===== --}}
     <title>@yield('title', 'Car History Clean – Professional VIN History Check & Removal Services')</title>
     <meta name="description" content="@yield('description', 'Professional car history removal services. Clean title, verified VIN, transparent process. Trusted by dealers & car owners worldwide.')">
+    <meta name="keywords" content="@yield('keywords', 'car history removal, VIN history check, clean car history, auction history removal, hide car VIN, delete car photos, auto auction record cleaner, Copart history removal, IAAI history removal, BidFax removal service, insurance car history check, US car auction history, vehicle data removal')">
     
     @if(isset($siteSettings['google_search_console']))
         {!! $siteSettings['google_search_console'] !!}

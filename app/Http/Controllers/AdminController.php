@@ -95,7 +95,9 @@ class AdminController extends Controller
         ]);
 
         $validated['vin'] = strtoupper(trim($validated['vin']));
-        $validated['slug'] = strtoupper(preg_replace('/[^A-Z0-9]/', '', $validated['vin']));
+        
+        // Use car name for slug instead of VIN
+        $validated['slug'] = $this->generateUniqueSlug($validated['car_name']);
         
         Car::create($validated);
         $this->clearFrontendCaches();
@@ -128,7 +130,9 @@ class AdminController extends Controller
 
             // Normalize VIN
             $cleanVin = strtoupper(trim($data['vin']));
-            $slug = strtoupper(preg_replace('/[^A-Z0-9]/', '', $cleanVin));
+            
+            // Use car name for slug instead of VIN
+            $slug = $this->generateUniqueSlug($data['car_name']);
             
             Car::updateOrCreate(
                 ['vin' => $cleanVin], // Use normalized VIN for matching
@@ -178,6 +182,27 @@ class AdminController extends Controller
         $this->clearFrontendCaches();
 
         return back()->with('success', count($ids) . ' records deleted successfully!');
+    }
+
+    private function generateUniqueSlug($title)
+    {
+        $baseSlug = Str::slug($title);
+        if (empty($baseSlug)) {
+            $baseSlug = 'vehicle';
+        }
+        
+        $slug = $baseSlug;
+        $count = 1;
+
+        // Check for uniqueness
+        while (Car::where('slug', $slug)->exists()) {
+            $slug = "{$baseSlug}-" . Str::lower(Str::random(4));
+            // Just one level of random suffix to avoid deep loops
+            if ($count > 1) break; 
+            $count++;
+        }
+
+        return $slug;
     }
 
     private function clearFrontendCaches()
