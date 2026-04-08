@@ -6,12 +6,40 @@ use Symfony\Component\Console\Input\ArgvInput;
 
 define('LARAVEL_START', microtime(true));
 
+// Robust Path Detection
+$possiblePaths = [
+    'autoload' => [
+        __DIR__.'/vendor/autoload.php',
+        __DIR__.'/car-auction-laravel/vendor/autoload.php',
+        dirname(__DIR__).'/vendor/autoload.php',
+    ],
+    'bootstrap' => [
+        __DIR__.'/bootstrap/app.php',
+        __DIR__.'/car-auction-laravel/bootstrap/app.php',
+        dirname(__DIR__).'/bootstrap/app.php',
+    ]
+];
+
+$paths = [];
+foreach ($possiblePaths as $key => $locations) {
+    foreach ($locations as $location) {
+        if (file_exists($location)) {
+            $paths[$key] = $location;
+            break;
+        }
+    }
+}
+
+if (!isset($paths['autoload']) || !isset($paths['bootstrap'])) {
+    die("Error: Missing critical files for artisan. Ensure 'composer install' has been run.\n");
+}
+
 // Register the Composer autoloader...
-require __DIR__.'/vendor/autoload.php';
+require $paths['autoload'];
 
 // Bootstrap Laravel and handle the command...
 /** @var Application $app */
-$app = require_once __DIR__.'/bootstrap/app.php';
+$app = require_once $paths['bootstrap'];
 
 $status = $app->handleCommand(new ArgvInput);
 
