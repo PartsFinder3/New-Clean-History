@@ -52,6 +52,7 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:image" content="@yield('og_image', asset('images/og-image.png'))">
     <meta property="og:image:alt" content="@yield('title', 'Car History Clean')">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     

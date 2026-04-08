@@ -60,15 +60,19 @@
 
     <div class="grid md:grid-cols-2 gap-16 items-center mb-24">
         <div class="space-y-8 text-lg text-zinc-300 leading-relaxed">
+            <h2 class="text-2xl font-bold text-white mb-4">Our Story</h2>
             <p>
-                Founded in 2024, <span class="text-cyan-400 font-bold">Car History Clean</span> was established by a team of automotive experts and tech professionals who saw a growing need for digital privacy in the used car market. 
+                Founded in 2024, <span class="text-cyan-400 font-bold">Car History Clean</span> was established by a team of automotive experts, legal professionals, and software engineers who identified a significant gap in the digital automotive landscape. As the used car market moved entirely online, we noticed that many car owners were being unfairly penalized by outdated salvage records and photos that remained visible even after a vehicle was fully restored and certified.
             </p>
             <p>
-                Old auction records, salvage photos, and outdated pricing data on public websites can unfairly penalize a vehicle's resale value, even after it has been fully restored and certified. We bridge this gap by offering a legal, permanent way to purge this data from the web.
+                Our journey began with a simple goal: to give car owners back their privacy and ensure their vehicles are valued based on their current condition, not a singular moment in their past. Over the last year, we have developed proprietary technical protocols and established strong legal relationships with data providers globally to facilitate the permanent removal of misleading or legacy auction data.
             </p>
-            <div class="p-6 rounded-2xl bg-zinc-900 border border-zinc-800">
-                <h3 class="text-white font-bold mb-3">Global Reach</h3>
-                <p class="text-sm text-zinc-500">We operate across the USA, Canada, UAE, Europe, and Asia, supporting over 200+ different auction platforms and car history databases.</p>
+            <p>
+                Today, we take pride in being a leading global partner for vehicle reputation management. We understand that a clean history is more than just a report; it's the key to trust between buyers and sellers. Our team works tirelessly to audit hundreds of databases, ensuring that every VIN we process meets the highest standards of digital cleanliness.
+            </p>
+            <div class="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 mt-8">
+                <h3 class="text-white font-bold mb-3">Commitment to Excellence</h3>
+                <p class="text-sm text-zinc-500">We don't just hide data; we purge it. Our commitment to excellence means we use only legal, ethical, and permanent methods to restore your vehicle's digital standing. We treat every vehicle as if it were our own, ensuring meticulous attention to detail at every stage of the audit and removal process.</p>
             </div>
         </div>
         <div class="relative">

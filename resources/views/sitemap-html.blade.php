@@ -59,5 +59,26 @@
             </ul>
         </section>
     </div>
+
+    <!-- SEO Content Expansion -->
+    <div class="mt-20 border-t border-zinc-800 pt-16">
+        <div class="max-w-4xl">
+            <h2 class="text-2xl font-bold text-white mb-6">Navigating Car History Clean</h2>
+            <div class="space-y-6 text-zinc-400 leading-relaxed text-sm">
+                <p>
+                    This HTML Sitemap is designed to help both users and search engines easily navigate the various sections and specialized services offered by <span class="text-white font-semibold">Car History Clean</span>. Our website is organized to provide quick access to our core business functions: vehicle history auditing, permanent data removal, and informational blog resources.
+                </p>
+                <p>
+                    The <strong>Main Pages</strong> section provides the foundation of our site, including our homepage where you can find an overview of our 4-step work process, our browse page for viewing recently cleaned vehicles, and our contact page for direct inquiries. Our <strong>Legal & Info</strong> section ensures that our operations are transparent, providing detailed documentation on our privacy protocols and terms of service, which are essential for maintaining trust in a data-sensitive industry.
+                </p>
+                <p>
+                    Our <strong>Specialized Services</strong> links lead to dedicated landing pages for various third-party platforms. We understand that every auction site — whether it's Copart, IAAI, BidFax, or AutoAstat — has different technical requirements for data deletion. These pages explain the unique approach we take for each platform to ensure your VIN's digital footprint is properly and permanently erased. By utilizing this sitemap, you can find the specific service that matches your vehicle's online presence.
+                </p>
+                <p>
+                    If you are looking for technical car history insights or the latest news in the global auto auction market, our <strong>Blog</strong> section is the primary resource. We regularly update our repository with tips for US car exporters, guidance on reading VIN reports, and legal updates regarding digital privacy in the automotive sector.
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
