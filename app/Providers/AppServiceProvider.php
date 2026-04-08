@@ -21,20 +21,24 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Share empty settings by default
+        View::share('siteSettings', []);
+
         try {
-            // Check file cache first — zero DB connections if cache exists
-            $siteSettings = \Illuminate\Support\Facades\Cache::get('site_settings');
+            // Only attempt to load settings if not in console or if explicitly needed
+            if (!app()->runningInConsole()) {
+                $siteSettings = \Illuminate\Support\Facades\Cache::get('site_settings');
 
-            if ($siteSettings === null) {
-                // Only hit DB if cache is truly empty — no Schema::hasTable check
-                $siteSettings = Setting::pluck('value', 'key')->toArray();
-                \Illuminate\Support\Facades\Cache::forever('site_settings', $siteSettings);
+                if ($siteSettings === null) {
+                    // Use a short timeout or just fail fast if DB is not ready
+                    $siteSettings = Setting::pluck('value', 'key')->toArray();
+                    \Illuminate\Support\Facades\Cache::forever('site_settings', $siteSettings);
+                }
+
+                View::share('siteSettings', $siteSettings);
             }
-
-            View::share('siteSettings', $siteSettings);
         } catch (\Exception $e) {
-            // Fallback to empty settings if DB is unreachable
-            View::share('siteSettings', []);
+            // Silently fail, it will use the empty array shared above
         }
     }
 }
