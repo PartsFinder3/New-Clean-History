@@ -53,7 +53,7 @@ if (!isset($paths['bootstrap'])) {
 /**
  * Check Maintenance Mode
  */
-if (file_exists($paths['maintenance'])) {
+if (isset($paths['maintenance'])) {
     require $paths['maintenance'];
 }
 
