@@ -40,7 +40,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     
     {{-- ===== SEO: Canonical URL ===== --}}
-    <link rel="canonical" href="@yield('canonical', url()->current())">
+    <link rel="canonical" href="{{ strtolower(@yield('canonical', url()->current())) }}">
     <link rel="alternate" type="application/rss+xml" title="Car History Clean RSS Feed" href="{{ route('rss') }}">
     
     {{-- ===== SEO: Open Graph Meta Tags ===== --}}

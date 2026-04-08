@@ -1,5 +1,5 @@
 <article class="group overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/80 shadow-xl transition hover:border-cyan-500/30 hover:shadow-cyan-500/5">
-    <a href="{{ route('cars.show', $car->slug) }}" class="block">
+    <a href="{{ route('cars.show', strtolower($car->slug)) }}" class="block">
         <div class="relative aspect-[16/10] w-full overflow-hidden bg-zinc-800">
             @if($car->car_image_url)
                 <img 
