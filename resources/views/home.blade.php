@@ -7,12 +7,12 @@
 @section('schema')
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
+    "@@context": "https://schema.org",
+    "@@type": "WebSite",
     "name": "Car History Clean",
     "url": "{{ url('/') }}",
     "potentialAction": {
-        "@type": "SearchAction",
+        "@@type": "SearchAction",
         "target": "{{ url('/cars') }}?q={search_term_string}",
         "query-input": "required name=search_term_string"
     }
@@ -20,16 +20,16 @@
 </script>
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@@context": "https://schema.org",
+    "@@type": "LocalBusiness",
     "name": "Car History Clean",
     "image": "{{ asset('favicon.ico') }}",
-    "@id": "{{ url('/') }}",
+    "@@id": "{{ url('/') }}",
     "url": "{{ url('/') }}",
     "telephone": "+923004531248",
     "email": "mateenali1122@gmail.com",
     "address": {
-        "@type": "PostalAddress",
+        "@@type": "PostalAddress",
         "streetAddress": "Main Road",
         "addressLocality": "Lahore",
         "addressRegion": "Punjab",
@@ -37,7 +37,7 @@
         "addressCountry": "PK"
     },
     "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
+        "@@type": "OpeningHoursSpecification",
         "dayOfWeek": [
             "Monday",
             "Tuesday",
@@ -54,38 +54,38 @@
 </script>
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
+    "@@context": "https://schema.org",
+    "@@type": "FAQPage",
     "mainEntity": [
         {
-            "@type": "Question",
+            "@@type": "Question",
             "name": "How long does the VIN removal take?",
             "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "The entire process typically takes 3 to 7 business days, depending on the number of sites the data is present on."
             }
         },
         {
-            "@type": "Question",
+            "@@type": "Question",
             "name": "Is the history removal permanent?",
             "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "Yes, we work with the source databases to ensure the records are permanently deleted, not just hidden from search results."
             }
         },
         {
-            "@type": "Question",
+            "@@type": "Question",
             "name": "Which auction sites do you cover?",
             "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "We cover all major global auctions including Copart, IAAI, Impact Auto Auction, and hundreds of local salvage platforms."
             }
         },
         {
-            "@type": "Question",
+            "@@type": "Question",
             "name": "Can I remove photos from Google Search?",
             "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "Absolutely. Our service includes requesting the removal of cached images and snippets from Google, Bing, and other search engines."
             }
         }
@@ -363,13 +363,15 @@
         </a>
     </div>
     
-    @if($featuredCars->count() > 0)
+    @if(isset($featuredCars) && count($featuredCars) > 0)
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             @foreach($featuredCars as $car)
                 @include('partials.car-card', ['car' => $car])
             @endforeach
         </div>
-    @else
+    @endif
+
+    @if(!isset($featuredCars) || count($featuredCars) === 0)
         <div class="rounded-3xl border border-dashed border-zinc-800 bg-zinc-900/20 px-6 py-20 text-center">
             <p class="text-zinc-500 font-medium">No vehicles listed at the moment.</p>
         </div>

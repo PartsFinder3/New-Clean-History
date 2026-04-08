@@ -12,7 +12,8 @@
                     referrerpolicy="no-referrer"
                     onerror="this.src='https://via.placeholder.com/640x400?text=No+Image'"
                 >
-            @else
+            @endif
+            @if(!$car->car_image_url)
                 <div class="flex h-full items-center justify-center text-zinc-500">
                     <div class="flex flex-col items-center gap-2">
                         <svg class="h-8 w-8 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
