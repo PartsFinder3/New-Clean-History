@@ -41,6 +41,7 @@
     
     {{-- ===== SEO: Canonical URL ===== --}}
     <link rel="canonical" href="@yield('canonical', url()->current())">
+    <link rel="alternate" type="application/rss+xml" title="Car History Clean RSS Feed" href="{{ route('rss') }}">
     
     {{-- ===== SEO: Open Graph Meta Tags ===== --}}
     <meta property="og:type" content="@yield('og_type', 'website')">

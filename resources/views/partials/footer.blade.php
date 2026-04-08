@@ -24,6 +24,7 @@
                 <a href="{{ route('products') }}" class="text-sm font-medium text-zinc-400 transition hover:text-cyan-400">Services</a>
                 <a href="{{ route('blogs.index') }}" class="text-sm font-medium text-zinc-400 transition hover:text-cyan-400">Blog</a>
                 <a href="{{ route('about') }}" class="text-sm font-medium text-zinc-400 transition hover:text-cyan-400">About</a>
+                <a href="{{ route('about') }}#team" class="text-sm font-medium text-zinc-400 transition hover:text-cyan-400">Meet our Team</a>
                 <a href="{{ route('contact') }}" class="text-sm font-medium text-zinc-400 transition hover:text-cyan-400">Contact</a>
                 <a href="{{ route('sitemap-html') }}" class="text-sm font-medium text-zinc-400 transition hover:text-cyan-400">HTML Sitemap</a>
             </nav>

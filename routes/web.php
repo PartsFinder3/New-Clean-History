@@ -144,6 +144,10 @@ Route::get('/rss', [HomeController::class, 'rss'])->name('rss');
 Route::get('/car-history-clean-service', [HomeController::class, 'products'])->name('products');
 Route::get('/services/{slug}', [HomeController::class, 'serviceDetail'])->name('services.show');
 
+// Page Redirects (SEO)
+Route::redirect('/about-us', '/about', 301);
+Route::redirect('/index.php', '/', 301);
+
 // Blog Routes (Public)
 Route::get('/blog', [BlogController::class, 'index'])->name('blogs.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blogs.show');
