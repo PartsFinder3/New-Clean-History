@@ -119,7 +119,7 @@ class SitemapController extends Controller
         // ===== Dynamic Car Pages =====
         foreach ($cars as $car) {
             $xml .= '<url>';
-            $xml .= '<loc>' . $baseUrl . '/cars/' . $car->slug . '</loc>';
+            $xml .= '<loc>' . $baseUrl . '/cars/' . strtolower($car->slug) . '</loc>';
             $xml .= '<lastmod>' . (isset($car->updated_at) ? $car->updated_at->toAtomString() : date('Y-m-d\TH:i:sP')) . '</lastmod>';
             $xml .= '<changefreq>weekly</changefreq>';
             $xml .= '<priority>0.6</priority>';
