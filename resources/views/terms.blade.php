@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Terms of Service | Car History Clean')
-@section('description', 'Read the Terms of Service for Car History Clean. Understand our data removal policies, service guarantees, and user obligations.')
+@section('title', 'Terms of Service – Car History Clean')
+@section('description', 'Read the Terms of Service for Car History Clean. Understand our data removal policies and service guarantees.')
 @section('canonical', route('terms'))
 
 @section('content')

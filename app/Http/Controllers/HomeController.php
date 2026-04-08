@@ -51,8 +51,14 @@ class HomeController extends Controller
 
     public function carDetail($slug)
     {
-        $car = $this->safeCacheRemember('car_detail_' . $slug, 3600, function () use ($slug) {
-            return Car::where('slug', $slug)->first();
+        // Enforce lowercase for SEO
+        $lowerSlug = strtolower($slug);
+        if ($slug !== $lowerSlug) {
+            return redirect()->route('cars.show', $lowerSlug, 301);
+        }
+
+        $car = $this->safeCacheRemember('car_detail_' . $lowerSlug, 3600, function () use ($lowerSlug) {
+            return Car::where('slug', $lowerSlug)->first();
         }, null);
 
         if (!$car) {

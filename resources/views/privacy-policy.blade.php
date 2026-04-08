@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Privacy Policy | Car History Clean')
-@section('description', 'Privacy Policy - Car History Clean is committed to protecting your privacy. Learn how we collect, use, and safeguard your information.')
+@section('title', 'Privacy Policy – Car History Clean')
+@section('description', 'Learn how Car History Clean protects your personal information and maintains data security according to global privacy standards.')
 @section('canonical', route('privacy-policy'))
 
 @section('schema')

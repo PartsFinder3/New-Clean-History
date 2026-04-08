@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', $car->car_name . ' | VIN: ' . $car->vin . ' - Car History Clean Report')
-@section('description', 'View the full vehicle history report for ' . $car->car_name . ' (VIN: ' . $car->vin . '). Check accidents, auction history, and clean title status online.')
-@section('keywords', $car->car_name . ', ' . $car->vin . ', car history removal, clean VIN history, ' . $car->car_name . ' history report, auction photo removal')
+@section('title', $car->car_name . ' (' . substr($car->vin, -6) . ') – Report')
+@section('description', 'View history report for ' . $car->car_name . ' (VIN: ' . $car->vin . '). Check accidents and auction records online.')
+@section('keywords', $car->car_name . ', ' . $car->vin . ', car history removal, clean VIN history')
 @section('canonical', route('cars.show', $car->slug))
 @section('og_type', 'product')
 @section('og_image', $car->car_image_url ?? '')

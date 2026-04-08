@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'About Us | Car History Clean - Trusted VIN & Vehicle History Reports')
-@section('description', 'Learn about Car History Clean, your trusted partner for accurate vehicle history reports and VIN checks in USA, Germany, Poland, and Australia.')
+@section('title', 'About Us – Car History Clean')
+@section('description', 'Learn about Car History Clean, your trusted partner for accurate vehicle history reports and VIN checks globally.')
 @section('canonical', route('about'))
 
 @section('schema')

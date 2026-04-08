@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us | Get Your Car History Clean - Customer Support')
-@section('description', 'Get in touch for professional car history clean services. Contact us today for VIN check reports, mileage fraud detection, and vehicle title inquiries.')
+@section('title', 'Contact Us – Car History Clean')
+@section('description', 'Get in touch for professional car history clean services. Contact us today for VIN reports and removal inquiries.')
 @section('canonical', route('contact'))
 
 @section('schema')

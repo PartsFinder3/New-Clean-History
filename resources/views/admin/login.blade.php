@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Admin Login')
+@section('description', 'Secure administrator login for Car History Clean. Authorized access only for vehicle history management and report generation.')
 
 @section('content')
 <div class="flex items-center justify-center min-h-[calc(100vh-160px)] px-6">

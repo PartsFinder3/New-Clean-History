@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Car History Clean – Check VIN History in USA, Germany, Poland & Australia')
-@section('description', 'Check your car history clean report online. Get accurate VIN check reports for vehicles in USA, Germany, Poland, and Australia. Detect accidents, mileage fraud, theft records instantly.')
-@section('keywords', 'car history clean, VIN history removal, auction photo removal, clean car title, car history audit, vehicle record deletion, Copart record removal, IAAI photo deletion')
+@section('title', 'Car History Clean – Professional VIN Report & Removal')
+@section('description', 'Get accurate VIN history reports and professional record removal for USA, Europe, and Australia. Detect accidents and fraud instantly.')
+@section('keywords', 'car history clean, VIN history removal, auction photo removal, clean car title, car history audit, vehicle record deletion')
 
 @section('schema')
 <script type="application/ld+json">

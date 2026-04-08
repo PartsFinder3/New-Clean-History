@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Car History Clean | Check VIN History in USA & Poland [2025]')
-@section('description', 'Car History Clean offers permanent removal of VIN records. Check your car history report online today for 100% accurate results. Delete auction photos now.')
+@section('title', 'VIN History Removal – Car History Clean')
+@section('description', 'Car History Clean offers permanent removal of VIN records and auction photos from search engines. 100% accurate results guaranteed.')
 @section('canonical', route('products'))
 
 @section('schema')

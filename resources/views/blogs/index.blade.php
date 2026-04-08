@@ -2,10 +2,8 @@
 
 @section('title', 'Blog - Car Auction Insights & News')
 
-@section('head')
-<meta name="description" content="Read the latest car auction insights, tips, and news. Expert advice on buying and selling vehicles at auction.">
-<meta name="keywords" content="car auction, vehicle auction, car buying tips, auction news, car market insights">
-@endsection
+@section('description', 'Read the latest car auction insights, tips, and news. Expert advice on buying and selling vehicles at auction.')
+@section('keywords', 'car auction, vehicle auction, car buying tips, auction news, car market insights')
 
 @section('content')
 <div class="max-w-7xl mx-auto py-8 px-4 md:py-12 md:px-8">

@@ -2,6 +2,13 @@
 
 @section('title', $blog->meta_title ?? $blog->title)
 
+@if($blog->meta_description)
+@section('description', $blog->meta_description)
+@endif
+@if($blog->meta_keywords)
+@section('keywords', $blog->meta_keywords)
+@endif
+
 @section('head')
 @if($blog->meta_title)
 <meta property="og:title" content="{{ $blog->meta_title }}">
@@ -10,12 +17,7 @@
 @endif
 
 @if($blog->meta_description)
-<meta name="description" content="{{ $blog->meta_description }}">
 <meta property="og:description" content="{{ $blog->meta_description }}">
-@endif
-
-@if($blog->meta_keywords)
-<meta name="keywords" content="{{ $blog->meta_keywords }}">
 @endif
 
 @if($blog->meta_author)

@@ -49,7 +49,8 @@
     <meta property="og:url" content="@yield('canonical', url()->current())">
     <meta property="og:site_name" content="Car History Clean">
     <meta property="og:locale" content="en_US">
-    <meta property="og:image" content="@yield('og_image')">
+    <meta property="og:image" content="@yield('og_image', asset('images/og-image.png'))">
+    <meta property="og:image:alt" content="@yield('title', 'Car History Clean')">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     
@@ -57,7 +58,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="@yield('title', 'Car History Clean – Professional VIN History Check & Removal Services')">
     <meta name="twitter:description" content="@yield('description', 'Professional car history removal services. Clean title, verified VIN, transparent process.')">
-    <meta name="twitter:image" content="@yield('og_image')">
+    <meta name="twitter:image" content="@yield('og_image', asset('images/og-image.png'))">
+    <meta name="twitter:image:alt" content="@yield('title', 'Car History Clean')">
     
     {{-- ===== SEO: Favicon ===== --}}
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
