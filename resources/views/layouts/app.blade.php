@@ -10,29 +10,30 @@
     <meta name="description" content="@yield('description', 'Professional car history removal services. Clean title, verified VIN, transparent process. Trusted by dealers & car owners worldwide.')">
     <meta name="keywords" content="@yield('keywords', 'car history removal, VIN history check, clean car history, auction history removal, hide car VIN, delete car photos, auto auction record cleaner, Copart history removal, IAAI history removal, BidFax removal service, insurance car history check, US car auction history, vehicle data removal')">
     
-    @if(isset($siteSettings['google_search_console']))
+    @if(isset($siteSettings['google_search_console']) && $siteSettings['google_search_console'])
         {!! $siteSettings['google_search_console'] !!}
-    @else
+    @endif
+    @if(!isset($siteSettings['google_search_console']) || !$siteSettings['google_search_console'])
         <meta name="google-site-verification" content="j2Dhat1GiXvzh-sU-dREKsek23bMGon3GS_A5cyC0gQ" />
     @endif
 
-    @if(isset($siteSettings['bing_webmaster']))
+    @if(isset($siteSettings['bing_webmaster']) && $siteSettings['bing_webmaster'])
         {!! $siteSettings['bing_webmaster'] !!}
     @endif
 
-    @if(isset($siteSettings['yandex_webmaster']))
+    @if(isset($siteSettings['yandex_webmaster']) && $siteSettings['yandex_webmaster'])
         {!! $siteSettings['yandex_webmaster'] !!}
     @endif
 
-    @if(isset($siteSettings['microsoft_clarity']))
+    @if(isset($siteSettings['microsoft_clarity']) && $siteSettings['microsoft_clarity'])
         {!! $siteSettings['microsoft_clarity'] !!}
     @endif
 
-    @if(isset($siteSettings['google_analytics']))
+    @if(isset($siteSettings['google_analytics']) && $siteSettings['google_analytics'])
         {!! $siteSettings['google_analytics'] !!}
     @endif
 
-    @if(isset($siteSettings['header_scripts']))
+    @if(isset($siteSettings['header_scripts']) && $siteSettings['header_scripts'])
         {!! $siteSettings['header_scripts'] !!}
     @endif
 
@@ -43,7 +44,11 @@
     <meta name="ICBM" content="25.2048, 55.2708">
 
     {{-- ===== SEO: Canonical URL ===== --}}
-    <link rel="canonical" href="@yield('canonical', url()->current())">
+    @php
+        $canonicalUrl = trim($__env->yieldContent('canonical', url()->current()));
+    @endphp
+    <link rel="canonical" href="{{ strtolower($canonicalUrl) }}">
+    <link rel="alternate" type="application/rss+xml" title="Car History Clean RSS Feed" href="{{ route('rss') }}">
     
     {{-- ===== SEO: Open Graph Meta Tags ===== --}}
     <meta property="og:type" content="@yield('og_type', 'website')">
@@ -52,7 +57,9 @@
     <meta property="og:url" content="@yield('canonical', url()->current())">
     <meta property="og:site_name" content="Car History Clean">
     <meta property="og:locale" content="en_US">
-    <meta property="og:image" content="@yield('og_image')">
+    <meta property="og:image" content="@yield('og_image', asset('images/og-image.png'))">
+    <meta property="og:image:alt" content="@yield('title', 'Car History Clean')">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     
@@ -60,7 +67,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="@yield('title', 'Car History Clean – Professional VIN History Check & Removal Services')">
     <meta name="twitter:description" content="@yield('description', 'Professional car history removal services. Clean title, verified VIN, transparent process.')">
-    <meta name="twitter:image" content="@yield('og_image')">
+    <meta name="twitter:image" content="@yield('og_image', asset('images/og-image.png'))">
+    <meta name="twitter:image:alt" content="@yield('title', 'Car History Clean')">
     
     {{-- ===== SEO: Favicon ===== --}}
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
@@ -72,20 +80,20 @@
     {{-- ===== SEO: Organization Schema (Global – every page) ===== --}}
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "@id": "{{ url('/') }}#organization",
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
+        "@@id": "{{ url('/') }}#organization",
         "name": "Car History Clean",
         "url": "{{ url('/') }}",
         "logo": {
-            "@type": "ImageObject",
+            "@@type": "ImageObject",
             "url": "{{ asset('favicon.ico') }}",
             "width": 112,
             "height": 112
         },
         "description": "Professional car history removal services. Clean title, verified VIN, transparent process.",
         "contactPoint": {
-            "@type": "ContactPoint",
+            "@@type": "ContactPoint",
             "telephone": "+923004531248",
             "contactType": "customer service",
             "email": "mateenali1122@gmail.com",
@@ -106,41 +114,41 @@
     {{-- ===== SiteNavigationElement Schema ===== --}}
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
+        "@@context": "https://schema.org",
+        "@@type": "ItemList",
         "itemListElement": [
             {
-                "@type": "SiteNavigationElement",
+                "@@type": "SiteNavigationElement",
                 "position": 1,
                 "name": "Home",
                 "url": "{{ route('home') }}"
             },
             {
-                "@type": "SiteNavigationElement",
+                "@@type": "SiteNavigationElement",
                 "position": 2,
                 "name": "Cars",
                 "url": "{{ route('cars.index') }}"
             },
             {
-                "@type": "SiteNavigationElement",
+                "@@type": "SiteNavigationElement",
                 "position": 3,
                 "name": "Services",
                 "url": "{{ route('products') }}"
             },
             {
-                "@type": "SiteNavigationElement",
+                "@@type": "SiteNavigationElement",
                 "position": 4,
                 "name": "Blog",
                 "url": "{{ route('blogs.index') }}"
             },
             {
-                "@type": "SiteNavigationElement",
+                "@@type": "SiteNavigationElement",
                 "position": 5,
                 "name": "About",
                 "url": "{{ route('about') }}"
             },
             {
-                "@type": "SiteNavigationElement",
+                "@@type": "SiteNavigationElement",
                 "position": 6,
                 "name": "Contact",
                 "url": "{{ route('contact') }}"

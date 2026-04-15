@@ -97,8 +97,8 @@ class AdminController extends Controller
 
         $validated['vin'] = strtoupper(trim($validated['vin']));
         
-        // Use car name for slug instead of VIN
-        $validated['slug'] = $this->generateUniqueSlug($validated['car_name']);
+        // Use car name for slug instead of VIN, enforce lowercase
+        $validated['slug'] = strtolower($this->generateUniqueSlug($validated['car_name']));
         
         Car::create($validated);
         $this->clearFrontendCaches();
@@ -144,7 +144,7 @@ class AdminController extends Controller
                     'mileage' => $data['mileage'] ?? null,
                     'location' => $data['location'] ?? null,
                     'damage' => $data['damage'] ?? null,
-                    'slug' => $slug
+                    'slug' => strtolower($slug)
                 ]
             );
             $count++;

@@ -11,101 +11,41 @@ Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
 Route::get('/robots.txt', function () {
     $content = <<<'ROBOTS'
-# robots.txt for Car History Remover
+# robots.txt for Car History Clean
 # https://carhistoryremove.online
 
-# Allow all bots (including AI bots) to crawl the site
 User-agent: *
 Allow: /
 
-# Admin area - disallow all bots
+# Block search and filtering parameters to prevent duplicate content
+Disallow: /cars?*
+Disallow: /blog?*
+Disallow: /*?q=
+Disallow: /*?page=
+
+# Admin and Auth area
 Disallow: /admin
 Disallow: /admin/*
 Disallow: /login
 Disallow: /logout
 
-# Specific AI and Search Engine Bots
-User-agent: Googlebot
-Allow: /
+# Block known scrapers and bad bots
+User-agent: AhrefsBot
+Disallow: /
+User-agent: SemrushBot
+Disallow: /
+User-agent: DotBot
+Disallow: /
+User-agent: Rogerbot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
 
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Googlebot-News
-Allow: /
-
-User-agent: Googlebot-Video
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: bingbot
-Allow: /
-
-User-agent: Yahoo! Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Yandex
-Allow: /
-
-User-agent: Baidu
-Allow: /
-
-User-agent: Sogou
-Allow: /
-
-User-agent: Exabot
-Allow: /
-
-User-agent: FacebookBot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: Applebot
-Allow: /
-
-User-agent: Slackbot
-Allow: /
-
-User-agent: TikTokBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: BingBot
-Allow: /
-
-User-agent: MicrosoftBot
-Allow: /
-
-# AI Bots - OpenAI
-User-agent: OAI-SearchBot
-Allow: /
-
-# Sitemap - Important for SEO
+# Sitemap
 Sitemap: https://carhistoryremove.online/sitemap.xml
 
-# Crawl-delay (optional, be polite)
-Crawl-delay: 2
+# Crawl-delay for polite bots
+Crawl-delay: 1
 ROBOTS;
 
     return response($content, 200)
@@ -149,6 +89,10 @@ Route::get('/garage-listing-plans', function () {
 Route::get('/list-your-car', function () {
     return view('list-your-car');
 })->name('garage.submit');
+
+// Page Redirects (SEO)
+Route::redirect('/about-us', '/about', 301);
+Route::redirect('/index.php', '/', 301);
 
 // Blog Routes (Public)
 Route::get('/blog', [BlogController::class, 'index'])->name('blogs.index');

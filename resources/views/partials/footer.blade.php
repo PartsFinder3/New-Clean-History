@@ -18,7 +18,6 @@
                     <p class="text-sm text-gray-400">Dubai, United Arab Emirates</p>
                 </div>
             </div>
-
             {{-- Column 2: Quick Links --}}
             <div>
                 <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Quick Links</h4>
@@ -29,6 +28,7 @@
                     <a href="{{ route('blogs.index') }}" class="text-sm text-gray-400 hover:text-white transition">Blog</a>
                     <a href="{{ route('about') }}" class="text-sm text-gray-400 hover:text-white transition">About</a>
                     <a href="{{ route('contact') }}" class="text-sm text-gray-400 hover:text-white transition">Contact</a>
+                    <a href="{{ route('sitemap-html') }}" class="text-sm text-gray-400 hover:text-white transition">Sitemap</a>
                 </nav>
             </div>
 

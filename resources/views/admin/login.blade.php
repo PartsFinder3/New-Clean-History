@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('title', 'Admin Login')
+@section('description')
+Secure admin portal for Car History Clean. Authorized administrators can manage VIN records, blog posts, and site settings for vehicle history removal.
+@endsection
 
 @section('content')
 <div class="flex items-center justify-center min-h-[calc(100vh-160px)] px-6">

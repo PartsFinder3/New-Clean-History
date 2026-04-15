@@ -7,12 +7,12 @@
 @section('schema')
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
+    "@@context": "https://schema.org",
+    "@@type": "WebSite",
     "name": "Car History Clean",
     "url": "{{ url('/') }}",
     "potentialAction": {
-        "@type": "SearchAction",
+        "@@type": "SearchAction",
         "target": "{{ url('/cars') }}?q={search_term_string}",
         "query-input": "required name=search_term_string"
     }
@@ -20,11 +20,11 @@
 </script>
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@@context": "https://schema.org",
+    "@@type": "LocalBusiness",
     "name": "Car History Clean",
     "image": "{{ asset('favicon.ico') }}",
-    "@id": "{{ url('/') }}",
+    "@@id": "{{ url('/') }}",
     "url": "{{ url('/') }}",
     "telephone": "+971XXXXXXXX",
     "email": "info@carhistoryremove.online",
@@ -35,7 +35,7 @@
     },
     "areaServed": ["AE", "US", "EU", "GE"],
     "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
+        "@@type": "OpeningHoursSpecification",
         "dayOfWeek": [
             "Monday",
             "Tuesday",
@@ -52,8 +52,8 @@
 </script>
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
+    "@@context": "https://schema.org",
+    "@@type": "FAQPage",
     "mainEntity": [
         {
             "@type": "Question",

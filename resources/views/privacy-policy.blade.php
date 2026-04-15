@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Privacy Policy | Car History Clean')
-@section('description', 'Privacy Policy - Car History Clean is committed to protecting your privacy. Learn how we collect, use, and safeguard your information.')
+@section('title', 'Privacy Policy – Car History Clean')
+@section('description', 'Learn how Car History Clean protects your personal information and maintains data security according to global privacy standards.')
 @section('canonical', route('privacy-policy'))
 
 @section('schema')
@@ -55,14 +55,35 @@
         </div>
 
         <div class="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 md:p-8 mt-6">
-            <h2 class="text-xl font-bold text-white mb-4">Information Sharing</h2>
+            <h2 class="text-xl font-bold text-white mb-4">Cookies and Tracking Technologies</h2>
             <p class="text-zinc-400 mb-4">
-                We do not sell, trade, or otherwise transfer your personal information to outside parties. We may share information with:
+                Car History Clean uses cookies and similar tracking technologies to track the activity on our service and hold certain information. Cookies are files with a small amount of data which may include an anonymous unique identifier.
+            </p>
+            <p class="text-zinc-400 mb-4">
+                We use cookies to:
             </p>
             <ul class="text-zinc-400 list-disc list-inside space-y-2">
-                <li>Service providers who assist us in operating our website</li>
-                <li>Legal authorities when required by law</li>
+                <li>Remember your preferences and security settings</li>
+                <li>Analyze our traffic to improve our vehicle audit tools</li>
+                <li>Understand user interaction with our blog and car listings</li>
+                <li>Deliver relevant advertisements through our marketing partners</li>
             </ul>
+            <p class="text-zinc-400 mt-4">
+                You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.
+            </p>
+        </div>
+
+        <div class="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 md:p-8 mt-6">
+            <h2 class="text-xl font-bold text-white mb-4">International Data Transfers</h2>
+            <p class="text-zinc-400 mb-4">
+                Your information, including Personal Data, may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction.
+            </p>
+            <p class="text-zinc-400 mb-4">
+                If you are located outside Pakistan and choose to provide information to us, please note that we transfer the data, including Personal Data, to Pakistan and process it there. Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.
+            </p>
+            <p class="text-zinc-400 mb-4">
+                Car History Clean will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of your data and other personal information.
+            </p>
         </div>
 
         <div class="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 md:p-8 mt-6">

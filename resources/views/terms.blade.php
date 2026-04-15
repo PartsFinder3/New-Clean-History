@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Terms of Service | Car History Clean')
-@section('description', 'Read the Terms of Service for Car History Clean. Understand our data removal policies, service guarantees, and user obligations.')
+@section('title', 'Terms of Service – Car History Clean')
+@section('description', 'Read the Terms of Service for Car History Clean. Understand our data removal policies and service guarantees.')
 @section('canonical', route('terms'))
 
 @section('content')
@@ -32,8 +32,19 @@
         </section>
 
         <section>
-            <h2 class="text-xl font-bold text-white">5. Limitation of Liability</h2>
-            <p>Car History Clean is not responsible for the reappearance of data on new or unsupported platforms after a successful removal. We act as an intermediary and do not own the third-party databases from which data is purged.</p>
+            <h2 class="text-xl font-bold text-white">5. Payment and Refunds</h2>
+            <p>Payments for our services must be made in full before the removal process begins unless otherwise agreed upon in writing. We offer various packages (Bronze, Silver, Gold) with tiered pricing based on the number of sites analyzed and cleaned.</p>
+            <p class="mt-2">Our refund policy stipulates that if we are unable to remove a record from a platform explicitly guaranteed in your chosen package, you are entitled to a partial or full refund for that specific site removal. Refunds will be processed within 10 business days of a verified failed removal attempt.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-white">6. Intellectual Property</h2>
+            <p>All content on the Car History Clean website, including text, graphics, logos, and software, is the property of Car History Clean and is protected by international copyright and trademark laws. You may not reproduce, distribute, or create derivative works from our content without express written permission.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-white">7. Limitation of Liability</h2>
+            <p>Car History Clean is not responsible for the reappearance of data on new or unsupported platforms after a successful removal. We act as an intermediary and do not own the third-party databases from which data is purged. In no event shall Car History Clean be liable for any indirect, incidental, special, or consequential damages arising out of the use of our services.</p>
         </section>
 
         <section>

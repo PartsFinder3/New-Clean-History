@@ -21,7 +21,7 @@
             {
                 "@@type": "ListItem",
                 "position": {{ $index + 1 }},
-                "url": "{{ route('cars.show', $car->slug) }}",
+                "url": "{{ route('cars.show', strtolower($car->slug)) }}",
                 "name": "{{ $car->car_name }}"
             }@if(!$loop->last),@endif
             @endforeach

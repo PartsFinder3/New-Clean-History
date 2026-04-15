@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Disclaimer | Car History Clean')
-@section('description', 'Disclaimer - Car History Clean provides professional car history verification services. Learn about our service limitations and terms.')
+@section('title', 'Disclaimer – Car History Clean')
+@section('description', 'Read the disclaimer for Car History Clean. Learn about our service limitations, information accuracy, and liability policies.')
 @section('canonical', route('disclaimer'))
 
 @section('schema')

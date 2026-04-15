@@ -85,6 +85,16 @@
                     <strong>Disclaimer:</strong> We remove vehicle data from third-party auction aggregator platforms. Original records at Copart/IAAI may remain internally but are de-indexed from public search.
                 </p>
             </div>
+            <p>
+                Our journey began with a simple goal: to give car owners back their privacy and ensure their vehicles are valued based on their current condition, not a singular moment in their past. Over the last year, we have developed proprietary technical protocols and established strong legal relationships with data providers globally to facilitate the permanent removal of misleading or legacy auction data.
+            </p>
+            <p>
+                Today, we take pride in being a leading global partner for vehicle reputation management. We understand that a clean history is more than just a report; it's the key to trust between buyers and sellers. Our team works tirelessly to audit hundreds of databases, ensuring that every VIN we process meets the highest standards of digital cleanliness.
+            </p>
+            <div class="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 mt-8">
+                <h3 class="text-white font-bold mb-3">Commitment to Excellence</h3>
+                <p class="text-sm text-zinc-500">We don't just hide data; we purge it. Our commitment to excellence means we use only legal, ethical, and permanent methods to restore your vehicle's digital standing. We treat every vehicle as if it were our own, ensuring meticulous attention to detail at every stage of the audit and removal process.</p>
+            </div>
         </div>
         <div class="relative">
             <div class="absolute inset-0 bg-blue-100 blur-3xl rounded-full opacity-50"></div>
