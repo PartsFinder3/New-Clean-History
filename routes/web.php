@@ -143,6 +143,12 @@ Route::get('/sitemap', [HomeController::class, 'sitemapHtml'])->name('sitemap-ht
 Route::get('/rss', [HomeController::class, 'rss'])->name('rss');
 Route::get('/car-history-clean-service', [HomeController::class, 'products'])->name('products');
 Route::get('/services/{slug}', [HomeController::class, 'serviceDetail'])->name('services.show');
+Route::get('/garage-listing-plans', function () {
+    return view('garage-plans');
+})->name('garage.plans');
+Route::get('/list-your-car', function () {
+    return view('list-your-car');
+})->name('garage.submit');
 
 // Blog Routes (Public)
 Route::get('/blog', [BlogController::class, 'index'])->name('blogs.index');
@@ -173,4 +179,12 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     
     // Settings Route
     Route::post('/settings', [AdminController::class, 'updateSettings'])->name('admin.settings.update');
+    
+    // Auction Cars Routes
+    Route::get('/auction-cars', [AdminController::class, 'auctionCarsIndex'])->name('admin.auction-cars.index');
+    Route::get('/auction-cars/create', [AdminController::class, 'auctionCarsCreate'])->name('admin.auction-cars.create');
+    Route::post('/auction-cars', [AdminController::class, 'auctionCarsStore'])->name('admin.auction-cars.store');
+    Route::get('/auction-cars/{id}/edit', [AdminController::class, 'auctionCarsEdit'])->name('admin.auction-cars.edit');
+    Route::put('/auction-cars/{id}', [AdminController::class, 'auctionCarsUpdate'])->name('admin.auction-cars.update');
+    Route::delete('/auction-cars/{id}', [AdminController::class, 'auctionCarsDestroy'])->name('admin.auction-cars.destroy');
 });

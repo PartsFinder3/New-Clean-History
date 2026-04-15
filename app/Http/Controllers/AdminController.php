@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\AuctionCar;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -213,5 +214,122 @@ class AdminController extends Controller
             // Fallback: clear the most critical one if flush fails
             \Illuminate\Support\Facades\Cache::forget('featured_cars');
         }
+    }
+
+    // ==================== AUCTION CARS ====================
+
+    public function auctionCarsIndex(Request $request)
+    {
+        $query = AuctionCar::query();
+
+        // Search
+        if ($search = $request->get('search')) {
+            $query->where(function($q) use ($search) {
+                $q->where('vin', 'like', "%{$search}%")
+                  ->orWhere('model', 'like', "%{$search}%")
+                  ->orWhere('lot', 'like', "%{$search}%");
+            });
+        }
+
+        // Status filter
+        if ($status = $request->get('status')) {
+            $query->where('status', $status);
+        }
+
+        $cars = $query->orderBy('id', 'desc')->paginate(20);
+
+        // Stats
+        $stats = [
+            'total' => AuctionCar::count(),
+            'active' => AuctionCar::where('status', 'active')->count(),
+            'sold' => AuctionCar::where('status', 'sold')->count(),
+            'featured' => AuctionCar::whereNotNull('featured_until')->where('featured_until', '>', now())->count(),
+        ];
+
+        return view('admin.auction_cars.index', compact('cars', 'stats'));
+    }
+
+    public function auctionCarsCreate()
+    {
+        return view('admin.auction_cars.create');
+    }
+
+    public function auctionCarsStore(Request $request)
+    {
+        $data = $request->all();
+
+        // Convert photos textarea to array
+        if (!empty($data['photos'])) {
+            $data['photos'] = array_filter(array_map('trim', explode("\n", $data['photos'])));
+        } else {
+            $data['photos'] = [];
+        }
+
+        // Handle checkbox
+        $data['history_clean'] = $request->has('history_clean');
+
+        // Handle empty strings as null
+        foreach ($data as $key => $value) {
+            if ($value === '' && in_array($key, [
+                'lot', 'vin', 'seller', 'sale_document', 'approved', 'loss',
+                'primary_damage', 'secondary_damage', 'odometer', 'start_code',
+                'key', 'acv_erc', 'body_style', 'exterior_color', 'engine',
+                'transmission', 'fuel_type', 'drive_type', 'model', 'series',
+                'cylinders', 'restraint_system', 'drive_line_type'
+            ])) {
+                $data[$key] = null;
+            }
+        }
+
+        AuctionCar::create($data);
+
+        return redirect()->route('admin.auction-cars.index')->with('success', 'Auction car added successfully!');
+    }
+
+    public function auctionCarsEdit($id)
+    {
+        $car = AuctionCar::findOrFail($id);
+        return view('admin.auction_cars.edit', compact('car'));
+    }
+
+    public function auctionCarsUpdate(Request $request, $id)
+    {
+        $car = AuctionCar::findOrFail($id);
+        $data = $request->all();
+
+        // Convert photos textarea to array
+        if (!empty($data['photos'])) {
+            $data['photos'] = array_filter(array_map('trim', explode("\n", $data['photos'])));
+        } else {
+            $data['photos'] = [];
+        }
+
+        // Handle checkbox
+        $data['history_clean'] = $request->has('history_clean');
+
+        // Handle empty strings as null
+        foreach ($data as $key => $value) {
+            if ($value === '' && in_array($key, [
+                'lot', 'vin', 'seller', 'sale_document', 'approved', 'loss',
+                'primary_damage', 'secondary_damage', 'odometer', 'start_code',
+                'key', 'acv_erc', 'body_style', 'exterior_color', 'engine',
+                'transmission', 'fuel_type', 'drive_type', 'model', 'series',
+                'cylinders', 'restraint_system', 'drive_line_type'
+            ])) {
+                $data[$key] = null;
+            }
+        }
+
+        $car->update($data);
+
+        return redirect()->route('admin.auction-cars.index')->with('success', 'Auction car updated successfully!');
+    }
+
+    public function auctionCarsDestroy($id)
+    {
+        $car = AuctionCar::findOrFail($id);
+        $car->delete();
+
+        return back()->with('success', 'Auction car deleted successfully!');
     }
 }

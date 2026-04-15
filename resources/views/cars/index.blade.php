@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Browse Vehicles | VIN History Check USA, Germany & Australia')
-@section('description', 'Explore our inventory of verified vehicles. Check full VIN history, auction records, and mileage reports for cars in USA, Australia, and Europe.')
+@section('title', 'UAE Garage Cars for Sale | Used Cars Dubai & Abu Dhabi | CarHistoryRemove')
+@section('description', 'Browse verified used cars from UAE garages. Toyota, Honda, Nissan, BMW & more. Direct from Dubai, Abu Dhabi, Sharjah garages. Clean history, best prices.')
 @section('canonical', route('cars.index'))
 
 @section('schema')
@@ -10,9 +10,9 @@
 {
     "@@context": "https://schema.org",
     "@@type": "CollectionPage",
-    "name": "Browse Vehicles - Car History Clean",
+    "name": "UAE Garage Cars for Sale - Car History Clean",
     "url": "{{ route('cars.index') }}",
-    "description": "Explore our inventory of verified vehicles with full VIN history reports.",
+    "description": "Browse verified used cars from Dubai, Abu Dhabi & Sharjah garages with clean history.",
     "mainEntity": {
         "@@type": "ItemList",
         "numberOfItems": {{ $cars->total() }},
@@ -56,18 +56,18 @@
 @section('content')
 <div class="mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-16">
     <header class="mb-10">
-        <h1 class="font-display text-3xl font-bold text-white md:text-4xl">
-            Our Cars
+        <h1 class="font-display text-3xl font-bold text-foreground md:text-4xl">
+            UAE Garage Cars for Sale
         </h1>
         <div class="mt-2 flex flex-wrap items-center gap-3">
-            <p class="text-zinc-400">
-                Browse vehicles with verified VIN numbers and full history details.
+            <p class="text-muted">
+                Verified used cars from Dubai, Abu Dhabi & Sharjah garages. Clean history, best prices.
             </p>
             @if($cars->total() > 0)
-                <span class="inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-900/80 px-3 py-1 text-xs font-medium text-zinc-400">
-                    <span class="font-bold text-cyan-400">{{ $cars->total() }}</span> vehicles
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-card-border bg-white px-3 py-1 text-xs font-medium text-muted shadow-sm">
+                    <span class="font-bold text-accent">{{ $cars->total() }}</span> cars
                     @if($cars->lastPage() > 1)
-                        — Page <span class="font-bold text-white">{{ $cars->currentPage() }}</span> of <span class="font-bold text-white">{{ $cars->lastPage() }}</span>
+                        — Page <span class="font-bold text-foreground">{{ $cars->currentPage() }}</span> of <span class="font-bold text-foreground">{{ $cars->lastPage() }}</span>
                     @endif
                 </span>
             @endif
@@ -85,8 +85,9 @@
             {{ $cars->links('partials.pagination') }}
         </div>
     @else
-        <div class="rounded-2xl border border-dashed border-zinc-700 bg-zinc-900/50 px-6 py-20 text-center text-zinc-500">
-            No cars in inventory yet.
+        <div class="rounded-2xl border border-dashed border-card-border bg-background-secondary px-6 py-20 text-center text-muted">
+            <p class="mb-4">No cars listed yet. Be the first to list your car!</p>
+            <a href="{{ route('garage.submit') }}" class="btn-primary">List Your Car</a>
         </div>
     @endif
 </div>

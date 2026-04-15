@@ -1,4 +1,9 @@
 <?php
+// SEO: Redirect index.php to root if accessed directly
+if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
+    header("Location: /", true, 301);
+    exit;
+}
 
 /**
  * DEBUG MODE: Enable error reporting to find the 500 error cause

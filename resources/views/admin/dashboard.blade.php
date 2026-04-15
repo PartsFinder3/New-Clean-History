@@ -108,7 +108,37 @@
                     Manage Blogs
                 </a>
                 <a href="{{ route('blogs.index') }}" target="_blank" class="block w-full py-3 bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 border border-blue-500/30 rounded-xl text-xs font-bold transition-all text-center">
-                    View Blog Page
+                    View Blog
+                </a>
+            </div>
+        </div>
+
+        <!-- Auction Cars Management Card -->
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full -mr-16 -mt-16 blur-3xl transition-all group-hover:bg-orange-500/10"></div>
+            <h2 class="text-xl font-bold text-white mb-6 font-outfit flex items-center gap-3">
+                <span class="p-2 bg-orange-500/10 rounded-lg text-orange-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path></svg>
+                </span>
+                Auction Cars
+            </h2>
+            
+            <div class="space-y-4">
+                <div class="bg-zinc-950/50 rounded-xl p-4 border border-zinc-800">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Total Cars</span>
+                        <span class="text-lg font-bold text-white">{{\App\Models\AuctionCar::count()}}</span>
+                    </div>
+                    <div class="w-full bg-zinc-800 rounded-full h-1.5">
+                        <div class="bg-orange-500 h-1.5 rounded-full" style="width: 100%"></div>
+                    </div>
+                </div>
+                
+                <a href="{{ route('admin.auction-cars.index') }}" class="block w-full py-3 bg-orange-600/10 hover:bg-orange-600/20 text-orange-400 border border-orange-500/30 rounded-xl text-xs font-bold transition-all text-center">
+                    Manage Auction Cars
+                </a>
+                <a href="{{ route('cars.index') }}" target="_blank" class="block w-full py-3 bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 border border-blue-500/30 rounded-xl text-xs font-bold transition-all text-center">
+                    View Cars Page
                 </a>
             </div>
         </div>

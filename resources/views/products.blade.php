@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Car History Clean | Check VIN History in USA & Poland [2025]')
-@section('description', 'Car History Clean offers permanent removal of VIN records. Check your car history report online today for 100% accurate results. Delete auction photos now.')
+@section('title', 'Car History Removal Services UAE | VIN Cleaning Dubai & Abu Dhabi')
+@section('description', 'Professional car history removal services in UAE. Remove auction records from Copart, IAAI, BidFax, AutoAstat. Dubai-based team serving UAE dealers. WhatsApp +971XXXXXXXX')
 @section('canonical', route('products'))
 
 @section('schema')
@@ -14,8 +14,8 @@
         "@@type": "WebPage",
         "@@id": "{{ route('products') }}"
     },
-    "headline": "Car History Clean: Permanent Car History Removal Service",
-    "description": "Professional car history removal and VIN deletion from major auction platforms including autoAstat, BidCars, and BidFax.",
+    "headline": "Car History Removal Services UAE | Dubai & Abu Dhabi VIN Cleaning",
+    "description": "Professional car history removal services in UAE. Remove auction records from Copart, IAAI, BidFax, AutoAstat. Based in Dubai, serving UAE dealers.",
     "image": "https://cleanautohistory.com/storage/photos/tZkiwykw6DlxLprM23Okr7R3OpLvy1BA3n7adPh7.webp",  
     "author": {
         "@@type": "Organization",
