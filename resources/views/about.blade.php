@@ -91,106 +91,106 @@
             <p>
                 Today, we take pride in being a leading global partner for vehicle reputation management. We understand that a clean history is more than just a report; it's the key to trust between buyers and sellers. Our team works tirelessly to audit hundreds of databases, ensuring that every VIN we process meets the highest standards of digital cleanliness.
             </p>
-            <div class="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 mt-8">
-                <h3 class="text-white font-bold mb-3">Commitment to Excellence</h3>
-                <p class="text-sm text-zinc-500">We don't just hide data; we purge it. Our commitment to excellence means we use only legal, ethical, and permanent methods to restore your vehicle's digital standing. We treat every vehicle as if it were our own, ensuring meticulous attention to detail at every stage of the audit and removal process.</p>
+            <div class="p-6 rounded-2xl bg-blue-50/50 border border-blue-100 mt-8">
+                <h3 class="text-foreground font-bold mb-3">Commitment to Excellence</h3>
+                <p class="text-sm text-muted">We don't just hide data; we purge it. Our commitment to excellence means we use only legal, ethical, and permanent methods to restore your vehicle's digital standing. We treat every vehicle as if it were our own, ensuring meticulous attention to detail at every stage of the audit and removal process.</p>
             </div>
         </div>
         <div class="relative">
-            <div class="absolute inset-0 bg-blue-100 blur-3xl rounded-full opacity-50"></div>
-            <div class="relative glass-card overflow-hidden">
-                <div class="grid grid-cols-2 gap-px bg-card-border">
-                    <div class="bg-white p-10 text-center">
+            <div class="absolute inset-0 bg-blue-100 blur-3xl rounded-full opacity-30"></div>
+            <div class="relative glass-card overflow-hidden rounded-[2.5rem] border border-card-border shadow-xl">
+                <div class="grid grid-cols-2 gap-px bg-card-border overflow-hidden">
+                    <div class="bg-white p-10 text-center flex flex-col items-center justify-center">
                         <div class="text-4xl font-black gradient-text mb-2">98%</div>
-                        <div class="text-xs uppercase tracking-widest text-muted font-bold">Satisfaction</div>
+                        <div class="text-[10px] uppercase tracking-widest text-muted font-black opacity-60 font-medium">Satisfaction</div>
                     </div>
-                    <div class="bg-white p-10 text-center">
+                    <div class="bg-white p-10 text-center flex flex-col items-center justify-center border-l border-card-border">
                         <div class="text-4xl font-black gradient-text mb-2">200+</div>
-                        <div class="text-xs uppercase tracking-widest text-muted font-bold">Platforms</div>
+                        <div class="text-[10px] uppercase tracking-widest text-muted font-black opacity-60">Platforms</div>
                     </div>
-                    <div class="bg-white p-10 text-center">
+                    <div class="bg-white p-10 text-center flex flex-col items-center justify-center border-t border-card-border">
                         <div class="text-4xl font-black gradient-text mb-2">12+</div>
-                        <div class="text-xs uppercase tracking-widest text-muted font-bold">Countries</div>
+                        <div class="text-[10px] uppercase tracking-widest text-muted font-black opacity-60">Countries</div>
                     </div>
-                    <div class="bg-white p-10 text-center">
+                    <div class="bg-white p-10 text-center flex flex-col items-center justify-center border-t border-l border-card-border">
                         <div class="text-4xl font-black gradient-text mb-2">3-7</div>
-                        <div class="text-xs uppercase tracking-widest text-muted font-bold">Days</div>
+                        <div class="text-[10px] uppercase tracking-widest text-muted font-black opacity-60">Days</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <section class="max-w-none mt-24">
-        <h2 class="font-display text-3xl font-bold text-white text-center mb-12">
-            Meet the <span class="gradient-text">Experts</span>
+    <section class="max-w-none mt-32">
+        <h2 class="font-display text-3xl font-bold text-foreground text-center mb-16">
+            Meet the <span class="gradient-text">Leadership Team</span>
         </h2>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {{-- Member 1 --}}
-            <div class="group p-1 rounded-3xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700/50 hover:border-cyan-500/50 transition-all duration-500">
-                <div class="bg-zinc-950 rounded-[22px] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=500" alt="Mateen Ali" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white">Mateen Ali</h3>
-                        <p class="text-sm text-cyan-400 font-medium">Founder & Head of Operations</p>
-                    </div>
+            <div class="group relative p-2 rounded-3xl bg-white border border-card-border hover:border-accent hover:shadow-2xl transition-all duration-500">
+                <div class="rounded-2xl overflow-hidden aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=500" alt="Mateen Ali" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105">
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-foreground mb-1">Mateen Ali</h3>
+                    <p class="text-sm text-accent font-black uppercase tracking-widest">Founder & Operations</p>
                 </div>
             </div>
             {{-- Member 2 --}}
-            <div class="group p-1 rounded-3xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700/50 hover:border-violet-500/50 transition-all duration-500">
-                <div class="bg-zinc-950 rounded-[22px] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=500" alt="Sarah Johnson" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white">Sarah Johnson</h3>
-                        <p class="text-sm text-violet-400 font-medium">Data Privacy Specialist</p>
-                    </div>
+            <div class="group relative p-2 rounded-3xl bg-white border border-card-border hover:border-accent hover:shadow-2xl transition-all duration-500">
+                <div class="rounded-2xl overflow-hidden aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=500" alt="Sarah Johnson" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105">
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-foreground mb-1">Sarah Johnson</h3>
+                    <p class="text-sm text-accent font-black uppercase tracking-widest">Data Privacy</p>
                 </div>
             </div>
             {{-- Member 3 --}}
-            <div class="group p-1 rounded-3xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700/50 hover:border-emerald-500/50 transition-all duration-500">
-                <div class="bg-zinc-950 rounded-[22px] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=500" alt="David Chen" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white">David Chen</h3>
-                        <p class="text-sm text-emerald-400 font-medium">Lead Technical Auditor</p>
-                    </div>
+            <div class="group relative p-2 rounded-3xl bg-white border border-card-border hover:border-accent hover:shadow-2xl transition-all duration-500">
+                <div class="rounded-2xl overflow-hidden aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=500" alt="David Chen" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105">
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-foreground mb-1">David Chen</h3>
+                    <p class="text-sm text-accent font-black uppercase tracking-widest">Technical Auditor</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="max-w-none mt-24">
-        <h2 class="font-display text-3xl font-bold text-white text-center mb-12">
-            Why We Are Different
+    <section class="max-w-none mt-32">
+        <h2 class="font-display text-3xl font-bold text-foreground text-center mb-16">
+            The Car History <span class="gradient-text">Clean Edge</span>
         </h2>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50">
-                <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-4">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="p-8 rounded-3xl bg-white border border-card-border hover:shadow-xl transition-all group">
+                <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                 </div>
-                <h3 class="text-white font-bold mb-2">Legal Accuracy</h3>
-                <p class="text-sm text-zinc-500">We use professional legal channels and DMCA protocols to ensure permanent data removal.</p>
+                <h3 class="text-foreground font-bold mb-3 text-lg">Legal Accuracy</h3>
+                <p class="text-sm text-muted leading-relaxed">We use professional legal channels and protocols to ensure 100% permanent removal of data from all supported platforms.</p>
             </div>
-            <div class="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50">
-                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <div class="p-8 rounded-3xl bg-white border border-card-border hover:shadow-xl transition-all group">
+                <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 </div>
-                <h3 class="text-white font-bold mb-2">Fast Execution</h3>
-                <p class="text-sm text-zinc-500">Most removals are completed within 48 to 72 hours of verification.</p>
+                <h3 class="text-foreground font-bold mb-3 text-lg">Fast Execution</h3>
+                <p class="text-sm text-muted leading-relaxed">Time is money in the car market. Most removals are fully completed within 24 to 72 hours of verification.</p>
             </div>
-            <div class="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50">
-                <div class="w-10 h-10 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-400 mb-4">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <div class="p-8 rounded-3xl bg-white border border-card-border hover:shadow-xl transition-all group">
+                <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
-                <h3 class="text-white font-bold mb-2">24/7 Audit</h3>
-                <p class="text-sm text-zinc-500">Our team is available round the clock for free VIN audits and technical consultations.</p>
+                <h3 class="text-foreground font-bold mb-3 text-lg">Expert Audits</h3>
+                <p class="text-sm text-muted leading-relaxed">Our team is available round the clock for free VIN audits and specialized technical consultations for fleet owners.</p>
             </div>
-            <div class="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50">
-                <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-4">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
+            <div class="p-8 rounded-3xl bg-white border border-card-border hover:shadow-xl transition-all group">
+                <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
                 </div>
-                <h3 class="text-white font-bold mb-2">Transparency</h3>
-                <p class="text-sm text-zinc-500">No upfront hidden costs. We provide evidence of removal before final completion.</p>
+                <h3 class="text-foreground font-bold mb-3 text-lg">Transparency</h3>
+                <p class="text-sm text-muted leading-relaxed">No upfront hidden costs. We provide verifiable evidence of removal before final service completion.</p>
             </div>
         </div>
     </section>

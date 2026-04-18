@@ -260,6 +260,36 @@ class HomeController extends Controller
                 'price' => '50',
                 'image' => 'https://cleanautohistory.com/storage/photos/9EpqUj5JsCqWOdMLj1pFcJQhGt6duqsQKkwHWpbk.webp'
             ],
+            [
+                'name' => 'Copart History Removal',
+                'slug' => 'copart-history',
+                'description' => 'Permanent deletion of your vehicle\'s Copart auction records and photos from public access.',
+                'full_description' => 'Copart is the world leader in online vehicle auctions, and its records are often the first place people look for a car\'s history. We specialize in deep-cleaning Copart auction data, including high-resolution salvage photos, final bid prices, and condition reports. Our process ensures your vehicle\'s past is kept private, restoring its full market value for the UAE and global markets.',
+                'meta_title' => 'Copart History Removal UAE | Delete Auction Photos & VIN Data',
+                'meta_description' => 'Professional Copart history removal service. We delete auction photos, price records, and VIN data from Copart aggregators and search engines.',
+                'price' => '60',
+                'image' => 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=800'
+            ],
+            [
+                'name' => 'Google Cache Removal',
+                'slug' => 'google-cache',
+                'description' => 'Remove outdated vehicle photos and accident records from Google and Bing search results.',
+                'full_description' => 'Even after data is removed from a website, it can often still be seen in Google\'s search cache or image results. Our Google Cache Removal service targets these "ghost" records. We submit formal de-indexing requests to search engines to ensure that accident photos and salvage details are completely gone from search results, not just the source site.',
+                'meta_title' => 'Google Cache Removal Service | Delete Car Photos from Search',
+                'meta_description' => 'Remove your car photos from Google and Bing. We de-index outdated auction records and accident images from search engine results.',
+                'price' => '30',
+                'image' => 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&q=80&w=800'
+            ],
+            [
+                'name' => 'Detailed VIN Audit',
+                'slug' => 'vin-audit',
+                'description' => 'Comprehensive 360-degree scan of your vehicle\'s digital footprint across 200+ platforms.',
+                'full_description' => 'Before you can clean a car\'s history, you need to know exactly where the data lives. Our VIN Audit is a deep-dive investigation using proprietary tools to scan over 200 auction aggregators, social media archives, and search engine indexes. We provide you with a full report of every site that mentions your VIN, allowing for a strategic and complete removal process.',
+                'meta_title' => 'Professional VIN Audit UAE | Full Vehicle History Scan',
+                'meta_description' => 'Get a complete report of your car\'s online footprint. Our VIN Audit scans 200+ auction sites and search engines to find all history records.',
+                'price' => '25',
+                'image' => 'https://images.unsplash.com/photo-1551288049-bbbda5366392?auto=format&fit=crop&q=80&w=800'
+            ],
         ];
     }
 }

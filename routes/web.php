@@ -57,12 +57,12 @@ Route::get('/clear-cache', function () {
     if (request('key') !== 'carhistory786') {
         abort(403);
     }
-    
+
     \Illuminate\Support\Facades\Artisan::call('view:clear');
     \Illuminate\Support\Facades\Artisan::call('cache:clear');
     \Illuminate\Support\Facades\Artisan::call('route:clear');
     \Illuminate\Support\Facades\Artisan::call('config:clear');
-    
+
     return response()->json([
         'status' => 'success',
         'message' => 'All caches cleared!',
@@ -99,7 +99,7 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blogs.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blogs.show');
 
 // Admin Auth Routes
-Route::get('/login', [AdminController::class, 'login'])->name('admin.login');
+Route::get('/login', [AdminController::class, 'login'])->name('login');
 Route::post('/login', [AdminController::class, 'authenticate'])->name('admin.authenticate');
 Route::post('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
@@ -112,7 +112,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::delete('/cars/{id}', [AdminController::class, 'destroy'])->name('admin.cars.destroy');
     Route::post('/cars/delete-all', [AdminController::class, 'destroyAll'])->name('admin.cars.destroy-all');
     Route::post('/cars/bulk-delete', [AdminController::class, 'bulkDelete'])->name('admin.cars.bulk-delete');
-    
+
     // Blog Management Routes
     Route::get('/blogs', [BlogController::class, 'adminIndex'])->name('admin.blogs.index');
     Route::get('/blogs/create', [BlogController::class, 'create'])->name('admin.blogs.create');
@@ -120,10 +120,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/blogs/{id}/edit', [BlogController::class, 'edit'])->name('admin.blogs.edit');
     Route::put('/blogs/{id}', [BlogController::class, 'update'])->name('admin.blogs.update');
     Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
-    
+
     // Settings Route
     Route::post('/settings', [AdminController::class, 'updateSettings'])->name('admin.settings.update');
-    
+
     // Auction Cars Routes
     Route::get('/auction-cars', [AdminController::class, 'auctionCarsIndex'])->name('admin.auction-cars.index');
     Route::get('/auction-cars/create', [AdminController::class, 'auctionCarsCreate'])->name('admin.auction-cars.create');

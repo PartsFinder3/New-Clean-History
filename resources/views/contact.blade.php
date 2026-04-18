@@ -160,22 +160,26 @@
     </div>
 
     <!-- SEO Content Expansion -->
-    <div class="mt-20 border-t border-zinc-800 pt-16">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl font-bold text-white mb-6">Support and Guidance for Vehicle History Removal</h2>
-            <div class="space-y-6 text-zinc-400 leading-relaxed text-sm">
-                <p>
-                    Navigating the complexities of digital vehicle history and online privacy can be overwhelming. Whether you are dealing with a one-time salvage record on BidFax or multiple instances of photos appearing across local auction trackers, our support team at <span class="text-white font-semibold">Car History Clean</span> is here to guide you through every step of the professional removal process.
-                </p>
-                <p>
-                    When you contact us, please provide as much information as possible, including the 17-digit VIN (Vehicle Identification Number) you would like us to audit. Our initial assessment is always free of charge. We will perform a comprehensive scan of known databases, including Copart, IAAI, and hundreds of smaller niche auction platforms, to give you a clear picture of what data is publicly available.
-                </p>
-                <p>
-                    We understand that timing is often critical, especially if you are in the middle of a vehicle sale or export transaction. That's why we prioritize WhatsApp communication for the fastest possible response. Our technical auditors are available across multiple time zones to ensure that your inquiries are processed within hours, not days. We typically complete full removals and search engine cache flushes within 3 to 7 business days, depending on the number of sites audited.
-                </p>
-                <p>
-                    Rest assured that your data privacy is our top priority. All communications through this contact form and via our direct phone lines are kept strictly confidential. We do not share your VIN or personal details with any third parties, other than the necessary platform administrators required to facilitate the data removal process. We look forward to helping you restore your vehicle's digital reputation.
-                </p>
+    <div class="mt-20 border-t border-card-border pt-16 px-4">
+        <div class="max-w-4xl mx-auto text-center md:text-left">
+            <h2 class="text-3xl font-bold text-foreground mb-8 font-display">Specialized Car History Support</h2>
+            <div class="grid md:grid-cols-2 gap-10 text-muted leading-relaxed text-sm text-left">
+                <div class="space-y-6">
+                    <p>
+                        Navigating the complexities of digital vehicle history and online privacy can be overwhelming. Whether you are dealing with a one-time salvage record on <span class="text-accent font-bold">BidFax</span> or multiple instances of photos appearing across local auction trackers, our support team at <strong>Car History Clean</strong> is here to guide you through every step of the professional removal process.
+                    </p>
+                    <p>
+                        When you contact us, please provide as much information as possible, including the 17-digit VIN you would like us to audit. Our initial assessment is always free of charge. We perform a comprehensive scan of known databases, including <span class="text-accent font-bold">Copart</span>, IAAI, and hundreds of smaller niche auction platforms.
+                    </p>
+                </div>
+                <div class="space-y-6">
+                    <p>
+                        We understand that timing is critical, especially if you are in the middle of a vehicle sale or export transaction in Dubai or Abu Dhabi. That's why we prioritize WhatsApp communication for the fastest possible response. Our technical auditors typically complete full removals and search engine cache flushes within 24 to 72 hours.
+                    </p>
+                    <p>
+                        Rest assured that your data privacy is our top priority. All communications are kept strictly confidential. We do not share your VIN or personal details with any third parties other than the necessary platform administrators required to facilitate the data removal process.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
