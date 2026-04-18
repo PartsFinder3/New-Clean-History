@@ -97,12 +97,12 @@
             </p>
         </div>
 
-        <div class="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 md:p-8 mt-6">
-            <h2 class="text-xl font-bold text-white mb-4">Your Rights</h2>
-            <p class="text-zinc-400 mb-4">
+        <div class="rounded-3xl border border-card-border bg-white p-8 md:p-10 mt-8 shadow-sm">
+            <h2 class="text-2xl font-bold text-foreground mb-6 font-display">Your Rights</h2>
+            <p class="text-muted mb-4 leading-relaxed">
                 You have the right to:
             </p>
-            <ul class="text-zinc-400 list-disc list-inside space-y-2">
+            <ul class="text-muted list-disc list-inside space-y-3 font-medium">
                 <li>Access the personal information we hold about you</li>
                 <li>Request correction of inaccurate data</li>
                 <li>Request deletion of your personal information</li>
@@ -110,14 +110,14 @@
             </ul>
         </div>
 
-        <div class="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 md:p-8 mt-6">
-            <h2 class="text-xl font-bold text-white mb-4">Contact Us</h2>
-            <p class="text-zinc-400 mb-4">
+        <div class="rounded-3xl border border-card-border bg-white p-8 md:p-10 mt-8 shadow-sm">
+            <h2 class="text-2xl font-bold text-foreground mb-6 font-display">Contact Us</h2>
+            <p class="text-muted mb-4 leading-relaxed">
                 If you have any questions about this Privacy Policy, please contact us at:
             </p>
-            <ul class="text-zinc-400 list-disc list-inside space-y-2">
-                <li>Email: <a href="mailto:mateenali1122@gmail.com" class="text-cyan-400 hover:underline">mateenali1122@gmail.com</a></li>
-                <li>WhatsApp: <a href="https://wa.me/923004531248" class="text-cyan-400 hover:underline">+92 300 4531248</a></li>
+            <ul class="text-muted list-disc list-inside space-y-3 font-medium">
+                <li>Email: <a href="mailto:info@carhistoryremove.online" class="text-accent hover:underline">info@carhistoryremove.online</a></li>
+                <li>WhatsApp: <a href="https://wa.me/923004531248" class="text-accent hover:underline">+92 300 4531248</a></li>
             </ul>
         </div>
     </div>

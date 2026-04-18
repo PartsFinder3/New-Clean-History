@@ -125,36 +125,3 @@
     @endif
 </div>
 @endsection
-
-    <!-- Related Blogs -->
-    @if($relatedBlogs->isNotEmpty())
-    <section class="mt-16">
-        <h2 class="text-2xl font-bold text-white mb-8">Related Articles</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            @foreach($relatedBlogs as $related)
-                <article class="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden hover:border-zinc-700 transition-all group">
-                    @if($related->image)
-                        <div class="aspect-video overflow-hidden">
-                            <img src="{{ Str::startsWith($related->image, 'http') ? $related->image : asset('storage/' . $related->image) }}" alt="{{ $related->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'">
-                        </div>
-                    @else
-                        <div class="aspect-video bg-zinc-950 flex items-center justify-center">
-                            <svg class="w-10 h-10 text-zinc-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
-                            </svg>
-                        </div>
-                    @endif
-                    
-                    <div class="p-4">
-                        <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">
-                            <a href="{{ route('blogs.show', $related->slug) }}">{{ $related->title }}</a>
-                        </h3>
-                        <p class="text-zinc-500 text-xs">{{ $related->created_at->format('M d, Y') }}</p>
-                    </div>
-                </article>
-            @endforeach
-        </div>
-    </section>
-    @endif
-</div>
-@endsection

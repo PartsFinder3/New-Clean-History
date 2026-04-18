@@ -156,7 +156,6 @@
                 Send Message
             </button>
         </form>
-        </form>
     </div>
 
     <!-- SEO Content Expansion -->

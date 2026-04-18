@@ -121,7 +121,7 @@
 </script>
 @endsection
 
-@@section('content')
+@section('content')
 <div class="mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-20">
     <!-- Breadcrumbs -->
     <nav class="mb-12 flex items-center gap-2 text-sm text-muted">

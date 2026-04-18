@@ -485,8 +485,6 @@
     </div>
 </section>
 
-</section>
-
 <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-blue-50 border-t border-card-border px-4 py-20 md:px-8">
     <div class="absolute inset-0 bg-[url('/grid.svg')] opacity-5"></div>
     <div class="relative mx-auto max-w-4xl text-center">
