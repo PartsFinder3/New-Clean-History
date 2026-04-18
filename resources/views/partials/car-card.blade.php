@@ -74,5 +74,3 @@
         </div>
     </a>
 </article>
-    </a>
-</article>
